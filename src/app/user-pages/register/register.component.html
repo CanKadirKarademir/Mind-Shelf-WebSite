@@ -1,1 +1,64 @@
-<p>Register component</p>
+<div class="d-flex align-items-center auth px-0 register__padding">
+    <div class="row w-100 mx-0">
+        <div class="col-xl-4 col-lg-7 col-md-8 col-sm-10 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                <div class="register__brand">
+                    <a class="register__cursor" routerLink="/home">
+                        <h1><span>M</span>ind <span>S</span>helf</h1>
+                    </a>
+                </div>
+                <h3 class="font-weight-light pt-3"><strong>Kaydolmak çok kolay... Sadece birkaç adım
+                        ilerinizde.</strong> </h3>
+                <form class="pt-3" #registerForm='ngForm' (ngSubmit)="onSave(registerForm)">
+                    <div class="form-group">
+                        <label for="UserName"><strong>Kullanıcı Adı</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="UserName"
+                            placeholder="Kullanıcı Adınızı Giriniz" #UserName="ngModel" [(ngModel)]="model.UserName"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserFirstName"><strong>İsim</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="UserFirstName"
+                            placeholder="İsminizi Giriniz" #UserFirstName="ngModel" [(ngModel)]="model.UserFirstName"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserLastName"><strong>Soyisim</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="UserLastName"
+                            placeholder="Soyisminizi Giriniz" #UserLastName="ngModel" [(ngModel)]="model.UserLastName"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserMail"><strong>E-Mail</strong></label>
+                        <input type="email" class="form-control form-control-lg" id="UserMail"
+                            placeholder="E-Mail Adresinizi Giriniz" #UserMail="ngModel" [(ngModel)]="model.UserMail"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserPassword"><strong>Şifre</strong></label>
+                        <input type="password" class="form-control form-control-lg" id="UserPassword"
+                            placeholder="Şifrenizi Giriniz" #UserPassword="ngModel" [(ngModel)]="model.UserPassword"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="UserPasswordControl"><strong>Şifre</strong></label>
+                        <input type="password" class="form-control form-control-lg" id="UserPasswordControl"
+                            placeholder="Şifrenizi Tekrar Giriniz" required>
+                    </div>
+                    <div class="mt-3">
+                        <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                            routerLink="register" type="sumbit" required>KAYIT
+                            OL</a>
+                    </div>
+                    <div class="text-center mt-4 font-weight-light">
+                        <h3>
+                            Zaten bir hesabınız var ? Hemen <a routerLink="/login"
+                                class="text-primary register__cursor"> Giiriş
+                                Yapın</a>
+                        </h3>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

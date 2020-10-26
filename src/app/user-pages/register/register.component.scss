@@ -1,0 +1,21 @@
+.register {
+  &__padding {
+    padding-top: 8em;
+  }
+
+  &__cursor {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  &__brand h1 {
+    display: inline;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: black;
+  }
+
+  &__brand h1 span {
+    color: crimson;
+  }
+}
