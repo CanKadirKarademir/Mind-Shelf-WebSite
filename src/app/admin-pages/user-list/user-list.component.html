@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Kullanıcı Listesi</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th>Kullanıcı ID</th>
+                                    <th>Kullanıcı Adı</th>
+                                    <th>Kullanıcı Soyadı</th>
+                                    <th>Mail Adresi</th>
+                                    <th>Durum</th>
+                                    <th>Sil</th>
+                                    <th>Aktif Et</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of user">
+                                    <td>{{ item.UserID }}</td>
+                                    <td>{{ item.UserFirstName }}</td>
+                                    <td>{{ item.UserLastName }}</td>
+                                    <td>{{ item.UserMail }}</td>
+                                    <td>
+                                        <span *ngIf="item.UserStatus == 1">
+                                            Aktif
+                                        </span>
+                                        <span *ngIf="item.UserStatus == 0">
+                                            Pasif
+                                        </span>
+                                    </td>
+                                    <td class="d-flex justify-content-center">
+                                        <a type="button" class="users__cursor" (click)="userDelete(item.UserID)">
+                                            <mat-icon>delete</mat-icon>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="users__cursor" (click)="userStatusUpdate(item.UserID)">
+                                            <mat-icon>add</mat-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

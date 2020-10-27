@@ -24,7 +24,7 @@ import { LoginComponent } from './user-pages/login/login.component';
 import { RegisterComponent } from './user-pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { UserListComponent } from './admin-pages/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
