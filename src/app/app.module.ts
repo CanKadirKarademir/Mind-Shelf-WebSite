@@ -22,6 +22,8 @@ import { ProfileComponent } from './shared/profile/profile.component';
 import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './user-pages/login/login.component';
 import { RegisterComponent } from './user-pages/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { RegisterComponent } from './user-pages/register/register.component';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

@@ -5,12 +5,16 @@ import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './user-pages/login/login.component';
 import { RegisterComponent } from './user-pages/register/register.component';
-
+import { AuthGuard } from '../utils/guard/auth.guard';
+import { NonAuthGuard } from '../utils/guard/non-guard.guard';
 import { ProfileComponent } from './shared/profile/profile.component';
+
 const routes: Routes = [
   {
     path: 'user',
     component: MainComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'dashboard',
@@ -25,14 +29,17 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [NonAuthGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [NonAuthGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [NonAuthGuard]
   },
   {
     path: '',
