@@ -5,10 +5,9 @@ import {
   CanActivateChild,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree
 } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,31 +15,37 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(
     private router: Router,
+    private authService: AuthService
   ) { }
+
+  currentUser = this.authService.currentUserValue;
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    return true;
-  }
-  canActivateChild(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
   ) {
-    const currentUser = localStorage.getItem('auth');
-    if (currentUser) {
+
+    if (this.currentUser) {
 
       // authorised so return true
       return true;
     }
 
     // not logged in so redirect to login page with the return url
-    this.router.navigate(['login/'], { queryParams: { returnUrl: state.url } });
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+    return false;
+  }
+  canActivateChild(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ) {
+    if (this.currentUser) {
+
+      // authorised so return true
+      return true;
+    }
+    // not logged in so redirect to login page with the return url
+    this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
   }
 

@@ -8,6 +8,7 @@ import { RegisterComponent } from './user-pages/register/register.component';
 import { AuthGuard } from '../utils/guard/auth.guard';
 import { NonAuthGuard } from '../utils/guard/non-guard.guard';
 import { ProfileComponent } from './shared/profile/profile.component';
+import { UserListComponent } from './admin-pages/user-list/user-list.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent,
+      },
+      {
+        path: 'users',
+        component: UserListComponent,
       },
     ]
   },

@@ -67,4 +67,16 @@ export class UserService {
       })
       )
   }
+
+  userProfileUpdate(userData, UserId) {
+    return this.http.post(
+      this.apiconfig.path + '/api/user/profile-edit?user_id=' + UserId,
+      userData,
+      this.httpOptions)
+      .pipe(
+        map((response: Response) => {
+          return response;
+        })
+      );
+  }
 }

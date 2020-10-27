@@ -25,6 +25,7 @@ import { RegisterComponent } from './user-pages/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UserListComponent } from './admin-pages/user-list/user-list.component';
     ChartsModule,
     MatInputModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]
