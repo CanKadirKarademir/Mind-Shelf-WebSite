@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { AuthService } from '../../../utils/services/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,19 +14,18 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     config: NgbDropdownConfig,
-    private _router: Router
-    ) {
+    private _router: Router,
+    private _authService: AuthService
+  ) {
     config.placement = 'bottom-right';
   }
 
   ngOnInit() {
   }
-
   // toggle sidebar in small devices
   toggleOffcanvas() {
     document.querySelector('.sidebar-offcanvas').classList.toggle('active');
   }
-
   // toggle sidebar
   toggleSidebar() {
     let body = document.querySelector('body');
@@ -48,13 +47,8 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('auth')
-    this._router.navigateByUrl('home');
+    this._authService.logout();
+    this._router.navigateByUrl('/home');
   }
-
-  // toggle right sidebar
-  // toggleRightSidebar() {
-  //   document.querySelector('#right-sidebar').classList.toggle('open');
-  // }
-
+  
 }
