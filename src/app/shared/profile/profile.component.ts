@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
         this.model.UserFirstName = data['user_data'].UserFirstName;
         this.model.UserLastName = data['user_data'].UserLastName;
         this.model.UserMail = data['user_data'].UserMail;
-        this.model.UserPassword = data['user_data'].UserFirstName;
+        this.model.UserPassword = data['user_data'].UserPassword;
       })
   }
 }

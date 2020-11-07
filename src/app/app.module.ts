@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthorListComponent } from './shared/author-list/author-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    UserListComponent
+    UserListComponent,
+    AuthorListComponent
   ],
   imports: [
     BrowserModule,

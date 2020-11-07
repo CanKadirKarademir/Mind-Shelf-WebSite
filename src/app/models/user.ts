@@ -7,5 +7,4 @@ export class User {
     UserType: number;
     UserStatus: number;
     UserPassword: string;
-
 }

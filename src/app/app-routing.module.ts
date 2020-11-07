@@ -9,6 +9,7 @@ import { AuthGuard } from '../utils/guard/auth.guard';
 import { NonAuthGuard } from '../utils/guard/non-guard.guard';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
+import { AuthorListComponent } from './shared/author-list/author-list.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
       {
         path: 'users',
         component: UserListComponent,
+      },
+      {
+        path: 'authors',
+        component: AuthorListComponent,
       },
     ]
   },
