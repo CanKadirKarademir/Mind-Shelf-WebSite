@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from './login';
+import { User } from '../../module/login';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../utils/services/auth/auth.service';
 import { first } from 'rxjs/operators';

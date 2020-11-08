@@ -1,14 +1,15 @@
-import { MatMenuModule } from '@angular/material/menu';
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../../module/book'
-import { BookService } from '../../../utils/services/book/book.service';
+import { BookService } from 'src/utils/services/book/book.service';
+import { Book } from '../module/book';
+
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  selector: 'app-library',
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.scss']
 })
-export class BookListComponent implements OnInit {
+export class LibraryComponent implements OnInit {
+
   book: Book[];
 
   constructor(
