@@ -1,3 +1,5 @@
+import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
+import { BookListComponent } from './shared/book-list/book-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -38,6 +40,14 @@ const routes: Routes = [
       {
         path: 'author/add',
         component: AuthorAddComponent,
+      },
+      {
+        path: 'books',
+        component: BookListComponent,
+      },
+      {
+        path: 'book/add',
+        component: BookAddComponent,
       }
     ]
   },
@@ -62,7 +72,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
