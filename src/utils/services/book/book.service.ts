@@ -46,7 +46,10 @@ export class BookService {
     }
 
     bookAdd(bookData) {
-        return this.http.post(this.apiconfig.path + '/api/admin/add-book', bookData,this.httpOptions)
+        return this.http.post(
+            this.apiconfig.path + '/api/admin/add-book',
+            bookData,
+            this.httpOptions)
             .pipe(
                 map((response: Response) => {
                     return response;

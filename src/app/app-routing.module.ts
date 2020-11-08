@@ -36,7 +36,7 @@ const routes: Routes = [
         component: BookListComponent,
       },
       {
-        path: 'book-add',
+        path: 'book/add',
         component: BookAddComponent
       },
     ]
