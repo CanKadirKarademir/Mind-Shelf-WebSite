@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { User } from '../../module/profile';
+import { User } from '../../models/user';
 import { UserService } from '../../../utils/services/user/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
         this.model.UserFirstName = data['user_data'].UserFirstName;
         this.model.UserLastName = data['user_data'].UserLastName;
         this.model.UserMail = data['user_data'].UserMail;
-        this.model.UserPassword = data['user_data'].UserFirstName;
+        this.model.UserPassword = data['user_data'].UserPassword;
       })
   }
 }

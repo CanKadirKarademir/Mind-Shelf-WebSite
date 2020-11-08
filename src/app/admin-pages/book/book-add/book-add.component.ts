@@ -2,7 +2,7 @@ import { Book } from '../../../module/book';
 import { BookService } from './../../../../utils/services/book/book.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { convertToParamMap, Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
 
 @Component({
@@ -30,8 +30,7 @@ export class BookAddComponent implements OnInit {
     })
   }
 
-  onSaveBook(bookForm: NgForm) {
-
+  onSave(bookForm: NgForm) {
     this._bookService.bookAdd({
       BookName: bookForm.value.BookName,
       BookType: bookForm.value.BookType,
@@ -40,6 +39,13 @@ export class BookAddComponent implements OnInit {
       PublicationYear: bookForm.value.PublicationYear,
       BookIsDeleted: 0,
       AuthorID: 3
-    });
+    }).pipe(first())
+      .subscribe(
+        data => {
+          console.log('data', data);
+        },
+        error => {
+          console.log('error', error);
+        });
   }
 }

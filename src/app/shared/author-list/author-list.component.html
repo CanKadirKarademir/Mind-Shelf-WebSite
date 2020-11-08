@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Kitap Listesi </h4>
+                    <h4 class="card-title">Yazar Listesi</h4>
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead class="">
@@ -11,13 +11,25 @@
                                     <th>Yazar ID</th>
                                     <th>Yazar Adı</th>
                                     <th>Yazar Soyadı</th>
+                                    <th>Silinme Durumu</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of book">
+                                <tr *ngFor="let item of author">
                                     <td>{{ item.AuthorID }}</td>
                                     <td>{{ item.AuthorFirstName }}</td>
                                     <td>{{ item.AuthorLastName }}</td>
+                                    <td>{{ item.AuthorIsDeleted }}</td>
+                                    <td class="d-flex justify-content-center">
+                                        <a type="button" class="authors__cursor"
+                                            (click)="onDeleteAuthor(item.AuthorID)">
+                                            <mat-icon>delete</mat-icon>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <button
+                                            class="btn btn-primary btn-sm font-weight-medium auth-form-btn">Güncelle</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

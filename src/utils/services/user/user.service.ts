@@ -6,7 +6,7 @@ import { AuthService } from '../auth/auth.service';
 import { ApiConfig } from '../ApiConfig';
 import { Observable } from 'rxjs';
 
-import { User } from 'src/app/module/login';
+import { User } from '../../../app/models/user';
 import { map } from 'rxjs/operators';
 
 @Injectable({

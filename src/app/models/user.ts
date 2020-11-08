@@ -4,5 +4,7 @@ export class User {
     UserFirstName: string;
     UserLastName: string;
     UserMail: string;
+    UserType: number;
+    UserStatus: number;
     UserPassword: string;
 }
