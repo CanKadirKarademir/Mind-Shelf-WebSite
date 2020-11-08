@@ -11,6 +11,8 @@ import { AuthGuard } from '../utils/guard/auth.guard';
 import { NonAuthGuard } from '../utils/guard/non-guard.guard';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
+import { AuthorListComponent } from './shared/author-list/author-list.component';
+import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
 
 const routes: Routes = [
   {
@@ -32,13 +34,21 @@ const routes: Routes = [
         component: UserListComponent,
       },
       {
-        path: 'book',
+        path: 'authors',
+        component: AuthorListComponent,
+      },
+      {
+        path: 'author/add',
+        component: AuthorAddComponent,
+      },
+      {
+        path: 'books',
         component: BookListComponent,
       },
       {
         path: 'book/add',
-        component: BookAddComponent
-      },
+        component: BookAddComponent,
+      }
     ]
   },
   {
@@ -62,7 +72,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
