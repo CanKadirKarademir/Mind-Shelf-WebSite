@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Kitap Listesi </h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th>Yazar ID</th>
+                                    <th>Yazar Adı</th>
+                                    <th>Yazar Soyadı</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of book">
+                                    <td>{{ item.AuthorID }}</td>
+                                    <td>{{ item.AuthorFirstName }}</td>
+                                    <td>{{ item.AuthorLastName }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

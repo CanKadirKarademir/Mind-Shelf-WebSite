@@ -26,7 +26,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
 import { MatIconModule } from '@angular/material/icon';
-
+import { AuthorListComponent } from './shared/author-list/author-list.component';
+import { BookListComponent } from './shared/book-list/book-list.component';
+import { AuthorAddComponent } from './admin-pages/author/author-add/author-add.component';
+import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +47,11 @@ import { MatIconModule } from '@angular/material/icon';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    UserListComponent
+    UserListComponent,
+    AuthorListComponent,
+    BookListComponent,
+    AuthorAddComponent,
+    BookAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

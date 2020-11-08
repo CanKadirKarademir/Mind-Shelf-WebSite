@@ -1,3 +1,5 @@
+import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
+import { BookListComponent } from './shared/book-list/book-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -28,6 +30,14 @@ const routes: Routes = [
       {
         path: 'users',
         component: UserListComponent,
+      },
+      {
+        path: 'book',
+        component: BookListComponent,
+      },
+      {
+        path: 'book-add',
+        component: BookAddComponent
       },
     ]
   },

@@ -1,0 +1,34 @@
+.books {
+  &__cursor {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: gray;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__cursor:hover {
+    background-color: white;
+  }
+
+  &__dropdown{
+    position: relative;
+    display: inline-block;
+  }
+
+  &__menu{
+    display: block;
+    font-size: 20px;
+    background: #dfdfdf;
+    color: black;
+  }
+
+  
+}
+

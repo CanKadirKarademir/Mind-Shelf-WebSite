@@ -1,0 +1,49 @@
+<div class="d-flex align-items-center auth px-0 register__padding m-auto">
+    <div class="row w-100 mx-0">
+        <div class="col-xl-10 col-lg-8 col-md-7 col-sm-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                <h1>Kitap Bilgileri</h1>
+                <form class="pt-3" #bookForm='ngForm' (ngSubmit)="onSaveBook(bookForm)">
+                    <div class="form-group">
+                        <label for="BookName"><strong>Kitap İsmi</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="BookName"
+                            placeholder="Kitabın İsmini Giriniz" name="BookName" #BookName="ngModel"
+                            [(ngModel)]="model.BookName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookType"><strong>Kitabın Türü</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="BookType"
+                            placeholder="Kitabın Türünü Giriniz" name="BookType" #BookType="ngModel"
+                            [(ngModel)]="model.BookType" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookPage"><strong>Kitabın Sayfa Sayısı</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="BookPage"
+                            placeholder="Kitabın Sayfa Sayısını Giriniz" name="BookPage" #BookPage="ngModel"
+                            [(ngModel)]="model.BookPage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Publisher"><strong>Kitabın Yayım Evi</strong></label>
+                        <input type="text" class="form-control form-control-lg" id="Publisher"
+                            placeholder="Kitabın Yayım Evini Giriniz" name="Publisher" #Publisher="ngModel"
+                            [(ngModel)]="model.Publisher" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="PublicationYear"><strong>Kitabın Basım Yılı</strong></label>
+                        <input type="date" class="form-control form-control-lg" id="PublicationYear"
+                            placeholder="Kitabın Basım Yılını Giriniz" name="PublicationYear" #PublicationYear="ngModel"
+                            [(ngModel)]="model.PublicationYear" required>
+                    </div>
+                    <div class="row">
+                        <div class="mt-3 align-items-center mr-auto">
+                            <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                                type="submit">
+                                EKLE
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
