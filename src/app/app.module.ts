@@ -27,10 +27,9 @@ import { UserListComponent } from './admin-pages/user-list/user-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthorListComponent } from './shared/author-list/author-list.component';
 import { BookListComponent } from './shared/book-list/book-list.component';
-import { AuthorAddComponent } from './admin-pages/author/author-add/author-add.component';
 import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { LibraryComponent } from './library/library.component';
+import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +49,7 @@ import { LibraryComponent } from './library/library.component';
     UserListComponent,
     AuthorListComponent,
     BookListComponent,
-    AuthorAddComponent,
     BookAddComponent,
-    LibraryComponent,
     AuthorAddComponent
   ],
   imports: [
