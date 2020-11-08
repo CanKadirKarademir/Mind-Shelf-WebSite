@@ -27,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthorListComponent } from './shared/author-list/author-list.component';
+import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AuthorListComponent } from './shared/author-list/author-list.component'
     LoginComponent,
     RegisterComponent,
     UserListComponent,
-    AuthorListComponent
+    AuthorListComponent,
+    AuthorAddComponent
   ],
   imports: [
     BrowserModule,
