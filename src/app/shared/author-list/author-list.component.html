@@ -11,18 +11,9 @@
                                     <th>Yazar ID</th>
                                     <th>Yazar Adı</th>
                                     <th>Yazar Soyadı</th>
+                                    <th>Silinme Durumu</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr *ngFor="let item of book">
-                                    <td>{{ item.AuthorID }}</td>
-                                    <td>{{ item.AuthorFirstName }}</td>
-                                    <td>{{ item.AuthorLastName }}</td>
-                                    <th>Silinme Durumu</th>
-                                    <th class="d-flex justify-content-center">Sil</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
                             <tbody>
                                 <tr *ngFor="let item of author">
                                     <td>{{ item.AuthorID }}</td>
