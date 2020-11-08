@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
 import { AuthService } from '../../../utils/services/auth/auth.service';
-import { User } from './register';
+import { User } from '../../module/register';
 
 @Component({
   selector: 'app-register',

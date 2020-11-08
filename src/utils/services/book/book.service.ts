@@ -1,4 +1,4 @@
-import { Book } from '../../../app/shared/book-list/book';
+import { Book } from '../../../app/module/book';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';

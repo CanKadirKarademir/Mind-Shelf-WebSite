@@ -2,6 +2,21 @@
     <div class="row w-100 mx-0">
         <div class="col-xl-10 col-lg-8 col-md-7 col-sm-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                <tr class="d-flex ayrintiTD">
+                    <td class="col-3 ytd1">
+                        <select class="browser-default custom-select btnChange mb-2">
+                            <option *ngFor="let item of book">
+                    <td>{{ item.BookType }}</td>
+                    </option>
+                    </select>
+                    </td>
+                    <td class="col-8 ytd2"><input id="aTumu" type="text" class="form-control aa ilkalansecim"
+                            placeholder="Aramanızı girin" autocomplete="off" value=""></td>
+                    <td class="col-1 ytd3 mt-2">
+                        <a class="icons-sm yt-ic" data-toggle="tooltip" title=""
+                            data-original-title="Yeni arama alanı ekle"></a>
+                    </td>
+                </tr>
                 <h1>Kitap Bilgileri</h1>
                 <form class="pt-3" #bookForm='ngForm' (ngSubmit)="onSaveBook(bookForm)">
                     <div class="form-group">
@@ -30,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="PublicationYear"><strong>Kitabın Basım Yılı</strong></label>
-                        <input type="date" class="form-control form-control-lg" id="PublicationYear"
+                        <input type="number" class="form-control form-control-lg" id="PublicationYear"
                             placeholder="Kitabın Basım Yılını Giriniz" name="PublicationYear" #PublicationYear="ngModel"
                             [(ngModel)]="model.PublicationYear" required>
                     </div>

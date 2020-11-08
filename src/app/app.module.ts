@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoComponent } from './apps/todo-list/todo/todo.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -31,13 +30,13 @@ import { BookListComponent } from './shared/book-list/book-list.component';
 import { AuthorAddComponent } from './admin-pages/author/author-add/author-add.component';
 import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { LibraryComponent } from './library/library.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    DashboardComponent,
     TodoListComponent,
     TodoComponent,
     SpinnerComponent,
@@ -52,6 +51,7 @@ import {MatMenuModule} from '@angular/material/menu';
     BookListComponent,
     AuthorAddComponent,
     BookAddComponent,
+    LibraryComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +65,7 @@ import {MatMenuModule} from '@angular/material/menu';
     HttpClientModule,
     MatSnackBarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]

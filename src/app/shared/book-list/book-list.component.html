@@ -1,6 +1,20 @@
-<div class="container">
+<div class="container-fluid">
+
+
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yazar Listesi </h4>
+                    <select class="browser-default custom-select btnChange mb-2">
+                        <option *ngFor="let item of book">
+                            <td>{{ item.BookType }}</td>
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Kitap Listesi </h4>
@@ -35,7 +49,7 @@
                                                 <mat-icon>note_add</mat-icon>
                                                 <span>Kitap Ekle</span>
                                             </a>
-                                            <a type="button"  mat-menu-item (click)="bookDelete(item.BookID)">
+                                            <a type="button" mat-menu-item (click)="bookDelete(item.BookID)">
                                                 <mat-icon>delete_sweep</mat-icon>
                                                 <span>Kitabı Sil</span>
                                             </a>

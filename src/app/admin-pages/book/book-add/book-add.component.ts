@@ -1,4 +1,4 @@
-import { Book } from './../../../shared/book-list/book';
+import { Book } from '../../../module/book';
 import { BookService } from './../../../../utils/services/book/book.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -16,11 +16,18 @@ export class BookAddComponent implements OnInit {
     private _router: Router,
     private _bookService: BookService,
   ) { }
-
-
   model: Book = new Book();
 
-  ngOnInit() {
+  book: Book[];
+
+  ngOnInit(): void {
+    this.getAllBooks();
+  }
+
+  getAllBooks() {
+    this._bookService.getBooks().subscribe(data => {
+      this.book = data;
+    })
   }
 
   onSaveBook(bookForm: NgForm) {
@@ -31,7 +38,8 @@ export class BookAddComponent implements OnInit {
       BookPage: bookForm.value.BookPage,
       Publisher: bookForm.value.Publisher,
       PublicationYear: bookForm.value.PublicationYear,
-      BookIsDeleted: 0
-    });    
+      BookIsDeleted: 0,
+      AuthorID: 3
+    });
   }
 }

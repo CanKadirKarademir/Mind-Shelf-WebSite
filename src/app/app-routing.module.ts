@@ -2,7 +2,6 @@ import { BookAddComponent } from './admin-pages/book/book-add/book-add.component
 import { BookListComponent } from './shared/book-list/book-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './user-pages/login/login.component';
@@ -11,6 +10,8 @@ import { AuthGuard } from '../utils/guard/auth.guard';
 import { NonAuthGuard } from '../utils/guard/non-guard.guard';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
+import {LibraryComponent} from './library/library.component'
+
 
 const routes: Routes = [
   {
@@ -20,8 +21,8 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       {
-        path: 'dashboard',
-        component: DashboardComponent
+        path: 'library',
+        component: LibraryComponent
       },
       {
         path: 'profile',
