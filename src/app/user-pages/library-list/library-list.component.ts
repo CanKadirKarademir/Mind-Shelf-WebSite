@@ -18,7 +18,7 @@ export class LibraryListComponent implements OnInit {
     this.getLibrary();
   }
 
-  library = Library[];
+  library: Library[];
   // kutuphane: Library = new Library();
 
   onDeleteLibrary(library_id) {
@@ -28,7 +28,7 @@ export class LibraryListComponent implements OnInit {
   }
 
   getLibrary() {
-    this._libraryService.listLibrary().subscribe(data => {
+    this._libraryService.listLibrary(JSON.parse(localStorage.getItem('currentUser')).id).subscribe(data => {
       this.library = data;
     })
   }
@@ -37,7 +37,7 @@ export class LibraryListComponent implements OnInit {
     this._libraryService.addlibrary({
       LibraryName: "Kadir Can",
       LibraryIsDeleted: 0,
-      UserID:9,
+      UserID: 9,
     }).pipe(first())
       .subscribe(
         data => {

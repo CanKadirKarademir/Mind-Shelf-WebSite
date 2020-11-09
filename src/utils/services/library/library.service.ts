@@ -18,7 +18,6 @@ export class LibraryService {
         private http: HttpClient,
         private alertService: MatSnackBar,
         private router: Router,
-        private libraryService: LibraryService,
         private authService: AuthService,
     ) { }
 
@@ -46,10 +45,10 @@ export class LibraryService {
         );
     }
 
-    listLibrary() {
+    listLibrary(user_id) {
         //kütüphane listeleme
         return this.http.get<Library[]>(
-            this.apiconfig.path + '/api/admin/all-libraries?user_id=' + user_id ,
+            this.apiconfig.path + '/api/admin/all-libraries?user_id=' + user_id,
             this.httpOptions
         );
 

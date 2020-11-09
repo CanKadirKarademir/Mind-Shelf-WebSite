@@ -53,7 +53,7 @@ const routes: Routes = [
       }
       ,
       {
-        path: 'librarys',
+        path: 'libraries',
         component: LibraryListComponent,
       }
     ]
