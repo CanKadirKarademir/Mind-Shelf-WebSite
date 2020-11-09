@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Kütüphane Listesi</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th>Kütüphane ID</th>
+                                    <th>Kütüphane Adı</th>
+                                    <th class="d-flex justify-content-center">Sil</th>
+                                    <th>Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of library">
+                                    <td>{{ item.LibraryID }}</td>
+                                    <td>{{ item.LibraryName }}</td>
+                                    <td class="d-flex justify-content-center">
+                                        <a type="button" class="library__cursor"
+                                            (click)="onDeleteLibrary(item.LibraryID)">
+                                            <mat-icon>delete</mat-icon>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="library__cursor">
+                                            <mat-icon>update</mat-icon>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

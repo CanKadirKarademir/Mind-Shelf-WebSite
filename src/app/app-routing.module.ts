@@ -12,6 +12,8 @@ import { ProfileComponent } from './shared/profile/profile.component';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
 import { AuthorListComponent } from './shared/author-list/author-list.component';
 import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
+import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
+import { LibraryListComponent } from './user-pages/library-list/library-list.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,16 @@ const routes: Routes = [
       {
         path: 'book/add',
         component: BookAddComponent,
+      }
+      ,
+      {
+        path: 'library/add',
+        component: LibraryAddComponent,
+      }
+      ,
+      {
+        path: 'libraries',
+        component: LibraryListComponent,
       }
     ]
   },
