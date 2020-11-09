@@ -8,7 +8,7 @@
                         class="browser-default custom-select btnChange mb-2">
                         <option value="aTumu" data-t-v="_tumu">Yazarlar</option>
                         <option *ngFor="let item of author" [value]="item.AuthorID">
-                            <td>{{ item.AuthorFirstName }} {{item.AuthorLastName}} {{selectedId}}</td>
+                            <td>{{ item.AuthorFirstName }} {{item.AuthorLastName}}</td>
                         </option>
                     </select>
                 </div>
@@ -45,7 +45,7 @@
                                             <mat-icon>more_vert</mat-icon>
                                         </span>
                                         <mat-menu #menu="matMenu">
-                                            <a class="books__decoration" mat-menu-item routerLink="/user/book-add"
+                                            <a class="books__decoration" mat-menu-item routerLink="/user/book/add"
                                                 routerLinkActive="active">
                                                 <mat-icon>note_add</mat-icon>
                                                 <span>Kitap Ekle</span>

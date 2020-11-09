@@ -1,12 +1,28 @@
 <div class="container-fluid">
+    kitap eklendiğine dair bilgi verilecek ve inputlar sıfırlanacak veya sayfa yenilenecek
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yazar Listesi </h4>
+                    <select [(ngModel)]="author_id" (ngModelChange)='onAuthorSelected($event)'
+                        class="browser-default custom-select btnChange mb-2">
+                        <option value="aTumu" data-t-v="_tumu">Kitaplar</option>
+                        <option *ngFor="let item of author" [value]="item.AuthorID">
+                            <td>{{ item.AuthorFirstName }} {{item.AuthorLastName}}</td>
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Kitap Bilgileri</h4>
                     <form class="pt-3" #bookForm='ngForm' (ngSubmit)="onSave(bookForm)">
                         <div class="form-group">
-                            <label for="BookName"><strong>Kitap Ekleme</strong></label>
+                            <label for="BookName"><strong>Kitap İsmi</strong></label>
                             <input type="text" class="form-control form-control-lg" required id="BookName"
                                 placeholder="Kitap Adını Giriniz" name="BookName" #BookName="ngModel"
                                 [(ngModel)]="model.BookName">

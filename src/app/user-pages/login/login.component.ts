@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  user: User;
 
   constructor(
     private _router: Router,
@@ -27,6 +28,19 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  
+  /* 
+      *ngfor="let item of user",
+f(*ngIf="item.UserID==1")
+            {
+            admin
+            }
+            else
+            {
+            kullancı
+            }*/ 
+
 
   onLogin(loginForm: NgForm) {
     if (!loginForm.valid) {

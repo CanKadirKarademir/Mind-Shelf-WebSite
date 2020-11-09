@@ -29,19 +29,13 @@ export class BookListComponent implements OnInit {
     this.getAuthorAllBooks(val);
   }
 
-  // getAllBooks() {
-  //   this.bookService.getBooks().subscribe(data => {
-  //     this.book = data;
-  //   });
-  // }
-
   getAuthor() {
     this._authorService.listAuthor().subscribe(data => {
       this.author = data;
     });
   }
 
-
+ 
   bookDelete(id) {
     this.bookService.bookDelete(id).subscribe(data => {
       window.location.reload();
