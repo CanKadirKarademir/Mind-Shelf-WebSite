@@ -62,4 +62,12 @@ export class LibraryService {
             this.httpOptions
         );
     }
+    getLibrariesBooks(library_id) {
+        //kütüphanedeki kitapları listeleme
+        return this.http.get<any[]>(
+            this.apiconfig.path + '/api/admin/library/all-books?library_id=' + library_id,
+            this.httpOptions
+        );
+
+    }
 }    

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LibraryService } from '../../../utils/services/library/library.service';
+import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-user-library-view',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLibraryViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private libraryService: LibraryService
+  ) { }
 
   ngOnInit(): void {
+    this.getLibrariesBooks();
   }
+  books: any[];
 
+  getLibrariesBooks() {
+    this.libraryService.getLibrariesBooks(1).subscribe(data => {
+      this.books = data;
+    })
+  }
 }

@@ -58,7 +58,7 @@ const routes: Routes = [
       }
       ,
       {
-        path: 'libraries-user',
+        path: 'library/view',
         component: UserLibraryViewComponent,
       }
     ]

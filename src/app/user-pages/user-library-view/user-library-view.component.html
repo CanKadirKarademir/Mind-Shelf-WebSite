@@ -10,24 +10,23 @@
                                 <tr>
                                     <th>Kitap Adı</th>
                                     <th>Sayfa Sayısı</th>
-                                    <th>Yazar Adı</th>
                                     <th class="d-flex justify-content-center">İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>İz</td>
-                                    <td>200</td>
-                                    <td>Buket Uzuner</td>
+                                <tr *ngFor="let book of books">
+                                    <td> {{book.TblBook.BookName}} </td>
+                                    <td> {{book.TblBook.BookPage}} </td>
                                     <td class="d-flex justify-content-center">
                                         <a type="button" class="library-user__cursor"
                                             (click)="onDeleteLibrary(item.LibraryID)">
-                                            <mat-icon>delete</mat-icon> 
+                                            <mat-icon>delete</mat-icon>
                                         </a>
-                                    </td>                                    
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
