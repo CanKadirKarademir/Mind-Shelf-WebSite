@@ -8,15 +8,23 @@
                         <table class="table table-hover">
                             <thead class="">
                                 <tr>
+                                    <th>Kitap ID</th>
                                     <th>Kitap Adı</th>
                                     <th>Sayfa Sayısı</th>
+                                    <th>Kitap Türü</th>
+                                    <th>Yayın Evi</th>
+                                    <th>Yayın Yılı</th>
                                     <th class="d-flex justify-content-center">İşlemler</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let book of books">
+                                    <td> {{book.TblBook.BookID}} </td>
                                     <td> {{book.TblBook.BookName}} </td>
                                     <td> {{book.TblBook.BookPage}} </td>
+                                    <td> {{book.TblBook.BookType}} </td>
+                                    <td> {{book.TblBook.Publisher}} </td>
+                                    <td> {{book.TblBook.PublicationYear}} </td>
                                     <td class="d-flex justify-content-center">
                                         <a type="button" class="library-user__cursor"
                                             (click)="onDeleteLibrary(item.LibraryID)">
