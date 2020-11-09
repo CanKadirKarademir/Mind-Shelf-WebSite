@@ -1,3 +1,5 @@
+import { Author } from './../../../models/author';
+import { AuthorService } from './../../../../utils/services/author/author.service';
 import { Book } from '../../../module/book';
 import { BookService } from './../../../../utils/services/book/book.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,19 +17,28 @@ export class BookAddComponent implements OnInit {
   constructor(
     private _router: Router,
     private _bookService: BookService,
+    private _authorService:AuthorService,
   ) { }
   model: Book = new Book();
 
   book: Book[];
+  author:Author[];
 
   ngOnInit(): void {
     this.getAllBooks();
+    this.getAllAuthors();
   }
 
   getAllBooks() {
     this._bookService.getBooks().subscribe(data => {
       this.book = data;
-    })
+    });
+  }
+
+  getAllAuthors() {
+    this._authorService.listAuthor().subscribe(data => {
+      this.author = data;
+    });
   }
 
   onSave(bookForm: NgForm) {

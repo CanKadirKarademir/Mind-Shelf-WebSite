@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Author } from '../../models/author';
+import { Author } from '../../../models/author';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AuthorService } from '../../../utils/services/author/author.service';
 import { first } from 'rxjs/operators';
+import { AuthorService } from 'src/utils/services/author/author.service';
 
 
 @Component({

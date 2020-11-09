@@ -1,19 +1,20 @@
 <div class="container-fluid">
 
-
+    user kitap listeleme ve yazar
     <div class="row">
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Yazar Listesi </h4>
                     <select class="browser-default custom-select btnChange mb-2">
-                        <option *ngFor="let item of book">
-                            <td>{{ item.BookType }}</td>
+                        <option *ngFor="let item of author">
+                            <td>{{ item.AuthorFirstName }} {{item.AuthorLastName}}</td>
                         </option>
                     </select>
                 </div>
             </div>
         </div>
+
         <div class="col-md-9">
             <div class="card">
                 <div class="card-body">
@@ -45,17 +46,9 @@
                                             <mat-icon>more_vert</mat-icon>
                                         </span>
                                         <mat-menu #menu="matMenu">
-                                            <a mat-menu-item routerLink="/user/book-add" routerLinkActive="active">
+                                            <a mat-menu-item routerLink="/admin/book/add" routerLinkActive="active">
                                                 <mat-icon>note_add</mat-icon>
-                                                <span>Kitap Ekle</span>
-                                            </a>
-                                            <a type="button" mat-menu-item (click)="bookDelete(item.BookID)">
-                                                <mat-icon>delete_sweep</mat-icon>
-                                                <span>Kitabı Sil</span>
-                                            </a>
-                                            <a mat-menu-item>
-                                                <mat-icon>update</mat-icon>
-                                                <span>Kitabı Güncelle</span>
+                                                <span>Kütüphaneye Ekle</span>
                                             </a>
                                         </mat-menu>
 
