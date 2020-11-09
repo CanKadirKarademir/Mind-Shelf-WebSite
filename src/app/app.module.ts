@@ -30,6 +30,8 @@ import { BookListComponent } from './shared/book-list/book-list.component';
 import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
+import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
+import { LibraryListComponent } from './user-pages/library-list/library-list.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { AuthorAddComponent } from './admin-pages/author-add/author-add.componen
     AuthorListComponent,
     BookListComponent,
     BookAddComponent,
-    AuthorAddComponent
+    AuthorAddComponent,
+    LibraryAddComponent,
+    LibraryListComponent
   ],
   imports: [
     BrowserModule,
