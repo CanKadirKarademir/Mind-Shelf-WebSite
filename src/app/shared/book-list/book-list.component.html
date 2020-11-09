@@ -1,18 +1,19 @@
 <div class="container-fluid">
 
-
     <div class="row">
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Yazar Listesi </h4>
-                    <select class="browser-default custom-select btnChange mb-2">
-                        <option *ngFor="let item of book">
-                            <td>{{ item.BookType }}</td>
-                        </option>
+                    <select (click)="getAuthorAllBooks()" class="browser-default custom-select btnChange mb-2">
+                        <option value="aTumu" data-t-v="_tumu">Tümü</option>
+                        <option  *ngFor="let item of author" [value]="item.AuthorID">
+                            <td>{{ item.AuthorFirstName }} {{item.AuthorLastName}} {{selectedId}}</td>
+                        </option>  
                     </select>
                 </div>
             </div>
+            <button (click)="getAuthorAllBooks()">text</button>
         </div>
         <div class="col-md-9">
             <div class="card">

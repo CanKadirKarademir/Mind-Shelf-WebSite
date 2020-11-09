@@ -45,6 +45,14 @@ export class BookService {
         )
     }
 
+
+    getAuthorAllBooks() {
+        return this.http.get(
+            this.apiconfig.path + '/api/admin/author/all-books?author_id=' + 3,
+            this.httpOptions
+        )
+    }
+
     bookAdd(bookData) {
         return this.http.post(
             this.apiconfig.path + '/api/admin/add-book',
