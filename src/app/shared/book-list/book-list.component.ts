@@ -14,6 +14,7 @@ export class BookListComponent implements OnInit {
   book: Book[];
   author: Author[];
   selected = [];
+  author_id: number;
 
   constructor(
     private bookService: BookService,
@@ -21,16 +22,18 @@ export class BookListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllBooks();
+
     this.getAuthor();
   }
-
-
-  getAllBooks() {
-    this.bookService.getBooks().subscribe(data => {
-      this.book = data;
-    });
+  onAuthorSelected(val: any) {
+    this.getAuthorAllBooks(val);
   }
+
+  // getAllBooks() {
+  //   this.bookService.getBooks().subscribe(data => {
+  //     this.book = data;
+  //   });
+  // }
 
   getAuthor() {
     this._authorService.listAuthor().subscribe(data => {
@@ -45,9 +48,9 @@ export class BookListComponent implements OnInit {
     });
   }
 
-  getAuthorAllBooks() {
-    this.bookService.getAuthorAllBooks().subscribe(data => {
-      //window.location.reload();
+  getAuthorAllBooks(author_id) {
+    this.bookService.getAuthorAllBooks(author_id).subscribe(data => {
+      this.book = data;
     });
   }
 }
