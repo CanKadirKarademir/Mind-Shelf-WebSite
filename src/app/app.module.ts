@@ -32,6 +32,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
 import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
 import { LibraryListComponent } from './user-pages/library-list/library-list.component';
+import { UserLibraryViewComponent } from './user-pages/user-library-view/user-library-view.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { LibraryListComponent } from './user-pages/library-list/library-list.com
     BookAddComponent,
     AuthorAddComponent,
     LibraryAddComponent,
-    LibraryListComponent
+    LibraryListComponent,
+    UserLibraryViewComponent
   ],
   imports: [
     BrowserModule,
