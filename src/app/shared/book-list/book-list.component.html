@@ -1,14 +1,14 @@
 <div class="container-fluid">
-
-
     <div class="row">
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Yazar Listesi </h4>
-                    <select class="browser-default custom-select btnChange mb-2">
-                        <option *ngFor="let item of book">
-                            <td>{{ item.BookType }}</td>
+                    <select [(ngModel)]="author_id" (ngModelChange)='onAuthorSelected($event)'
+                        class="browser-default custom-select btnChange mb-2">
+                        <option value="aTumu" data-t-v="_tumu">Yazarlar</option>
+                        <option *ngFor="let item of author" [value]="item.AuthorID">
+                            <td>{{ item.AuthorFirstName }} {{item.AuthorLastName}}</td>
                         </option>
                     </select>
                 </div>
@@ -40,20 +40,22 @@
                                     <td>{{ item.Publisher }}</td>
                                     <td>{{ item.PublicationYear }}</td>
                                     <td>
-                                        <span mat-icon-button [matMenuTriggerFor]="menu"
+                                        <span class="books__cursor" mat-icon-button [matMenuTriggerFor]="menu"
                                             aria-label="Example icon-button with a menu">
                                             <mat-icon>more_vert</mat-icon>
                                         </span>
                                         <mat-menu #menu="matMenu">
-                                            <a mat-menu-item routerLink="/user/book-add" routerLinkActive="active">
+                                            <a class="books__decoration" mat-menu-item routerLink="/user/book/add"
+                                                routerLinkActive="active">
                                                 <mat-icon>note_add</mat-icon>
                                                 <span>Kitap Ekle</span>
                                             </a>
-                                            <a type="button" mat-menu-item (click)="bookDelete(item.BookID)">
+                                            <a class="books__decoration" type="button" mat-menu-item
+                                                (click)="bookDelete(item.BookID)">
                                                 <mat-icon>delete_sweep</mat-icon>
                                                 <span>Kitabı Sil</span>
                                             </a>
-                                            <a mat-menu-item>
+                                            <a class="books__decoration" mat-menu-item>
                                                 <mat-icon>update</mat-icon>
                                                 <span>Kitabı Güncelle</span>
                                             </a>

@@ -17,18 +17,19 @@
     background-color: white;
   }
 
-  &__dropdown{
+  &__dropdown {
     position: relative;
     display: inline-block;
   }
 
-  &__menu{
+  &__menu {
     display: block;
     font-size: 20px;
     background: #dfdfdf;
     color: black;
   }
 
-  
+  &__decoration {
+    text-decoration: none;
+  }
 }
-
