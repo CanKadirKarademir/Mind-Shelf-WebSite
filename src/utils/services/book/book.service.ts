@@ -1,4 +1,4 @@
-import { Book } from '../../../app/module/book';
+import { Book } from '../../../app/models/book';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -63,5 +63,22 @@ export class BookService {
                     return response;
                 })
             );
+    }
+    bookUpdate(bookData, book_id) {
+        return this.http.post(
+            this.apiconfig.path + '/api/admin/update-book?book_id' + book_id,
+            bookData,
+            this.httpOptions)
+            .pipe(
+                map((response: Response) => {
+                    return response;
+                })
+            );
+    }
+    getByIDBook(book_id) {
+        return this.http.get<Book>(
+            this.apiconfig.path + '/api/admin/book/getbyid?book_id=' + book_id,
+            this.httpOptions
+        )
     }
 }

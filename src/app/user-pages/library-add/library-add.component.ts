@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Library } from '../../models/library';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LibraryService } from '../../../utils/services/library/library.service';
 import { first } from 'rxjs/operators';
-import { JsonPipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -4,7 +4,7 @@ import { Book } from '../../../module/book';
 import { BookService } from './../../../../utils/services/book/book.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { convertToParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -19,23 +19,28 @@ export class BookAddComponent implements OnInit {
     private _router: Router,
     private _bookService: BookService,
     private _authorService: AuthorService,
-    private _alertService: MatSnackBar
+    private _alertService: MatSnackBar,
+    private activatedRoute: ActivatedRoute,
   ) { }
   model: Book = new Book();
 
   book: Book[];
   author: Author[];
   author_id: number;
-
+  BookID: number;
 
   ngOnInit(): void {
     this.getAuthor();
+    this.BookID = parseInt(this.activatedRoute.snapshot.paramMap.get('BookID'));
+    this._bookService.getByIDBook(this.BookID).subscribe(data => {
+      this.model = data;
+    });
+    console.log("ulooo", this.BookID, this.model);
   }
 
   onAuthorSelected(val: any) {
     this.getAuthorAllBooks(val);
   }
-
 
   getAuthor() {
     this._authorService.listAuthor().subscribe(data => {
@@ -58,7 +63,7 @@ export class BookAddComponent implements OnInit {
   onSave(bookForm: NgForm) {
     if (!bookForm.valid) {
       this._alertService.open(
-        'Lütfen Boş Yerleri Doldurunuz..!',
+        'Lütfen Bilgilerin doğru olduğundan emin olun !',
         'HATA',
         {
           duration: 2000,
@@ -66,31 +71,66 @@ export class BookAddComponent implements OnInit {
       );
     }
     else {
-      this._alertService.open(
-        'Kitap başarılı bir şekilde kayıt edilmiştir :)',
-        'BİGİ',
-        {
-          duration: 2000,
-        }
-      );
-      this._bookService.bookAdd({
-        BookName: bookForm.value.BookName,
-        BookType: bookForm.value.BookType,
-        BookPage: bookForm.value.BookPage,
-        Publisher: bookForm.value.Publisher,
-        PublicationYear: bookForm.value.PublicationYear,
-        BookIsDeleted: 0,
-        AuthorID: this.author_id
-      }).pipe(first())
-        .subscribe(
-          data => {
-            console.log('data', data);
-          },
-          error => {
-            console.log('error', error);
-          });
-      window.location.reload();
+      if (this.BookID != null) {
+        this.onUpdateBook(bookForm);
+      }
+      else {
+        this.onAddBook(bookForm);
+      }
     }
+  }
+  onAddBook(bookForm: NgForm) {
+    this._bookService.bookAdd({
+      BookName: bookForm.value.BookName,
+      BookType: bookForm.value.BookType,
+      BookPage: bookForm.value.BookPage,
+      Publisher: bookForm.value.Publisher,
+      PublicationYear: bookForm.value.PublicationYear,
+      BookIsDeleted: 0,
+      AuthorID: this.author_id
+    }).pipe(first())
+      .subscribe(
+        data => {
+          console.log('data', data);
+        },
+        error => {
+          console.log('error', error);
+        });
+    this._alertService.open(
+      'Kitap başarılı bir şekilde kayıt edilmiştir :)',
+      'İŞLEM BAŞARILI',
+      {
+        duration: 2000,
+      }
+    );
+    window.location.reload();
 
+  }
+  onUpdateBook(bookForm: NgForm) {
+    this._bookService.bookUpdate({
+      BookName: bookForm.value.BookName,
+      BookType: bookForm.value.BookType,
+      BookPage: bookForm.value.BookPage,
+      Publisher: bookForm.value.Publisher,
+      PublicationYear: bookForm.value.PublicationYear,
+      BookIsDeleted: 0,
+      AuthorID: this.author_id
+    }, this.BookID)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log('data', data);
+        },
+        error => {
+          console.log('error', error);
+        });
+    this._alertService.open(
+      'Kitap başarılı bir şekilde güncellenmiştir.',
+      'İŞLEM BAŞARILI',
+      {
+        duration: 2000,
+      }
+    );
+    this._router.navigateByUrl('user');
   }
 }
