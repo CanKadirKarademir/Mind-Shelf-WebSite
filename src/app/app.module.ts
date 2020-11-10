@@ -29,9 +29,10 @@ import { AuthorListComponent } from './shared/author-list/author-list.component'
 import { BookListComponent } from './shared/book-list/book-list.component';
 import { BookAddComponent } from './admin-pages/book/book-add/book-add.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
+import { AuthorAddComponent } from './admin-pages/author/author-add/author-add.component';
 import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
 import { LibraryListComponent } from './user-pages/library-list/library-list.component';
+import { AdminBookUpdateComponent } from './admin-pages/book/admin-book-update/admin-book-update.component';
 import { UserLibraryViewComponent } from './user-pages/user-library-view/user-library-view.component';
 
 @NgModule({
@@ -56,6 +57,7 @@ import { UserLibraryViewComponent } from './user-pages/user-library-view/user-li
     AuthorAddComponent,
     LibraryAddComponent,
     LibraryListComponent,
+    AdminBookUpdateComponent,
     UserLibraryViewComponent
   ],
   imports: [

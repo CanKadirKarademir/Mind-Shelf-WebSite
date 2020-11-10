@@ -1,4 +1,4 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Author } from './../../../models/author';
 import { AuthorService } from './../../../../utils/services/author/author.service';
 import { Book } from '../../../module/book';
 import { BookService } from './../../../../utils/services/book/book.service';
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { convertToParamMap, Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
-import { Author } from 'src/app/models/author';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-add',
@@ -46,6 +46,12 @@ export class BookAddComponent implements OnInit {
   getAuthorAllBooks(author_id) {
     this._bookService.getAuthorAllBooks(author_id).subscribe(data => {
       this.book = data;
+    });
+  }
+
+  getAllAuthors() {
+    this._authorService.listAuthor().subscribe(data => {
+      this.author = data;
     });
   }
 

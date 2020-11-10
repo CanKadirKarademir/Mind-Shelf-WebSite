@@ -8,7 +8,7 @@ import { BookService } from '../../../utils/services/book/book.service';
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent implements OnInit {
   book: Book[];
@@ -35,7 +35,7 @@ export class BookListComponent implements OnInit {
     });
   }
 
- 
+
   bookDelete(id) {
     this.bookService.bookDelete(id).subscribe(data => {
       window.location.reload();
