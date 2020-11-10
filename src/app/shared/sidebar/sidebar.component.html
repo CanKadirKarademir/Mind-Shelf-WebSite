@@ -42,22 +42,27 @@
       [ngClass]="{ 'active' : blankPage.isActive || login.isActive || register.isActive || error404.isActive || error500.isActive }">
       <a class="nav-link" (click)="samplePagesCollapsed = !samplePagesCollapsed"
         [attr.aria-expanded]="samplePagesCollapsed" aria-controls="auth">
-        <span class="menu-title">Sample Pages</span>
+        <span class="menu-title">İşlemler</span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-medical-bag menu-icon"></i>
       </a>
       <div class="collapse" id="auth" [ngbCollapse]="!samplePagesCollapsed">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" routerLink="general-pages/blank-page" routerLinkActive="active"
-              #blankPage="routerLinkActive"> Blank Page </a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="user-pages/login" routerLinkActive="active"
-              #login="routerLinkActive" routerLink="/login"> Login </a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="user-pages/register" routerLinkActive="active"
-              #register="routerLinkActive"> Register </a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="error-pages/404" routerLinkActive="active"
-              #error404="routerLinkActive"> 404 </a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="error-pages/500" routerLinkActive="active"
-              #error500="routerLinkActive"> 500 </a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/users" routerLinkActive="active"
+              #blankPage="routerLinkActive">Kullanıcı Listeleme</a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/book/add" routerLinkActive="active"
+              #login="routerLinkActive">Kitap Ekleme </a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/books" routerLinkActive="active"
+              #register="routerLinkActive"> Kitap Listeleme</a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/author/add" routerLinkActive="active"
+              #error404="routerLinkActive"> Yazar Ekleme</a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/authors" routerLinkActive="active"
+              #error500="routerLinkActive"> Yazar Listeleme</a></li>
         </ul>
       </div>
     </li>

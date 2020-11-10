@@ -29,19 +29,6 @@ export class LoginComponent implements OnInit {
 
   }
 
-  
-  /* 
-      *ngfor="let item of user",
-f(*ngIf="item.UserID==1")
-            {
-            admin
-            }
-            else
-            {
-            kullancı
-            }*/ 
-
-
   onLogin(loginForm: NgForm) {
     if (!loginForm.valid) {
       this._alertService.open(
