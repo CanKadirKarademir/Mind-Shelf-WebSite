@@ -57,7 +57,7 @@ import { UserLibraryViewComponent } from './user-pages/user-library-view/user-li
     AuthorAddComponent,
     LibraryAddComponent,
     LibraryListComponent,
-    AdminBookUpdateComponent
+    AdminBookUpdateComponent,
     UserLibraryViewComponent
   ],
   imports: [
