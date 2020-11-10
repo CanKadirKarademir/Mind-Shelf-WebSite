@@ -6,24 +6,23 @@
                     <h4 class="card-title">Yazar Bilgilerini Giriniz</h4>
                     <form class="pt-3" #authorForm='ngForm' (ngSubmit)="onSave(authorForm)">
                         <div class="form-group">
-                            <label for="AuthorFirstName"><strong>Yazarın Adı</strong></label>
+                            <label for="AuthorFirstName"><strong>Yazar Adı</strong></label>
                             <input type="text" class="form-control form-control-lg" required id="AuthorFirstName"
-                                placeholder="Yazar Adını Giriniz" name="AuthorName" #AuthorFirstName="ngModel"
+                                placeholder="Yazar Adını Giriniz" name="AuthorFirstName" #AuthorFirstName="ngModel"
                                 [(ngModel)]="model.AuthorFirstName">
                         </div>
                         <div class="form-group">
-                            <label for="AuthorLastName"><strong>Yazarın Soyadı</strong></label>
+                            <label for="AuthorLastName"><strong>Yazar Soyadı</strong></label>
                             <input type="text" class="form-control form-control-lg" required id="AuthorLastName"
-                                placeholder="Yazar Soyadını Giriniz" name="AuthorLastName" #AuthorFirstName="ngModel"
+                                placeholder="Yazar Soyadını Giriniz" name="AuthorLastName" #AuthorLastName="ngModel"
                                 [(ngModel)]="model.AuthorLastName">
                         </div>
-                        
-                            <div class="row d-flex justify-content-end">
-                                <div class="mt-3">
-                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">Yazar Ekle</button>
-                                </div>
+                        <div class="row d-flex justify-content-end">
+                            <div class="mt-3">
+                                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+                                    type="submit">Yazarı Kaydet</button>
                             </div>
-                        
+                        </div>
                     </form>
                 </div>
             </div>

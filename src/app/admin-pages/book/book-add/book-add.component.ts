@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
@@ -34,8 +35,10 @@ export class BookAddComponent implements OnInit {
     this.BookID = parseInt(this.activatedRoute.snapshot.paramMap.get('BookID'));
     this._bookService.getByIDBook(this.BookID).subscribe(data => {
       this.model = data;
+      console.log(this.model);
+
     });
-    console.log("ulooo", this.BookID, this.model);
+    console.log("ulooo", this.BookID);
   }
 
   onAuthorSelected(val: any) {
@@ -71,12 +74,7 @@ export class BookAddComponent implements OnInit {
       );
     }
     else {
-      if (this.BookID != null) {
-        this.onUpdateBook(bookForm);
-      }
-      else {
-        this.onAddBook(bookForm);
-      }
+      Number.isNaN(this.BookID) ? this.onAddBook(bookForm) : this.onUpdateBook(bookForm);
     }
   }
   onAddBook(bookForm: NgForm) {

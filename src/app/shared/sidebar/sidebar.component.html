@@ -33,7 +33,7 @@
       </div>
     </li>
 
-    <li class="nav-item" [ngClass]="{ 'active' : libraryadd.isActive || librarylist.isActive || libraryview.isActive }">
+    <li class="nav-item" [ngClass]="{ 'active' : libraryadd.isActive || librarylist.isActive }">
       <a class="nav-link" (click)="libraryPagesCollapsed = !libraryPagesCollapsed"
         [attr.aria-expanded]="libraryPagesCollapsed" aria-controls="libraryId">
         <span class="menu-title">Kütüphane İşlemleri</span>
@@ -49,8 +49,8 @@
           <li class="nav-item"> <a class="nav-link" routerLink="/user/libraries" routerLinkActive="active"
               #librarylist="routerLinkActive"> Kütüphane Listeleme</a></li>
 
-          <li class="nav-item"> <a class="nav-link" routerLink="/user/library/view" routerLinkActive="active"
-              #libraryview="routerLinkActive">Kayıtlı Kitap Listesi</a></li>
+          <!-- <li class="nav-item"> <a class="nav-link" routerLink="/user/library/view" routerLinkActive="active"
+              #libraryview="routerLinkActive">Kayıtlı Kitap Listesi</a></li> -->
         </ul>
       </div>
     </li>

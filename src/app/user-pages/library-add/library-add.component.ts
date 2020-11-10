@@ -20,11 +20,11 @@ export class LibraryAddComponent implements OnInit {
     private router: Router
   ) { }
   model: Library = new Library;
-  LibraryID: number;
+  LibraryId: number = null;
 
   ngOnInit(): void {
-    this.LibraryID = parseInt(this.activatedRoute.snapshot.paramMap.get('LibraryID'));
-    this.libraryService.getByIdLibrary(this.LibraryID).subscribe(data => {
+    this.LibraryId = parseInt(this.activatedRoute.snapshot.paramMap.get('LibraryID'));
+    this.libraryService.getByIdLibrary(this.LibraryId).subscribe(data => {
       this.model = data;
     });
   }
@@ -38,19 +38,15 @@ export class LibraryAddComponent implements OnInit {
           duration: 2000,
         }
       );
-    } else {
-      if (this.LibraryID != null) {
-        this.onUpdateLibrary(libraryForm);
-      }
-      else {
-        this.onAddLibrary(libraryForm);
-      }
+    }
+    else {
+      Number.isNaN(this.LibraryId) ? this.onAddLibrary(libraryForm) : this.onUpdateLibrary(libraryForm);
     }
 
   }
-  onAddLibrary(libraryForm: NgForm) {
+  onAddLibrary(lKibraryForm: NgForm) {
     this.libraryService.addlibrary({
-      LibraryName: libraryForm.value.LibraryName,
+      LibraryName: lKibraryForm.value.LibraryName,
       LibraryIsDeleted: 0,
       UserID: JSON.parse(localStorage.getItem('currentUser')).id
     })
@@ -70,11 +66,12 @@ export class LibraryAddComponent implements OnInit {
       })
     this.router.navigateByUrl('user');
   }
-  onUpdateLibrary(libraryForm: NgForm) {
+  onUpdateLibrary(lKibraryForm: NgForm) {
+    console.log(lKibraryForm.value)
     this.libraryService.updateLibrary({
-      LibraryName: libraryForm.value.LibraryName,
+      LibraryName: lKibraryForm.value.LibraryName,
       LibraryIsDeleted: 0,
-    }, this.LibraryID)
+    }, this.LibraryId)
       .pipe(first())
       .subscribe(
         data => {

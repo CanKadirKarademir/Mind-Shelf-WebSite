@@ -1,11 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { ApiConfig } from '../ApiConfig';
-
 import { Author } from '../../../app//models/author';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -51,15 +48,30 @@ export class AuthorService {
 
   }
 
-  updateAuthor() {
+  updateAuthor(authorData, author_id) {
     //yazar güncelleme 
+    return this.http.post(
+      this.apiconfig.path + '/api/admin/update-author?author_id=' + author_id,
+      authorData,
+      this.httpOptions
+    ).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
   }
 
   deleteAuthor(author_id) {
     //yazar silme
-    return this.http.post(this.apiconfig.path +
-      '/api/admin/delete-author?author_id=' + author_id,
+    return this.http.post(
+      this.apiconfig.path + '/api/admin/delete-author?author_id=' + author_id,
       '',
+      this.httpOptions
+    );
+  }
+  getByIdAuthor(author_id) {
+    return this.http.get<Author>(
+      this.apiconfig.path + '/api/admin/author/getbyid?author_id=' + author_id,
       this.httpOptions
     );
   }

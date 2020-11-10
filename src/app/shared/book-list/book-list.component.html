@@ -46,17 +46,18 @@
                                             <mat-icon>more_vert</mat-icon>
                                         </span>
                                         <mat-menu #menu="matMenu">
-                                            <a class="books__decoration" mat-menu-item routerLink="/user/book/add"
-                                                routerLinkActive="active">
+                                            <!-- <a class="books__decoration" mat-menu-item routerLinkActive="active"
+                                                (click)="addBookOnLibrary(item.BookID)">
                                                 <mat-icon>note_add</mat-icon>
-                                                <span>Kitap Ekle</span>
-                                            </a>
+                                                <span>Kütüphaneye Ekle</span>
+                                            </a> -->
                                             <a class="books__decoration" type="button" mat-menu-item
                                                 (click)="bookDelete(item.BookID)">
                                                 <mat-icon>delete_sweep</mat-icon>
                                                 <span>Kitabı Sil</span>
                                             </a>
-                                            <a class="books__decoration" mat-menu-item>
+                                            <a class="books__decoration" mat-menu-item
+                                                [routerLink]="['/user/book/update/',item.BookID]">
                                                 <mat-icon>update</mat-icon>
                                                 <span>Kitabı Güncelle</span>
                                             </a>

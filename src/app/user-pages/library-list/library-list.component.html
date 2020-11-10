@@ -12,6 +12,7 @@
                                     <th>Kütüphane Adı</th>
                                     <th class="d-flex justify-content-center">Sil</th>
                                     <th>Güncelle</th>
+                                    <th>Kütüphane Yönlendirme</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,6 +29,12 @@
                                         <a type="button" class="library__cursor"
                                             [routerLink]="['/user/library/update/',item.LibraryID]">
                                             <mat-icon>update</mat-icon>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="library__cursor"
+                                            [routerLink]="['/user/library/view/',item.LibraryID]">
+                                            <mat-icon>folder_special</mat-icon>
                                         </a>
                                     </td>
                                 </tr>

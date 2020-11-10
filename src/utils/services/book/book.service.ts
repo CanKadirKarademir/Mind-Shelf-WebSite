@@ -66,7 +66,7 @@ export class BookService {
     }
     bookUpdate(bookData, book_id) {
         return this.http.post(
-            this.apiconfig.path + '/api/admin/update-book?book_id' + book_id,
+            this.apiconfig.path + '/api/admin/update-book?book_id=' + book_id,
             bookData,
             this.httpOptions)
             .pipe(
@@ -80,5 +80,15 @@ export class BookService {
             this.apiconfig.path + '/api/admin/book/getbyid?book_id=' + book_id,
             this.httpOptions
         )
+    }
+    addBookOnLibrary(book_id) {
+        return this.http.post(
+            this.apiconfig.path + '/api/admin/library/add-book?book_id' + book_id,
+            this.httpOptions)
+            .pipe(
+                map((response: Response) => {
+                    return response;
+                })
+            );
     }
 }

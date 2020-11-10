@@ -40,6 +40,10 @@ const routes: Routes = [
         component: AuthorAddComponent,
       },
       {
+        path: 'author/update/:AuthorID',
+        component: AuthorAddComponent,
+      },
+      {
         path: 'books',
         component: BookListComponent,
       },
@@ -70,7 +74,7 @@ const routes: Routes = [
       }
       ,
       {
-        path: 'library/view',
+        path: 'library/view/:LibraryID',
         component: UserLibraryViewComponent,
       }
     ]

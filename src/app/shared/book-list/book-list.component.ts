@@ -47,4 +47,7 @@ export class BookListComponent implements OnInit {
       this.book = data;
     });
   }
+  addBookOnLibrary(book_id) {
+    this.bookService.addBookOnLibrary(book_id)
+  }
 }
