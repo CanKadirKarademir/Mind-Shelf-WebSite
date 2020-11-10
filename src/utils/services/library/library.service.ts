@@ -62,4 +62,29 @@ export class LibraryService {
             this.httpOptions
         );
     }
-}    
+    getLibrariesBooks(library_id) {
+        //kütüphanedeki kitapları listeleme
+        return this.http.get<any[]>(
+            this.apiconfig.path + '/api/admin/library/all-books?library_id=' + library_id,
+            this.httpOptions
+        );
+
+    }
+    updateLibrary(libraryData, library_id) {
+        return this.http.post(
+            this.apiconfig.path + '/api/admin/update-library?library_id=' + library_id,
+            libraryData,
+            this.httpOptions)
+            .pipe(
+                map((response: Response) => {
+                    return response;
+                })
+            );
+    }
+    getByIdLibrary(library_id) {
+        return this.http.get<Library>(
+            this.apiconfig.path + '/api/admin/library/getbyid?library_id=' + library_id,
+            this.httpOptions
+        )
+    }
+}

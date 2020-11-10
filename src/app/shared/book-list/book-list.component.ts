@@ -1,10 +1,9 @@
+import { Author } from './../../models/author';
 import { AuthorService } from './../../../utils/services/author/author.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../../module/book'
+import { Book } from '../../models/book'
 import { BookService } from '../../../utils/services/book/book.service';
-import { Author } from 'src/app/models/author';
-
 
 @Component({
   selector: 'app-book-list',
@@ -14,35 +13,38 @@ import { Author } from 'src/app/models/author';
 export class BookListComponent implements OnInit {
   book: Book[];
   author: Author[];
-  select:Number;
+  selected = [];
+  author_id: number;
 
   constructor(
-    private _bookService: BookService,
+    private bookService: BookService,
     private _authorService: AuthorService
   ) { }
 
   ngOnInit(): void {
-    this.getAllBooks();
-    this.getAllAuthors();
-    this.author = [];
-    this.select=3
+
+    this.getAuthor();
+  }
+  onAuthorSelected(val: any) {
+    this.getAuthorAllBooks(val);
   }
 
-  getAllBooks() {
-    this._bookService.getBooks().subscribe(data => {
-      this.book = data;
-    });
-  }
-
-  getAllAuthors() {
+  getAuthor() {
     this._authorService.listAuthor().subscribe(data => {
       this.author = data;
     });
   }
 
+
   bookDelete(id) {
-    this._bookService.bookDelete(id).subscribe(data => {
+    this.bookService.bookDelete(id).subscribe(data => {
       window.location.reload();
+    });
+  }
+
+  getAuthorAllBooks(author_id) {
+    this.bookService.getAuthorAllBooks(author_id).subscribe(data => {
+      this.book = data;
     });
   }
 }

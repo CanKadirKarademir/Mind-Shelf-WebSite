@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private alertService: MatSnackBar,
+   private alertService: MatSnackBar ,
   ) { }
 
   model: User = new User();

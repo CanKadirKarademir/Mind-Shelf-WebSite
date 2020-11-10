@@ -1,4 +1,4 @@
-.books {
+.library-user {
   &__cursor {
     cursor: pointer;
     text-decoration: none;
@@ -15,21 +15,5 @@
 
   &__cursor:hover {
     background-color: white;
-  }
-
-  &__dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  &__menu {
-    display: block;
-    font-size: 20px;
-    background: #dfdfdf;
-    color: black;
-  }
-
-  &__decoration {
-    text-decoration: none;
   }
 }
