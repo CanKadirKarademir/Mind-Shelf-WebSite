@@ -14,7 +14,7 @@ import { AuthorListComponent } from './shared/author-list/author-list.component'
 import { AuthorAddComponent } from './admin-pages/author-add/author-add.component';
 import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
 import { LibraryListComponent } from './user-pages/library-list/library-list.component';
-
+import { UserLibraryViewComponent } from './user-pages/user-library-view/user-library-view.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -53,8 +53,18 @@ const routes: Routes = [
       }
       ,
       {
+        path: 'library/update/:LibraryID',
+        component: LibraryAddComponent,
+      }
+      ,
+      {
         path: 'libraries',
         component: LibraryListComponent,
+      }
+      ,
+      {
+        path: 'library/view',
+        component: UserLibraryViewComponent,
       }
     ]
   },

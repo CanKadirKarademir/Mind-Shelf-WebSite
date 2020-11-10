@@ -47,4 +47,8 @@ export class LibraryListComponent implements OnInit {
           console.log('error', error);
         });
   }
+  
+  goLibrariesView(library_id) {
+    
+  }
 }
