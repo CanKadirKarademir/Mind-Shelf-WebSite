@@ -33,7 +33,7 @@
       </div>
     </li>
 
-    <li class="nav-item" [ngClass]="{ 'active' : libraryadd.isActive || librarylist.isActive || libraryview.isActive }">
+    <li class="nav-item" [ngClass]="{ 'active' : libraryadd.isActive || librarylist.isActive }">
       <a class="nav-link" (click)="libraryPagesCollapsed = !libraryPagesCollapsed"
         [attr.aria-expanded]="libraryPagesCollapsed" aria-controls="libraryId">
         <span class="menu-title">Kütüphane İşlemleri</span>
