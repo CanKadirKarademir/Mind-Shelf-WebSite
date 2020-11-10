@@ -53,6 +53,11 @@ const routes: Routes = [
       }
       ,
       {
+        path: 'library/update/:LibraryID',
+        component: LibraryAddComponent,
+      }
+      ,
+      {
         path: 'libraries',
         component: LibraryListComponent,
       }
