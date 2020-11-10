@@ -13,56 +13,82 @@
         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
       </a>
     </li>
-    <li class="nav-item" [ngClass]="{ 'active': dashboard.isActive }">
-      <a class="nav-link" routerLink="users" routerLinkActive #dashboard="routerLinkActive">
-        <span class="menu-title">Kullanıcılar</span>
-        <i class="mdi mdi-home menu-icon"></i>
-      </a>
-    </li>
 
-    <li class="nav-item" [ngClass]="{ 'active': forms.isActive }">
-      <a class="nav-link" routerLink="/user/libraries" routerLinkActive #forms="routerLinkActive">
-        <span class="menu-title">Kütüphane</span>
-        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item" [ngClass]="{ 'active': dashboard.isActive }">
-      <a class="nav-link" routerLink="/user/books" routerLinkActive #dashboard="routerLinkActive">
-        <span class="menu-title">Kitaplar</span>
-        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item" [ngClass]="{ 'active': dashboard.isActive }">
-      <a class="nav-link" routerLink="/user/authors" routerLinkActive #dashboard="routerLinkActive">
-        <span class="menu-title">Yazarlar</span>
-        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item"
-      [ngClass]="{ 'active' : blankPage.isActive || login.isActive || register.isActive || error404.isActive || error500.isActive }">
-      <a class="nav-link" (click)="samplePagesCollapsed = !samplePagesCollapsed"
-        [attr.aria-expanded]="samplePagesCollapsed" aria-controls="auth">
-        <span class="menu-title">İşlemler</span>
+    <li class="nav-item" [ngClass]="{ 'active' : useradd.isActive || userlist.isActive }">
+      <a class="nav-link" (click)="userPagesCollapsed = !userPagesCollapsed" [attr.aria-expanded]="userPagesCollapsed"
+        aria-controls="userId">
+        <span class="menu-title">Kullanıcı İşlemleri</span>
         <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
       </a>
-      <div class="collapse" id="auth" [ngbCollapse]="!samplePagesCollapsed">
+      <div class="collapse" id="userId" [ngbCollapse]="!userPagesCollapsed">
         <ul class="nav flex-column sub-menu">
 
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/profile" routerLinkActive="active"
+              #useradd="routerLinkActive"> Profil Güncelleme</a></li>
+
           <li class="nav-item"> <a class="nav-link" routerLink="/user/users" routerLinkActive="active"
-              #blankPage="routerLinkActive">Kullanıcı Listeleme</a></li>
+              #userlist="routerLinkActive"> Kullanıcı Listeleme</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item" [ngClass]="{ 'active' : libraryadd.isActive || librarylist.isActive || libraryview.isActive }">
+      <a class="nav-link" (click)="libraryPagesCollapsed = !libraryPagesCollapsed"
+        [attr.aria-expanded]="libraryPagesCollapsed" aria-controls="libraryId">
+        <span class="menu-title">Kütüphane İşlemleri</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+      <div class="collapse" id="libraryId" [ngbCollapse]="!libraryPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/library/add" routerLinkActive="active"
+              #libraryadd="routerLinkActive"> Kütüphane Ekleme</a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/libraries" routerLinkActive="active"
+              #librarylist="routerLinkActive"> Kütüphane Listeleme</a></li>
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/library/view" routerLinkActive="active"
+              #libraryview="routerLinkActive">Kayıtlı Kitap Listesi</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item" [ngClass]="{ 'active' : bookadd.isActive || booklist.isActive }">
+      <a class="nav-link" (click)="bookPagesCollapsed = !bookPagesCollapsed" [attr.aria-expanded]="bookPagesCollapsed"
+        aria-controls="bookId">
+        <span class="menu-title">Kitap İşlemleri</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+      <div class="collapse" id="bookId" [ngbCollapse]="!bookPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/book/add" routerLinkActive="active"
-              #login="routerLinkActive">Kitap Ekleme </a></li>
+              #bookadd="routerLinkActive"> Kitap Ekleme</a></li>
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/books" routerLinkActive="active"
-              #register="routerLinkActive"> Kitap Listeleme</a></li>
+              #booklist="routerLinkActive"> Kitap Listeleme</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item" [ngClass]="{ 'active' : authoradd.isActive || authorlist.isActive }">
+      <a class="nav-link" (click)="autPagesCollapsed = !autPagesCollapsed" [attr.aria-expanded]="autPagesCollapsed"
+        aria-controls="authorId">
+        <span class="menu-title">Yazar İşlemleri</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+      <div class="collapse" id="authorId" [ngbCollapse]="!autPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/author/add" routerLinkActive="active"
-              #error404="routerLinkActive"> Yazar Ekleme</a></li>
+              #authoradd="routerLinkActive"> Yazar Ekleme</a></li>
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/authors" routerLinkActive="active"
-              #error500="routerLinkActive"> Yazar Listeleme</a></li>
+              #authorlist="routerLinkActive"> Yazar Listeleme</a></li>
         </ul>
       </div>
     </li>
