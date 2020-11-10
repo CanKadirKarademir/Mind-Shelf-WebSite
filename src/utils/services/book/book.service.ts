@@ -81,9 +81,10 @@ export class BookService {
             this.httpOptions
         )
     }
-    addBookOnLibrary(book_id) {
+    addBookOnLibrary(recordData) {
         return this.http.post(
-            this.apiconfig.path + '/api/admin/library/add-book?book_id' + book_id,
+            this.apiconfig.path + '/api/admin/library/add-book?book_id',
+            recordData,
             this.httpOptions)
             .pipe(
                 map((response: Response) => {

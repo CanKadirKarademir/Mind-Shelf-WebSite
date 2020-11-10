@@ -4,6 +4,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book'
 import { BookService } from '../../../utils/services/book/book.service';
+import { first } from 'rxjs/internal/operators/first';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-book-list',
@@ -15,10 +17,12 @@ export class BookListComponent implements OnInit {
   author: Author[];
   selected = [];
   author_id: number;
+  library_id: number;
 
   constructor(
     private bookService: BookService,
-    private _authorService: AuthorService
+    private _authorService: AuthorService,
+    private _alertService: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +52,23 @@ export class BookListComponent implements OnInit {
     });
   }
   addBookOnLibrary(book_id) {
-    this.bookService.addBookOnLibrary(book_id)
+    this.bookService.addBookOnLibrary({
+      LibraryID: this.library_id,
+      BookID: book_id
+    }).pipe(first())
+      .subscribe(
+        data => {
+          console.log('data', data);
+        },
+        error => {
+          console.log('error', error);
+        });
+    this._alertService.open(
+      'Kitap kütüphanenize eklenmiştir.',
+      'İŞLEM BAŞARILI',
+      {
+        duration: 2000,
+      }
+    );
   }
 }
