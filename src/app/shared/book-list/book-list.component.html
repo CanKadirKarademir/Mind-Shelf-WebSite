@@ -13,6 +13,18 @@
                     </select>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Kütüphane Listesi </h4>
+                    <select [(ngModel)]="library_id" (ngModelChange)='onLibrarySelected($event)'
+                        class="browser-default custom-select btnChange mb-2">
+                        <option value="aTumu" data-t-v="_tumu">Kütüphaneler</option>
+                        <option *ngFor="let item of library" [value]="item.LibraryID">
+                            <td>{{ item.LibraryName }}</td>
+                        </option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-9">
