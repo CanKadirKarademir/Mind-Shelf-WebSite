@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Kitap Listesi </h4>
+          <select [(ngModel)]="book_id" (ngModelChange)='onBookSelected($event)'
+            class="browser-default custom-select btnChange mb-2">
+            <option value="aTumu" data-t-v="_tumu">Kitaplar</option>
+            <option *ngFor="let item of book" [value]="item.BookID">
+              <td>{{ item.BookName }} </td>
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title" style="text-align: center;">Özet Listesi </h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="">
+                <tr>
+                  <th>Özet ID</th>
+                  <th>Özet</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of summary">
+                  <td>{{ item.SummaryID }}</td>
+                  <td>{{ item.SummaryText }}</td>
+                  <td>
+                    <span class="summarys__cursor" mat-icon-button [matMenuTriggerFor]="menu"
+                      aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </span>
+                    <mat-menu #menu="matMenu">
+                      <a class="summarys__decoration" mat-menu-item
+                        [routerLink]="['/user/summary/add/',item.SummaryID]">
+                        <mat-icon>book</mat-icon>
+                        <span>Yorum Ekle</span>
+                      </a>
+                      <a class="summarys__decoration" mat-menu-item [routerLink]="">
+                        <mat-icon>account_circle</mat-icon>
+                        <span mat-button (click)="openUserInformation()">Kullanıcı Bilgileri</span>
+                      </a>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

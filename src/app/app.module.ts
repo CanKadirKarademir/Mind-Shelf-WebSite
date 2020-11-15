@@ -33,6 +33,11 @@ import { AuthorAddComponent } from './admin-pages/author/author-add/author-add.c
 import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
 import { LibraryListComponent } from './user-pages/library-list/library-list.component';
 import { UserLibraryViewComponent } from './user-pages/user-library-view/user-library-view.component';
+import { SummaryAddComponent } from './shared/summary/summary-add/summary-add.component';
+import { SummaryListComponent } from './shared/summary/summary-list/summary-list.component';
+import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
+import { DialogComponent } from './shared/summary/summary-list/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,11 @@ import { UserLibraryViewComponent } from './user-pages/user-library-view/user-li
     AuthorAddComponent,
     LibraryAddComponent,
     LibraryListComponent,
-    UserLibraryViewComponent
+    UserLibraryViewComponent,
+    SummaryAddComponent,
+    SummaryListComponent,
+    SummaryViewComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +80,8 @@ import { UserLibraryViewComponent } from './user-pages/user-library-view/user-li
     MatSnackBarModule,
     MatIconModule,
     MatMenuModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]
