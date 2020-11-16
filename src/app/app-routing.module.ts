@@ -15,6 +15,9 @@ import { AuthorAddComponent } from './admin-pages/author/author-add/author-add.c
 import { LibraryAddComponent } from './user-pages/library-add/library-add.component';
 import { LibraryListComponent } from './user-pages/library-list/library-list.component';
 import { UserLibraryViewComponent } from './user-pages/user-library-view/user-library-view.component';
+import { SummaryAddComponent } from './shared/summary/summary-add/summary-add.component';
+import { SummaryListComponent } from './shared/summary/summary-list/summary-list.component';
+import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
 
 const routes: Routes = [
   {
@@ -76,6 +79,21 @@ const routes: Routes = [
       {
         path: 'library/view/:LibraryID',
         component: UserLibraryViewComponent,
+      }
+      ,
+      {
+        path: 'summary/add/:BookID',
+        component: SummaryAddComponent,
+      }
+      ,
+      {
+        path: 'summaries',
+        component: SummaryListComponent,
+      }
+      ,
+      {
+        path: 'summary/view',
+        component: SummaryViewComponent,
       }
     ]
   },

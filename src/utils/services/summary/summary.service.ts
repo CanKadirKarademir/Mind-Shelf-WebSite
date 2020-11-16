@@ -60,9 +60,9 @@ export class SummaryService {
     );
   }
 
-  getSummaryByUser(user_id) {
+  getSummaryByUser(book_id, user_id) {
     return this.http.get<Summary[]>(
-      this.apiconfig.path + '/api/admin/getbyUser-summary?user_id=' + user_id,
+      this.apiconfig.path + '/api/admin/getbyUser-summary?user_id=' + user_id + '&book_id=' + book_id,
       this.httpOptions
     );
   }
