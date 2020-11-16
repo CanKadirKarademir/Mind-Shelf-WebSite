@@ -15,11 +15,10 @@ import { SummaryService } from 'src/utils/services/summary/summary.service';
 })
 export class SummaryAddComponent implements OnInit {
 
-  model: Summary = new Summary();
+  modelSummary: Summary = new Summary();
+  modelBook: Book = new Book();
   book_id: number;
-  book: Book[];
-  SummaryID: number=NaN;
-  summary: Summary[];
+  BookID: number;
 
   constructor(
     private _summaryService: SummaryService,
@@ -33,9 +32,8 @@ export class SummaryAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBook();
-  }
-  onBookSelected(val: any) {
-    this.getSummaryByBook(val);
+    this.BookID = parseInt(this.activatedRoute.snapshot.paramMap.get('BookID'));
+
   }
 
   onSave(summaryForm: NgForm) {
@@ -49,16 +47,15 @@ export class SummaryAddComponent implements OnInit {
       );
     }
     else {
-      Number.isNaN(this.SummaryID) ? this.onAddSummary(summaryForm) : this.onUpdateSummary(summaryForm);
+      this.onAddSummary(summaryForm);
     }
   }
-
   onAddSummary(summaryForm: NgForm) {
     this._summaryService.addSummary({
-      SummaryText: "Çok güzel bir kitaptı beni derinden etkiledi Kurtxcxcxcxcxcxc",
+      SummaryText: summaryForm.value.SummaryText,
       SummaryIsDeleted: 0,
-      BookID: 20,
-      UserID: 18
+      BookID: this.BookID,
+      UserID: JSON.parse(localStorage.getItem('currentUser')).id
     }).pipe(first())
       .subscribe(
         data => {
@@ -74,15 +71,20 @@ export class SummaryAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.reload();
+  }
+  getBook() {
+    this._bookService.getByIDBook(this.BookID).subscribe(data => {
+      this.modelBook = data;
+    })
   }
 
+  /*
   onUpdateSummary(summaryForm: NgForm) {
     this._summaryService.updateSummary({
       SummaryText: summaryForm.value.SummaryText,
       SummaryIsDeleted: 0,
       BookID: this.book_id,
-     // UserID: 16
+      UserID: 16
     }, this.SummaryID)
       .pipe(first())
       .subscribe(
@@ -100,17 +102,6 @@ export class SummaryAddComponent implements OnInit {
       }
     );
     this._router.navigateByUrl('user');
-  }
+  }*/
 
-  getBook() {
-    this._bookService.getBooks().subscribe(data => {
-      this.book = data;
-    });
-  }
-
-  getSummaryByBook(book_id) {
-    this._summaryService.getSummaryByBook(book_id).subscribe(data => {
-      this.summary = data;
-    })
-  }
 }
