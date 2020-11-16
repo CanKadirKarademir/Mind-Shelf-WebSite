@@ -82,12 +82,12 @@ const routes: Routes = [
       }
       ,
       {
-        path: 'summary/add',
+        path: 'summary/add/:BookID',
         component: SummaryAddComponent,
       }
       ,
       {
-        path: 'summarys',
+        path: 'summaries',
         component: SummaryListComponent,
       }
       ,
