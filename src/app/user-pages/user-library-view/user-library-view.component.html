@@ -15,6 +15,7 @@
                                     <th>Yayın Evi</th>
                                     <th>Yayın Yılı</th>
                                     <th class="d-flex justify-content-center">İşlemler</th>
+                                    <th>Özet Ekle</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -29,6 +30,12 @@
                                         <a type="button" class="library-user__cursor"
                                             (click)="onDeleteLibrary(item.LibraryID)">
                                             <mat-icon>delete</mat-icon>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="library-user__cursor"
+                                            [routerLink]="['/user/summary/add/',book.TblBook.BookID]">
+                                            <mat-icon>description</mat-icon>
                                         </a>
                                     </td>
                                 </tr>

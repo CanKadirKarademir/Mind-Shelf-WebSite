@@ -8,6 +8,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { UserService } from 'src/utils/services/user/user.service';
 import { BookService } from 'src/utils/services/book/book.service';
 import { Book } from 'src/app/module/book';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-summary-list',
@@ -50,7 +51,7 @@ export class SummaryListComponent implements OnInit {
   }
 
   onBookSelected(val: any) {
-    this.getSummaryByBook(val);
+    this.getSummary(val);
   }
 
   summaryDelete(id) {
@@ -60,9 +61,11 @@ export class SummaryListComponent implements OnInit {
   }
 
 
-  getSummaryByBook(book_id) {
-    this._summaryService.getSummaryByBook(book_id).subscribe(data => {
+  getSummary(book_id) {
+    const user_id = JSON.parse(localStorage.getItem('currentUser')).id;
+    this._summaryService.getSummaryByUser(book_id, user_id).subscribe(data => {
       this.summary = data;
+      console.log(data);
     });
   }
 
