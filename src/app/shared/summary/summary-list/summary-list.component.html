@@ -49,6 +49,10 @@
                         <mat-icon>update</mat-icon>
                         <span>Güncelle</span>
                       </a>
+                      <a class="books__decoration" type="button" mat-menu-item (click)="summaryDelete(item.SummaryID)">
+                        <mat-icon>delete_sweep</mat-icon>
+                        <span>Sil</span>
+                      </a>
                       <a class="summarys__decoration" mat-menu-item [routerLink]="">
                         <mat-icon>account_circle</mat-icon>
                         <span mat-button (click)="openUserInformation()">Kullanıcı Bilgileri</span>
