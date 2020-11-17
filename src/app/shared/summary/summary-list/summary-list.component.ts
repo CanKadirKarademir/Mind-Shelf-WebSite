@@ -1,14 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { data } from 'jquery';
 import { Summary } from 'src/app/models/summary';
-import { User } from 'src/app/module/login';
 import { SummaryService } from 'src/utils/services/summary/summary.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
-import { UserService } from 'src/utils/services/user/user.service';
 import { BookService } from 'src/utils/services/book/book.service';
 import { Book } from 'src/app/module/book';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-summary-list',
@@ -71,7 +66,6 @@ export class SummaryListComponent implements OnInit {
 
   //user bilgileri icin acılan dialog
   openUserInformation() {
-    this.dialog.open(DialogComponent);
   }
 
   getBook() {

@@ -36,7 +36,6 @@ import { UserLibraryViewComponent } from './user-pages/user-library-view/user-li
 import { SummaryAddComponent } from './shared/summary/summary-add/summary-add.component';
 import { SummaryListComponent } from './shared/summary/summary-list/summary-list.component';
 import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
-import { DialogComponent } from './shared/summary/summary-list/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-update.component';
 
@@ -66,7 +65,6 @@ import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-
     SummaryAddComponent,
     SummaryListComponent,
     SummaryViewComponent,
-    DialogComponent,
     SummaryUpdateComponent
   ],
   imports: [
