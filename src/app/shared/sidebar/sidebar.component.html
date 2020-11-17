@@ -92,5 +92,24 @@
         </ul>
       </div>
     </li>
+
+    <li class="nav-item" [ngClass]="{ 'active' :  summarylist.isActive }">
+      <a class="nav-link" (click)="summaryPagesCollapsed = !summaryPagesCollapsed" [attr.aria-expanded]="summaryPagesCollapsed"
+        aria-controls="summaryıd">
+        <span class="menu-title">Özet İşlemleri</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+      <div class="collapse" id="summaryıd" [ngbCollapse]="!summaryPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+    
+          <!-- <li class="nav-item"> <a class="nav-link" routerLink="/user/summary/add/:BookID" routerLinkActive="active"
+              #summaryadd="routerLinkActive"> Özet Ekleme</a></li> -->
+    
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/summaries" routerLinkActive="active"
+              #summarylist="routerLinkActive"> Özet Listeleme</a></li>
+        </ul>
+      </div>
+    </li>
   </ul>
 </nav>
