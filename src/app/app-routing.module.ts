@@ -18,6 +18,7 @@ import { UserLibraryViewComponent } from './user-pages/user-library-view/user-li
 import { SummaryAddComponent } from './shared/summary/summary-add/summary-add.component';
 import { SummaryListComponent } from './shared/summary/summary-list/summary-list.component';
 import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
+import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-update.component';
 
 const routes: Routes = [
   {
@@ -94,6 +95,11 @@ const routes: Routes = [
       {
         path: 'summary/view',
         component: SummaryViewComponent,
+      }
+      ,
+      {
+        path: 'summary/update/:SummaryID',
+        component: SummaryUpdateComponent,
       }
     ]
   },

@@ -17,11 +17,16 @@ export class SummaryViewComponent implements OnInit {
   ) { }
   book_id: number;
   book: Book[];
-  summaries: Summary[];
+  model: Summary=new Summary;
+  summaries: Summary[] ;
 
   ngOnInit(): void {
     this.getBook();
   }
+  onBookSelected(val: any) {
+    this.getBookAllSummaries(val);
+  }
+
   getBook() {
     this._bookService.getBooks().subscribe(data => {
       this.book = data;
@@ -31,6 +36,12 @@ export class SummaryViewComponent implements OnInit {
     this._summaryService.getSummaryByBook(this.book_id).subscribe(data => {
       this.summaries = data;
     })
+  }
+
+  getBookAllSummaries(book_id) {
+    this._summaryService.getSummaryByBook(book_id).subscribe(data => {
+      this.summaries = data;
+    });
   }
 
 }

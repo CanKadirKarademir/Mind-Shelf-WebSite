@@ -4,7 +4,8 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Kitap Listesi </h4>
-          <select class="browser-default custom-select btnChange mb-2">
+          <select [(ngModel)]="book_id" (ngModelChange)='onBookSelected($event)'
+            class="browser-default custom-select btnChange mb-2">
             <option value="aTumu" data-t-v="_tumu">Kitaplar</option>
             <option *ngFor="let item of book" [value]="item.BookID">
               <td>{{ item.BookName }}</td>
@@ -14,21 +15,13 @@
       </div>
     </div>
     <div class="col-md-9">
-      <div class="card">
+      <div class="card" *ngFor="let item of summaries">
         <div class="card-body">
-          <h4 style="text-align: center;" class="card-title">Özet</h4>
           <form class="pt-3" #summaryForm='ngForm'>
             <div class="form-group">
-              <label for="SummaryText"><strong>Kitap İsmi</strong></label>
-              <textarea rows="10" class="form-control form-control-lg" required id="SummaryText"
-                placeholder="LÜTFEN GİRDİNİZ ÖZET 1000 HECE OLSUN" name="SummaryText"></textarea>
-            </div>
-            <div class="row d-flex justify-content-center">
-              <div class="mt-3">
-                <button class="btn btn-outline-success" type="submit">Özeti Kaydet</button>
-                <button class="btn btn-outline-info" type="submit">Özeti Güncelle</button>
-                <button class="btn btn-outline-danger  " type="submit">Özeti Sil</button>
-              </div>
+                <label for="SummaryText"><strong>Özetler</strong></label>
+                <textarea rows="10" class="form-control form-control-lg" disabled id="SummaryText" name="SummaryText">{{item.SummaryText}} </textarea>
+
             </div>
           </form>
         </div>

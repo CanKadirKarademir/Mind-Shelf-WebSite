@@ -73,4 +73,11 @@ export class SummaryService {
       this.httpOptions
     );
   }
+
+  getSumamryByID(summary_id) {
+    return this.http.get<any>(
+      this.apiconfig.path + '/api/admin/getSummaryById?summary_id=' + summary_id,
+      this.httpOptions
+    );
+  }
 }
