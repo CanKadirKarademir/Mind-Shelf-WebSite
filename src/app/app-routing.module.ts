@@ -19,7 +19,7 @@ import { SummaryAddComponent } from './shared/summary/summary-add/summary-add.co
 import { SummaryListComponent } from './shared/summary/summary-list/summary-list.component';
 import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
 import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-update.component';
-
+import { CommentListComponent} from './user-pages/comment-list/comment-list.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -100,6 +100,11 @@ const routes: Routes = [
       {
         path: 'summary/update/:SummaryID',
         component: SummaryUpdateComponent,
+      }
+      ,
+      {
+        path: 'comments/:SummaryID',
+        component: CommentListComponent,
       }
     ]
   },

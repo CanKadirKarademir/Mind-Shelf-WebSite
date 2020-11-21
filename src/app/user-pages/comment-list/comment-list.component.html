@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 style="text-align: center;" class="card-title">Kitap ve Özet Bilgisi:</h4>
+                    <h2><strong>Kitap İsmi: {{modelBook.BookName}} </strong></h2>
+                    <h2><strong>Kitap Özeti: </strong> {{summary.SummaryText}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h4 class="card-title" style="text-align: center;">Yorum Listesi </h4>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let item comment">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card text-white bg-dark mb-3 comments__description">
+                                    <div class="card-header">{{ item.CommentName }}</div>
+                                    <div class="card-body">
+                                        <p class="card-text">{{ item.CommentText }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
