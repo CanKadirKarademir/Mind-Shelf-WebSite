@@ -90,7 +90,7 @@ export class CommnentService {
 
   getCommentBySummary(summary_id) {
     return this.http.get<Comment[]>(
-      this.apiconfig.path + '/api/admin / getBySummary - comments?summary_id=' + summary_id,
+      this.apiconfig.path + '/api/admin/getBySummary-comments?summary_id=' + summary_id,
       this.httpOptions
     );
   }
