@@ -19,10 +19,12 @@
         <div class="card-body">
           <form class="pt-3" #summaryForm='ngForm'>
             <div class="form-group">
-                <label for="SummaryText"><strong>Özetler</strong></label>
-                <textarea rows="10" class="form-control form-control-lg" disabled id="SummaryText" name="SummaryText">{{item.SummaryText}} </textarea>
-
+              <label for="SummaryText"><strong>Özetler</strong></label>
+              <textarea rows="10" class="form-control form-control-lg" disabled id="SummaryText"
+                name="SummaryText">{{item.SummaryText}} </textarea>
             </div>
+            <button class="btn btn-outline-success" [routerLink]="['/user/comments',item.SummaryID]">Yorumları
+              Görüntüle</button>
           </form>
         </div>
       </div>

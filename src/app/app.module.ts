@@ -38,6 +38,7 @@ import { SummaryListComponent } from './shared/summary/summary-list/summary-list
 import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-update.component';
+import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-
     SummaryAddComponent,
     SummaryListComponent,
     SummaryViewComponent,
-    SummaryUpdateComponent
+    SummaryUpdateComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,

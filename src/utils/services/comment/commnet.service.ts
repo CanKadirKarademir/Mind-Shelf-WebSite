@@ -81,9 +81,16 @@ export class CommnentService {
       this.httpOptions
     )
   }
-  getCommentByUser(summary_id,user_id){
+  getCommentByUser(summary_id, user_id) {
     return this.http.get<Comment[]>(
       this.apiconfig.path + '/api/admin/getbyUser-summary?user_id=' + user_id + '&book_id=' + summary_id,
+      this.httpOptions
+    );
+  }
+
+  getCommentBySummary(summary_id) {
+    return this.http.get<Comment[]>(
+      this.apiconfig.path + '/api/admin/getBySummary-comments?summary_id=' + summary_id,
       this.httpOptions
     );
   }

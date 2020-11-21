@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title comments__title">Kitap ve Özet Bilgisi:</h4>
+                    <h2><strong>Kitap İsmi: {{modelBook.BookName}} </strong></h2>
+                    <h2><strong>Kitap Özeti: </strong> </h2>
+                    <textarea rows="10" class="form-control form-control-lg comments__summary" disabled id="SummaryText"
+                        name="SummaryText">{{summary.SummaryText}} </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid comments__padding">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title comments__title">Yorum Listesi </h4>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let item of comment">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="card text-white bg-dark mb-3 comments__description">
+                                        <div class="card-header text-center">{{ item.CommentName }}</div>
+                                        <div class="card-body">
+                                            <p class="card-text">{{ item.CommentText }}</p>
+                                        </div>
+                                        <!-- <div class="card-footer">
+                                            <div class="col-12">
+                                                <button
+                                                    class="btn btn-outline-info">Kişi
+                                                    Bilgilerini
+                                                    Göster</button>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
