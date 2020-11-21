@@ -6,7 +6,7 @@
           <h4 style="text-align: center;" class="card-title">Özet</h4>
           <form class="pt-3" #summaryForm='ngForm' (ngSubmit)="onSave(summaryForm)">
             <div class="form-group">
-              <label for="SummaryText"><strong>Kitap İsmi</strong></label>
+              <label for="SummaryText"><strong>Kitap İsmi: {{modelBook.BookName}} </strong></label>
               <textarea rows="10" class="form-control form-control-lg" required id="SummaryText"
                 placeholder="LÜTFEN GİRDİNİZ ÖZET 1000 HECE OLSUN" name="SummaryText" #SummaryText="ngModel"
                 [(ngModel)]="modelSummary.SummaryText"></textarea>
