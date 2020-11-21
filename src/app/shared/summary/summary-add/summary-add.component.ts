@@ -33,7 +33,9 @@ export class SummaryAddComponent implements OnInit {
   ngOnInit(): void {
     this.getBook();
     this.BookID = parseInt(this.activatedRoute.snapshot.paramMap.get('BookID'));
-
+    this._bookService.getByIDBook(this.BookID).subscribe(book => {
+      this.modelBook = book;
+    })
   }
 
   onSave(summaryForm: NgForm) {

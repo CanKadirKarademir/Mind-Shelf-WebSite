@@ -32,8 +32,9 @@ export class SummaryUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
     this._summaryService.getSumamryByID(this.SummaryID).subscribe(data => {
-      this.model = data;
-      this.BookID = data.BookID;
+      this.model.SummaryID = data['summaryData'].SummaryID;
+      this.model.SummaryText = data['summaryData'].SummaryText;
+      this.BookID = data['summaryData'].BookID;
       this._bookService.getByIDBook(this.BookID).subscribe(book => {
         this.modelBook = book;
       })
