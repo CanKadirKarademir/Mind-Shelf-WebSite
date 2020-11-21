@@ -41,6 +41,7 @@ import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-
 import { CommentAddComponent } from './shared/comment/comment-add/comment-add.component';
 import { CommentViewComponent } from './shared/comment/comment-view/comment-view.component';
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
+import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { CommentUpdateComponent } from './shared/comment/comment-update/comment-
     CommentAddComponent,
     CommentViewComponent,
     CommentUpdateComponent
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
