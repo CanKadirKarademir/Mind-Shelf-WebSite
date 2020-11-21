@@ -94,20 +94,39 @@
     </li>
 
     <li class="nav-item" [ngClass]="{ 'active' : summarylistother.isActive || summarylist.isActive }">
-      <a class="nav-link" (click)="summaryPagesCollapsed = !summaryPagesCollapsed" [attr.aria-expanded]="summaryPagesCollapsed"
-        aria-controls="summaryıd">
+      <a class="nav-link" (click)="summaryPagesCollapsed = !summaryPagesCollapsed"
+        [attr.aria-expanded]="summaryPagesCollapsed" aria-controls="summaryıd">
         <span class="menu-title">Özet İşlemleri</span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-format-list-bulleted menu-icon"></i>
       </a>
       <div class="collapse" id="summaryıd" [ngbCollapse]="!summaryPagesCollapsed">
         <ul class="nav flex-column sub-menu">
-    
+
           <li class="nav-item"> <a class="nav-link" routerLink="/user/summary/view" routerLinkActive="active"
               #summarylistother="routerLinkActive">Özetleri Görüntüle</a></li>
           <li class="nav-item"> <a class="nav-link" routerLink="/user/summaries" routerLinkActive="active"
               #summarylist="routerLinkActive">Özetlerimi Listeleme</a></li>
-          
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item" [ngClass]="{ 'active' : commentlistother.isActive || commentlist.isActive }">
+      <a class="nav-link" (click)="commentPagesCollapsed = !commentPagesCollapsed"
+        [attr.aria-expanded]="commentPagesCollapsed" aria-controls="commentID">
+        <span class="menu-title">Yorum İşlemleri</span>
+        <i class="menu-arrow"></i>
+        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+      </a>
+      <div class="collapse" id="commentID" [ngbCollapse]="!commentPagesCollapsed">
+        <ul class="nav flex-column sub-menu">
+
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/comment/view" routerLinkActive="active"
+              #commentlistother="routerLinkActive">Yorumlarımı Listeleme</a></li>
+          <li class="nav-item"> <a class="nav-link" routerLink="/user/comments" routerLinkActive="active"
+              #commentlist="routerLinkActive">Yorumları Görüntüle</a></li>
+
         </ul>
       </div>
     </li>

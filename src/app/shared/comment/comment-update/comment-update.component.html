@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 style="text-align: center;" class="card-title">Yorum</h4>
+          <form class="pt-3" #commentForm='ngForm' (ngSubmit)="onCommentUpdate(commentForm)">
+            <div class="form-group">
+              <div class="form-group">
+                <label for="CommentName"><strong>ÖZET</strong></label>
+                <input type="text" class="form-control form-control-lg" required id="CommentName"
+                  placeholder="Yorumun Başlığını Giriniz" name="CommentName" #CommentName="ngModel"
+                  [(ngModel)]="modelComment.CommentName">
+              </div>
+              <div class="form-group">
+                <textarea for="CommentText" rows="10" class="form-control form-control-lg" required id="CommentText"
+                  placeholder="LÜTFEN YORUMUNUZU GİRİNİZ" name="CommentText" #CommentText="ngModel"
+                  [(ngModel)]="modelComment.CommentText"></textarea>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-end">
+              <div class="mt-3">
+                <button class="btn btn-outline-success" type="submit">Güncelle</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,23 +18,6 @@ export class SummaryListComponent implements OnInit {
   book: Book[];
   book_id: number;
 
-  /*summary1=[{
-    SummaryID:1,
-    SummaryText:"ahmet",
-    SummaryIsDeleted: 0
-  },
-  {
-    SummaryID:2,
-    SummaryText:"mehmet",
-    SummaryIsDeleted: 0
-  },
-  {
-    SummaryID:3,
-    SummaryText:"veli",
-    SummaryIsDeleted: 0
-  }
-]*/
-
   constructor(
     private _summaryService: SummaryService,
     private _bookService: BookService,

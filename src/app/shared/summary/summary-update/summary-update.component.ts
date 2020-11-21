@@ -38,7 +38,7 @@ export class SummaryUpdateComponent implements OnInit {
       this._bookService.getByIDBook(this.BookID).subscribe(book => {
         this.modelBook = book;
       })
-    })
+    })  
   }
 
   onSummaryUpdate(summaryForm: NgForm) {

@@ -19,6 +19,9 @@ import { SummaryAddComponent } from './shared/summary/summary-add/summary-add.co
 import { SummaryListComponent } from './shared/summary/summary-list/summary-list.component';
 import { SummaryViewComponent } from './shared/summary/summary-view/summary-view.component';
 import { SummaryUpdateComponent } from './shared/summary/summary-update/summary-update.component';
+import { CommentAddComponent } from './shared/comment/comment-add/comment-add.component';
+import { CommentViewComponent } from './shared/comment/comment-view/comment-view.component';
+import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 
 const routes: Routes = [
   {
@@ -100,6 +103,21 @@ const routes: Routes = [
       {
         path: 'summary/update/:SummaryID',
         component: SummaryUpdateComponent,
+      }
+      ,
+      {
+        path: 'comment/add/:SummaryID',
+        component: CommentAddComponent,
+      }
+      ,
+      {
+        path: 'comment/view',
+        component: CommentViewComponent,
+      }
+      ,
+      {
+        path: 'comment/update/:CommentID',
+        component: CommentUpdateComponent,
       }
     ]
   },

@@ -68,12 +68,12 @@ export class BookListComponent implements OnInit {
 
 
 
-  bookDelete(id) {
+
+ bookDelete(id) {
     this.bookService.bookDelete(id).subscribe(data => {
       window.location.reload();
     });
   }
-
 
   addBookOnLibrary(book_id) {
     this.bookService.addBookOnLibrary({
