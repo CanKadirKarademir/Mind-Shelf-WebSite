@@ -112,7 +112,7 @@
       </div>
     </li>
 
-    <li class="nav-item" [ngClass]="{ 'active' : commentlistother.isActive || commentlist.isActive }">
+    <li class="nav-item" [ngClass]="{ 'active' : commentlistother.isActive }">
       <a class="nav-link" (click)="commentPagesCollapsed = !commentPagesCollapsed"
         [attr.aria-expanded]="commentPagesCollapsed" aria-controls="commentID">
         <span class="menu-title">Yorum İşlemleri</span>
@@ -124,9 +124,6 @@
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/comment/view" routerLinkActive="active"
               #commentlistother="routerLinkActive">Yorumlarımı Listeleme</a></li>
-          <li class="nav-item"> <a class="nav-link" routerLink="/user/comments" routerLinkActive="active"
-              #commentlist="routerLinkActive">Yorumları Görüntüle</a></li>
-
         </ul>
       </div>
     </li>

@@ -6,6 +6,7 @@ import { Book } from 'src/app/models/book';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from 'src/utils/services/book/book.service';
 import { CommnentService } from 'src/utils/services/comment/commnet.service';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-comment-list',
@@ -18,7 +19,7 @@ export class CommentListComponent implements OnInit {
   comment: Comment[];
   modelBook: Book = new Book();
   SummaryID: number;
-  BookID: Number;
+  BookID: number;
   constructor(
     private _summaryService: SummaryService,
     private _commentService: CommnentService,
@@ -33,9 +34,12 @@ export class CommentListComponent implements OnInit {
       this.summary.SummaryID = data['summaryData'].SummaryID;
       this.summary.SummaryText = data['summaryData'].SummaryText;
       this.BookID = data['summaryData'].BookID;
-      this._bookService.getByIDBook(this.BookID).subscribe(book => {
-        this.modelBook = book;
-      })
+      console.log("looooouuuu", this.BookID)
+    });
+    this._bookService.getByIDBook(this.BookID).subscribe(data => {
+      this.modelBook = data;
+      console.log("looooouuuu", data)
+      console.log("looooouuuu", this.modelBook)
     });
     this.getByIdSummary();
   }
@@ -44,7 +48,7 @@ export class CommentListComponent implements OnInit {
     this._commentService.getCommentBySummary(this.SummaryID).subscribe(data => {
       this.comment = data;
       console.log("kadir"
-      ,data);
+        , data);
     })
   }
 }

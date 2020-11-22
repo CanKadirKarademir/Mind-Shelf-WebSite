@@ -119,6 +119,9 @@ const routes: Routes = [
       {
         path: 'comment/update/:CommentID',
         component: CommentUpdateComponent,
+      }
+      ,
+      {
         path: 'comments/:SummaryID',
         component: CommentListComponent,
       }
