@@ -72,7 +72,7 @@ export class CommentUpdateComponent implements OnInit {
           duration: 2000,
         }
       );
-      window.location.reload();
+      window.location.href = "/user/comment/view";
     }
   }
 }

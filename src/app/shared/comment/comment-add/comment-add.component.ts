@@ -1,7 +1,7 @@
   import { Component, OnInit } from '@angular/core';
   import { NgForm } from '@angular/forms';
   import { MatSnackBar } from '@angular/material/snack-bar';
-  import { ActivatedRoute, Router } from '@angular/router';
+  import { ActivatedRoute, Router, RouterLink } from '@angular/router';
   import { first } from 'rxjs/operators';
 import { Summary } from 'src/app/models/summary';
   import { CommnentService } from 'src/utils/services/comment/commnet.service';
@@ -72,7 +72,7 @@ import { SummaryService } from 'src/utils/services/summary/summary.service';
           duration: 2000,
         }
       );
-      window.location.reload();
+      window.location.href = "/user/comment/view";
     }
 
     getSummaryInformation(summary_id) {
