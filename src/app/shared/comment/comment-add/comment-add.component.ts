@@ -3,7 +3,9 @@
   import { MatSnackBar } from '@angular/material/snack-bar';
   import { ActivatedRoute, Router } from '@angular/router';
   import { first } from 'rxjs/operators';
+import { Summary } from 'src/app/models/summary';
   import { CommnentService } from 'src/utils/services/comment/commnet.service';
+import { SummaryService } from 'src/utils/services/summary/summary.service';
   import {Comment} from '../../../models/comment';
 
   @Component({
@@ -16,19 +18,23 @@
     user_id: number;
     CommnetID:number;
     modelComment: Comment = new Comment();
+    modelSummary:Summary=new Summary();
     SummaryID: number;
+    comment: Comment[];
 
     constructor(
       private _router: Router,
       private _alertService: MatSnackBar,
-      private _commentservice: CommnentService,
+      private _commentService: CommnentService,
       private activatedRoute: ActivatedRoute,
+      private _summaryService: SummaryService,
 
     ) { }
 
     ngOnInit(): void {
-      this.SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
-
+       this.SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
+      this.getSummaryInformation(this.SummaryID);
+      this.getByIdSummary(this.SummaryID);
     }
 
     onSave(commentFrom: NgForm) {
@@ -46,7 +52,7 @@
       }
     }
     onAddComment(commentFrom: NgForm) {
-      this._commentservice.commentAdd({
+      this._commentService.commentAdd({
         CommentName: commentFrom.value.CommentName,
         CommentText: commentFrom.value.CommentText,
         SummaryID: this.SummaryID,
@@ -67,5 +73,25 @@
         }
       );
       window.location.reload();
+    }
+
+    getSummaryInformation(summary_id) {
+      this._summaryService.getSumamryByID(summary_id).subscribe(data => {
+        this.modelSummary.SummaryID = data['summaryData'].SummaryID;
+        this.modelSummary.SummaryText = data['summaryData'].SummaryText;
+        const BookID = data['summaryData'].BookID;
+        this.getCommentInformation(BookID);
+      });
+    }
+    getCommentInformation(comment_id) {
+      this._commentService.getByIDComment(comment_id).subscribe(comment => {
+        this.modelComment = comment;
+      });
+    }
+
+    getByIdSummary(summary_id) {
+      this._commentService.getCommentBySummary(summary_id).subscribe(data => {
+        this.comment = data;
+      });
     }
   }
