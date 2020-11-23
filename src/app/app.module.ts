@@ -72,7 +72,7 @@ import { CommentListComponent } from './user-pages/comment-list/comment-list.com
     SummaryUpdateComponent,
     CommentAddComponent,
     CommentViewComponent,
-    CommentUpdateComponent
+    CommentUpdateComponent,
     CommentListComponent
   ],
   imports: [

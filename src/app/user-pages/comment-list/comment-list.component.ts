@@ -6,6 +6,7 @@ import { Book } from 'src/app/models/book';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from 'src/utils/services/book/book.service';
 import { CommnentService } from 'src/utils/services/comment/commnet.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-comment-list',
@@ -17,34 +18,36 @@ export class CommentListComponent implements OnInit {
   summary: Summary = new Summary();
   comment: Comment[];
   modelBook: Book = new Book();
-  SummaryID: number;
-  BookID: Number;
+
   constructor(
     private _summaryService: SummaryService,
     private _commentService: CommnentService,
     private _bookService: BookService,
-    private activatedRoute: ActivatedRoute
-
+    private activatedRoute: ActivatedRoute,
   ) { }
 
-  ngOnInit(): void {
-    this.SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
-    this._summaryService.getSumamryByID(this.SummaryID).subscribe(data => {
+  ngOnInit() {
+    const SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
+    this.getSummaryInformation(SummaryID);
+    this.getByIdSummary(SummaryID);
+  }
+  getSummaryInformation(summary_id) {
+    this._summaryService.getSumamryByID(summary_id).subscribe(data => {
       this.summary.SummaryID = data['summaryData'].SummaryID;
       this.summary.SummaryText = data['summaryData'].SummaryText;
-      this.BookID = data['summaryData'].BookID;
-      this._bookService.getByIDBook(this.BookID).subscribe(book => {
-        this.modelBook = book;
-      })
+      const BookID = data['summaryData'].BookID;
+      this.getBookInformation(BookID);
     });
-    this.getByIdSummary();
+  }
+  getBookInformation(book_id) {
+    this._bookService.getByIDBook(book_id).subscribe(book => {
+      this.modelBook = book;
+    });
   }
 
-  getByIdSummary() {
-    this._commentService.getCommentBySummary(this.SummaryID).subscribe(data => {
+  getByIdSummary(summary_id) {
+    this._commentService.getCommentBySummary(summary_id).subscribe(data => {
       this.comment = data;
-      console.log("kadir"
-      ,data);
-    })
+    });
   }
 }
