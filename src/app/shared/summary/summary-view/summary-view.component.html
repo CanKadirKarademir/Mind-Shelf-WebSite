@@ -23,8 +23,16 @@
               <textarea rows="10" class="form-control form-control-lg" disabled id="SummaryText"
                 name="SummaryText">{{item.SummaryText}} </textarea>
             </div>
-            <button class="btn btn-outline-success" [routerLink]="['/user/comments',item.SummaryID]">Yorumları
-              Görüntüle</button>
+            <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-outline-info" [routerLink]="['/user/comments',item.SummaryID]">Yorumları
+                  Görüntüle</button>
+              </div>
+              <div class="col-md-6">
+                <button class="btn btn-outline-success" [routerLink]="['/user/comment/add/',item.SummaryID]">Yorum
+                  Ekle</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
