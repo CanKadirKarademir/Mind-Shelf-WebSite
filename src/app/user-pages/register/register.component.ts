@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-   private alertService: MatSnackBar ,
+    private alertService: MatSnackBar,
   ) { }
 
   model: User = new User();
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
         UserPassword: registerForm.value.UserPassword,
         UserFirstName: registerForm.value.UserFirstName,
         UserLastName: registerForm.value.UserLastName,
-        UserType: 1,
+        UserType: 0,
         UserStatus: 0
       })
         .pipe(first())

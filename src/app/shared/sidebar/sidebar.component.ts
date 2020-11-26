@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/utils/services/auth/auth.service';
 import { UserService } from '../../../utils/services/user/user.service';
 
 @Component({
@@ -10,9 +11,11 @@ export class SidebarComponent implements OnInit {
   public uiBasicCollapsed = false;
   public samplePagesCollapsed = false;
   public userName = '';
+  public userType: number;
 
   constructor(
     private userService: UserService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -33,13 +36,14 @@ export class SidebarComponent implements OnInit {
     });
 
     this.getUserInfo();
-  }
 
+  }
   getUserInfo() {
     this.userService
       .userGetById(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
         this.userName = data['user_data'].UserFirstName + ' ' + data['user_data'].UserLastName;
+        this.userType = data['user_data'].UserType;
       })
   }
 
