@@ -9,9 +9,7 @@
   }
 
   &__description {
-    width: 300px;
     border-radius: 30px;
-    height: 300px;
     font: white;
     justify-content: center;
   }
@@ -19,4 +17,9 @@
   &__padding {
     padding-top: 2em;
   }
+
+  &__card{
+  border-radius: 20px;
+  }
+
 }

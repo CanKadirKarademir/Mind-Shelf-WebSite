@@ -12,7 +12,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <div class="container-fluid comments__padding">
@@ -22,23 +21,11 @@
                 <div class="card-body">
                     <h4 class="card-title comments__title">Yorum Listesi </h4>
                     <div class="row">
-                        <div class="col-md-4" *ngFor="let item of comment">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card text-white bg-dark mb-3 comments__description">
-                                        <div class="card-header text-center">{{ item.CommentName }}</div>
-                                        <div class="card-body">
-                                            <p class="card-text">{{ item.CommentText }}</p>
-                                        </div>
-                                        <!-- <div class="card-footer">
-                                            <div class="col-12">
-                                                <button
-                                                    class="btn btn-outline-info">Kişi
-                                                    Bilgilerini
-                                                    Göster</button>
-                                            </div>
-                                        </div> -->
-                                    </div>
+                        <div class="col-md-4 stretch-card grid-margin" *ngFor="let item of comment">
+                            <div class="card  card-img-holder text-white  ">
+                                <div class="card-body bg-dark comments__description ">
+                                    <h2 class="font-weight-normal mb-3">{{ item.CommentName }}</h2>
+                                    <h4 class="mb-5">{{ item.CommentText }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -47,4 +34,3 @@
             </div>
         </div>
     </div>
-</div>
