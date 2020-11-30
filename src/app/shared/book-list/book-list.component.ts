@@ -94,5 +94,6 @@ export class BookListComponent implements OnInit {
         duration: 2000,
       }
     );
+    window.location.reload();
   }
 }

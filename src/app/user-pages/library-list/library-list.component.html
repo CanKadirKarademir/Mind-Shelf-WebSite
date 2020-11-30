@@ -22,19 +22,19 @@
                                     <td class="d-flex justify-content-center">
                                         <a type="button" class="library__cursor"
                                             (click)="onDeleteLibrary(item.LibraryID)">
-                                            <mat-icon>delete</mat-icon>
+                                            <mat-icon class="text-danger">delete_sweep</mat-icon>
                                         </a>
                                     </td>
                                     <td>
                                         <a type="button" class="library__cursor"
                                             [routerLink]="['/user/library/update/',item.LibraryID]">
-                                            <mat-icon>update</mat-icon>
+                                            <mat-icon class="text-success" >update</mat-icon>
                                         </a>
                                     </td>
                                     <td>
                                         <a type="button" class="library__cursor"
                                             [routerLink]="['/user/library/view/',item.LibraryID]">
-                                            <mat-icon>folder_special</mat-icon>
+                                            <mat-icon class="text-warning">folder_special</mat-icon>
                                         </a>
                                     </td>
                                 </tr>

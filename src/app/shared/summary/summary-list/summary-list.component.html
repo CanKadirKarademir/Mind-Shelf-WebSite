@@ -41,20 +41,25 @@
                     <mat-menu #menu="matMenu">
                       <a class="summarys__decoration" mat-menu-item
                         [routerLink]="['/user/comment/add/',item.SummaryID]">
-                        <mat-icon>book</mat-icon>
+                        <mat-icon class="text-success">book</mat-icon>
                         <span>Yorum Ekle</span>
                       </a>
                       <a class="summarys__decoration" mat-menu-item
-                        [routerLink]="['/user/summary/update/',item.SummaryID]">
-                        <mat-icon>update</mat-icon>
-                        <span>Güncelle</span>
+                        [routerLink]="['/user/comments/',item.SummaryID]">
+                        <mat-icon class="text-warning">library_books</mat-icon>
+                        <span>Yorumları Görüntüle</span>
                       </a>
-                      <a class="books__decoration" type="button" mat-menu-item (click)="summaryDelete(item.SummaryID)">
-                        <mat-icon>delete_sweep</mat-icon>
+                      <a class="summarys__decoration" mat-menu-item
+                        [routerLink]="['/user/summary/update/',item.SummaryID]">
+                        <mat-icon class="text-info">update</mat-icon>
+                        <span >Güncelle</span>
+                      </a>
+                      <a class="summarys__decoration" type="button" mat-menu-item (click)="summaryDelete(item.SummaryID)">
+                        <mat-icon class="text-danger">delete_sweep</mat-icon>
                         <span>Sil</span>
                       </a>
                       <a class="summarys__decoration" mat-menu-item [routerLink]="">
-                        <mat-icon>account_circle</mat-icon>
+                        <mat-icon class="text-info">account_circle</mat-icon>
                         <span mat-button (click)="openUserInformation()">Kullanıcı Bilgileri</span>
                       </a>
                     </mat-menu>

@@ -8,8 +8,12 @@ import { UserService } from '../../../utils/services/user/user.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  public uiBasicCollapsed = false;
-  public samplePagesCollapsed = false;
+  public userPagesCollapsed = false;
+  public libraryPagesCollapsed = false;
+  public bookPagesCollapsed = false;
+  public autPagesCollapsed = false;
+  public summaryPagesCollapsed = false;
+  public commentPagesCollapsed = false;
   public userName = '';
   public userType: number;
 

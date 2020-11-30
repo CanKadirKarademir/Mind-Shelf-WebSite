@@ -3,7 +3,7 @@ import { Summary } from 'src/app/models/summary';
 import { SummaryService } from 'src/utils/services/summary/summary.service';
 import { MatDialog } from '@angular/material/dialog';
 import { BookService } from 'src/utils/services/book/book.service';
-import { Book } from 'src/app/module/book';
+import { Book } from 'src/app/models/book';
 
 @Component({
   selector: 'app-summary-list',

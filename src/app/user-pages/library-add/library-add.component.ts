@@ -87,5 +87,6 @@ export class LibraryAddComponent implements OnInit {
         duration: 2000,
       })
     this.router.navigateByUrl('user');
+    window.location.href = "/user/libraries";
   }
 }

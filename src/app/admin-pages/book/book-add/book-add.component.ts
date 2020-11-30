@@ -1,6 +1,6 @@
 import { Author } from './../../../models/author';
 import { AuthorService } from './../../../../utils/services/author/author.service';
-import { Book } from '../../../module/book';
+import { Book } from '../../../models/book';
 import { BookService } from './../../../../utils/services/book/book.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -57,11 +57,6 @@ export class BookAddComponent implements OnInit {
     });
   }
 
-  getAllAuthors() {
-    this._authorService.listAuthor().subscribe(data => {
-      this.author = data;
-    });
-  }
 
   onSave(bookForm: NgForm) {
     if (!bookForm.valid) {
@@ -101,8 +96,7 @@ export class BookAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.reload();
-
+    window.location.href = "/user/books";
   }
   onUpdateBook(bookForm: NgForm) {
     this._bookService.bookUpdate({
@@ -130,5 +124,6 @@ export class BookAddComponent implements OnInit {
       }
     );
     this._router.navigateByUrl('user');
+    window.location.href = "/user/books";
   }
 }

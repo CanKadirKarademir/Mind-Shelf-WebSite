@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Summary } from 'src/app/models/summary';
-import { Book } from 'src/app/module/book';
+import { Book } from 'src/app/models/book';
 import { BookService } from 'src/utils/services/book/book.service';
 import { SummaryService } from 'src/utils/services/summary/summary.service';
 
@@ -72,7 +72,9 @@ export class SummaryAddComponent implements OnInit {
       {
         duration: 2000,
       }
+      
     );
+    window.location.href = "/user/summaries";
   }
   getBook() {
     this._bookService.getByIDBook(this.BookID).subscribe(data => {

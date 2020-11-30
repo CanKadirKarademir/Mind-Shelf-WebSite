@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BookService } from 'src/utils/services/book/book.service';
 import { LibraryService } from '../../../utils/services/library/library.service';
-import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-user-library-view',
@@ -11,24 +11,31 @@ import { Book } from '../../models/book';
 export class UserLibraryViewComponent implements OnInit {
 
   constructor(
-    private libraryService: LibraryService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private _libraryService: LibraryService,
+    private _bookService: BookService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) { }
 
   LibraryID: number;
 
   ngOnInit(): void {
     this.getLibrariesBooks(this.LibraryID);
-    this.LibraryID = parseInt(this.activatedRoute.snapshot.paramMap.get('LibraryID'));
-    Number.isNaN(this.LibraryID) ? this.router.navigateByUrl('user') : this.getLibrariesBooks(this.LibraryID);
+    this.LibraryID = parseInt(this._activatedRoute.snapshot.paramMap.get('LibraryID'));
+    Number.isNaN(this.LibraryID) ? this._router.navigateByUrl('user') : this.getLibrariesBooks(this.LibraryID);
   }
   books: any[];
 
 
   getLibrariesBooks(library_id) {
-    this.libraryService.getLibrariesBooks(library_id).subscribe(data => {
+    this._libraryService.getLibrariesBooks(library_id).subscribe(data => {
       this.books = data;
+    })
+  }
+
+  deleteBookOnLibrary(book_id) {
+    this._bookService.deleteBookOnLibrary(book_id).subscribe(data => {
+      window.location.reload();
     })
   }
 }

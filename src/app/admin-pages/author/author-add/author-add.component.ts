@@ -60,12 +60,12 @@ export class AuthorAddComponent implements OnInit {
           console.log('error', error);
         });
     this.alertService.open(
-      'Yazar başarılı bir şekilde eklendi',
+      'Yazar başarılı bir şekilde eklenmiştir.',
       'İŞLEM BAŞARILI',
       {
         duration: 2000,
       })
-    window.location.reload();
+    window.location.href = "/user/authors";
   }
   onUpdateAuthor(authorForm: NgForm) {
     this.authorService.updateAuthor({
@@ -88,5 +88,6 @@ export class AuthorAddComponent implements OnInit {
         duration: 2000,
       })
     this.router.navigateByUrl('user');
+    window.location.href = "/user/authors";
   }
 }

@@ -55,20 +55,20 @@
                   <td>
                     <span class="books__cursor" mat-icon-button [matMenuTriggerFor]="menu"
                       aria-label="Example icon-button with a menu">
-                      <mat-icon>more_vert</mat-icon>
+                      <mat-icon >more_vert</mat-icon>
                     </span>
                     <mat-menu #menu="matMenu">
                       <a class="books__decoration" mat-menu-item routerLinkActive="active"
                         (click)="addBookOnLibrary(item.BookID)">
-                        <mat-icon>note_add</mat-icon>
+                        <mat-icon class="text-success">note_add</mat-icon>
                         <span>Kütüphaneye Ekle</span>
                       </a>
                       <a class="books__decoration" type="button" mat-menu-item (click)="bookDelete(item.BookID)">
-                        <mat-icon>delete_sweep</mat-icon>
+                        <mat-icon class="text-danger">delete_sweep</mat-icon>
                         <span>Kitabı Sil</span>
                       </a>
                       <a class="books__decoration" mat-menu-item [routerLink]="['/user/book/update/',item.BookID]">
-                        <mat-icon>update</mat-icon>
+                        <mat-icon class="text-info">update</mat-icon>
                         <span>Kitabı Güncelle</span>
                       </a>
                     </mat-menu>

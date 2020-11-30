@@ -26,11 +26,11 @@
                     </span>
                     <mat-menu #menu="matMenu">
                       <a type="button" class="comments__decoration" mat-menu-item (click)="deleteComment(item.CommentID)">
-                        <mat-icon>delete_sweep</mat-icon>
+                        <mat-icon class="text-danger">delete_sweep</mat-icon>
                         <span>Yorumu Sil</span>
                       </a>
                       <a class="comments__decoration" mat-menu-item [routerLink]="['/user/comment/update/',item.CommentID]">
-                        <mat-icon>update</mat-icon>
+                        <mat-icon class="text-info">update</mat-icon>
                         <span>Yorumu Güncelle</span>
                       </a>
                     </mat-menu>

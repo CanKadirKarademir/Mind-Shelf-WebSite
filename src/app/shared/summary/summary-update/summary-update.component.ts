@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Summary } from 'src/app/models/summary';
-import { Book } from 'src/app/module/book';
+import { Book } from 'src/app/models/book';
 import { BookService } from 'src/utils/services/book/book.service';
 import { SummaryService } from 'src/utils/services/summary/summary.service';
 
@@ -38,7 +38,7 @@ export class SummaryUpdateComponent implements OnInit {
       this._bookService.getByIDBook(this.BookID).subscribe(book => {
         this.modelBook = book;
       })
-    })  
+    })
   }
 
   onSummaryUpdate(summaryForm: NgForm) {
@@ -67,13 +67,13 @@ export class SummaryUpdateComponent implements OnInit {
             console.log('error', error);
           });
       this._alertService.open(
-        'Kitap başarılı bir şekilde kayıt edilmiştir :)',
+        'Kitap başarılı bir şekilde güncellenmiştir.',
         'İŞLEM BAŞARILI',
         {
           duration: 2000,
         }
       );
-      window.location.reload();
+      window.location.href = "/user/summaries";
     }
   }
   // getSummarBookInfo() {
