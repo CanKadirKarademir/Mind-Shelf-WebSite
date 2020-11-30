@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './user-pages/login/login.component';
 import { RegisterComponent } from './user-pages/register/register.component';
 import { AuthGuard } from '../utils/guard/auth.guard';
+import { RoleGuard } from '../utils/guard/role/role.guard';
 import { NonAuthGuard } from '../utils/guard/non-guard.guard';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { UserListComponent } from './admin-pages/user-list/user-list.component';
@@ -29,7 +30,6 @@ const routes: Routes = [
     path: 'user',
     component: MainComponent,
     canActivate: [AuthGuard],
-    canActivateChild: [AuthGuard],
     children: [
       {
         path: 'profile',
@@ -38,18 +38,22 @@ const routes: Routes = [
       {
         path: 'users',
         component: UserListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'authors',
         component: AuthorListComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'author/add',
         component: AuthorAddComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'author/update/:AuthorID',
         component: AuthorAddComponent,
+        canActivate: [RoleGuard]
       },
       {
         path: 'books',
@@ -58,6 +62,7 @@ const routes: Routes = [
       {
         path: 'book/add',
         component: BookAddComponent,
+        canActivate: [RoleGuard]
       }
       ,
       {
@@ -78,7 +83,7 @@ const routes: Routes = [
       {
         path: 'book/update/:BookID',
         component: BookAddComponent,
-
+        canActivate: [RoleGuard]
       }
       ,
       {

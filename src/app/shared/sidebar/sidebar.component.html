@@ -26,9 +26,8 @@
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/profile" routerLinkActive="active"
               #useradd="routerLinkActive"> Profil Güncelleme</a></li>
-
-          <li class="nav-item"> <a class="nav-link" routerLink="/user/users" routerLinkActive="active"
-              #userlist="routerLinkActive"> Kullanıcı Listeleme</a></li>
+          <li [hidden]="!userType" class="nav-item"> <a class="nav-link" routerLink="/user/users"
+              routerLinkActive="active" #userlist="routerLinkActive"> Kullanıcı Listeleme</a></li>
         </ul>
       </div>
     </li>
@@ -65,8 +64,8 @@
       <div class="collapse" id="bookId" [ngbCollapse]="!bookPagesCollapsed">
         <ul class="nav flex-column sub-menu">
 
-          <li class="nav-item"> <a class="nav-link" routerLink="/user/book/add" routerLinkActive="active"
-              #bookadd="routerLinkActive"> Kitap Ekleme</a></li>
+          <li [hidden]="!userType" class="nav-item"> <a class="nav-link" routerLink="/user/book/add"
+              routerLinkActive="active" #bookadd="routerLinkActive"> Kitap Ekleme</a></li>
 
           <li class="nav-item"> <a class="nav-link" routerLink="/user/books" routerLinkActive="active"
               #booklist="routerLinkActive"> Kitap Listeleme</a></li>
@@ -74,7 +73,7 @@
       </div>
     </li>
 
-    <li class="nav-item" [ngClass]="{ 'active' : authoradd.isActive || authorlist.isActive }">
+    <li [hidden]="!userType" class="nav-item" [ngClass]="{ 'active' : authoradd.isActive || authorlist.isActive }">
       <a class="nav-link" (click)="autPagesCollapsed = !autPagesCollapsed" [attr.aria-expanded]="autPagesCollapsed"
         aria-controls="authorId">
         <span class="menu-title">Yazar İşlemleri</span>
