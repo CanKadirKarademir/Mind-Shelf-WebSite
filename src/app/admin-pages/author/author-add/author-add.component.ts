@@ -50,8 +50,7 @@ export class AuthorAddComponent implements OnInit {
       AuthorFirstName: authorForm.value.AuthorFirstName,
       AuthorLastName: authorForm.value.AuthorLastName,
       AuthorIsDeleted: 0
-    })
-      .pipe(first())
+    }).pipe(first())
       .subscribe(
         data => {
           console.log('data', data);
@@ -65,7 +64,7 @@ export class AuthorAddComponent implements OnInit {
       {
         duration: 2000,
       })
-    window.location.href = "/user/authors";
+    this.router.navigateByUrl('user/authors');
   }
   onUpdateAuthor(authorForm: NgForm) {
     this.authorService.updateAuthor({
@@ -87,7 +86,6 @@ export class AuthorAddComponent implements OnInit {
       {
         duration: 2000,
       })
-    this.router.navigateByUrl('user');
-    window.location.href = "/user/authors";
+    this.router.navigateByUrl('user/authors');
   }
 }
