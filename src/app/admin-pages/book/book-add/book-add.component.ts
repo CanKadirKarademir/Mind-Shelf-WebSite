@@ -96,7 +96,7 @@ export class BookAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.href = "/user/books";
+    this._router.navigateByUrl('user/books');
   }
   onUpdateBook(bookForm: NgForm) {
     this._bookService.bookUpdate({
@@ -123,7 +123,6 @@ export class BookAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    this._router.navigateByUrl('user');
-    window.location.href = "/user/books";
+    this._router.navigateByUrl('user/books');
   }
 }
