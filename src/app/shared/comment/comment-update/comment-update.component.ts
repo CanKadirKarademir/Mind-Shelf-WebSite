@@ -17,7 +17,6 @@ import { Summary } from '../../../models/summary';
 export class CommentUpdateComponent implements OnInit {
 
   CommentID: number;
-  SummaryID: number;
   modelComment: Comment = new Comment();
   modelSummary: Summary = new Summary();
 
@@ -33,8 +32,11 @@ export class CommentUpdateComponent implements OnInit {
     this.CommentID = parseInt(this.activatedRoute.snapshot.paramMap.get('CommentID'));
     this._commentService.getByIDComment(this.CommentID).subscribe(data => {
       this.modelComment = data;
-      this._summaryService.getSumamryByID(this.SummaryID).subscribe(summary => {
-        this.modelSummary = summary;
+      console.log(data);
+      console.log("uloo", data.SummaryID)
+      this._summaryService.getSumamryByID(data.SummaryID).subscribe(summary => {
+        this.modelSummary = summary['summaryData'];
+        console.log(this.modelSummary.SummaryText);
       })
     })
   }

@@ -7,7 +7,7 @@
           <form class="pt-3" #commentForm='ngForm' (ngSubmit)="onCommentUpdate(commentForm)">
             <div class="form-group">
               <div class="form-group">
-                <label for="CommentName"><strong>ÖZET</strong></label>
+                <label for="CommentName"><strong>ÖZET {{modelSummary.SummaryText}}</strong></label>
                 <input type="text" class="form-control form-control-lg" required id="CommentName"
                   placeholder="Yorumun Başlığını Giriniz" name="CommentName" #CommentName="ngModel"
                   [(ngModel)]="modelComment.CommentName">
