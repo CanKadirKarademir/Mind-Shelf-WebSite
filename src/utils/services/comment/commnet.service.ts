@@ -76,7 +76,7 @@ export class CommnentService {
       );
   }
   getByIDComment(comment_id) {
-    return this.http.get<Comment>(
+    return this.http.get<any>(
       this.apiconfig.path + '/api/admin/comment/getbyid?comment_id=' + comment_id,
       this.httpOptions
     )
