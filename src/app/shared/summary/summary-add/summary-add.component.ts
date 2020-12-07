@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Summary } from 'src/app/models/summary';
 import { Book } from 'src/app/models/book';
@@ -14,25 +14,20 @@ import { SummaryService } from 'src/utils/services/summary/summary.service';
   styleUrls: ['./summary-add.component.scss']
 })
 export class SummaryAddComponent implements OnInit {
-
-  modelSummary: Summary = new Summary();
-  modelBook: Book = new Book();
-  book_id: number;
-  BookID: number;
-
   constructor(
     private _summaryService: SummaryService,
     private _bookService: BookService,
     private _alertService: MatSnackBar,
-    private _router: Router,
-    private activatedRoute: ActivatedRoute,
-
+    private _activatedRoute: ActivatedRoute,
   ) { }
 
+  modelSummary: Summary = new Summary();
+  modelBook: Book = new Book();
+  BookID: number;
 
   ngOnInit(): void {
     this.getBook();
-    this.BookID = parseInt(this.activatedRoute.snapshot.paramMap.get('BookID'));
+    this.BookID = parseInt(this._activatedRoute.snapshot.paramMap.get('BookID'));
     this._bookService.getByIDBook(this.BookID).subscribe(book => {
       this.modelBook = book;
     })
@@ -72,40 +67,13 @@ export class SummaryAddComponent implements OnInit {
       {
         duration: 2000,
       }
-      
     );
     window.location.href = "/user/summaries";
   }
+
   getBook() {
     this._bookService.getByIDBook(this.BookID).subscribe(data => {
       this.modelBook = data;
     })
   }
-
-  /*
-  onUpdateSummary(summaryForm: NgForm) {
-    this._summaryService.updateSummary({
-      SummaryText: summaryForm.value.SummaryText,
-      SummaryIsDeleted: 0,
-      BookID: this.book_id,
-      UserID: 16
-    }, this.SummaryID)
-      .pipe(first())
-      .subscribe(
-        data => {
-          console.log('data', data);
-        },
-        error => {
-          console.log('error', error);
-        });
-    this._alertService.open(
-      'Özet başarılı bir şekilde güncellenmiştir.',
-      'İŞLEM BAŞARILI',
-      {
-        duration: 2000,
-      }
-    );
-    this._router.navigateByUrl('user');
-  }*/
-
 }

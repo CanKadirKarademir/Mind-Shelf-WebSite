@@ -15,7 +15,6 @@ export class MainComponent implements OnInit {
   isLoading: boolean;
 
   constructor(private router: Router) {
-
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {

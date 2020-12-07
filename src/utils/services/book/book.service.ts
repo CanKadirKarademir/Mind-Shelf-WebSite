@@ -1,11 +1,8 @@
 import { Book } from '../../../app/models/book';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { ApiConfig } from '../ApiConfig';
-import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -17,11 +14,10 @@ export class BookService {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
-    private authService: AuthService,
+    private _authService: AuthService,
   ) { }
 
-  token = this.authService.currentUserValue;
+  token = this._authService.currentUserValue;
 
   httpOptions = {
     headers: new HttpHeaders(
@@ -45,7 +41,6 @@ export class BookService {
     )
   }
 
-
   getAuthorAllBooks(author_id) {
     return this.http.get<Book[]>(
       this.apiconfig.path + '/api/admin/author/all-books?author_id=' + author_id,
@@ -64,6 +59,7 @@ export class BookService {
         })
       );
   }
+
   bookUpdate(bookData, book_id) {
     return this.http.post(
       this.apiconfig.path + '/api/admin/update-book?book_id=' + book_id,
@@ -75,12 +71,14 @@ export class BookService {
         })
       );
   }
+
   getByIDBook(book_id) {
     return this.http.get<Book>(
       this.apiconfig.path + '/api/admin/book/getbyid?book_id=' + book_id,
       this.httpOptions
     )
   }
+
   addBookOnLibrary(recordData) {
     return this.http.post(
       this.apiconfig.path + '/api/admin/library/add-book',

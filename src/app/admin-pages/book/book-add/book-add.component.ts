@@ -15,16 +15,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./book-add.component.scss']
 })
 export class BookAddComponent implements OnInit {
-
   constructor(
     private _router: Router,
     private _bookService: BookService,
     private _authorService: AuthorService,
     private _alertService: MatSnackBar,
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
   ) { }
-  model: Book = new Book();
 
+  modelBook: Book = new Book();
   book: Book[];
   author: Author[];
   author_id: number;
@@ -32,10 +31,10 @@ export class BookAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAuthor();
-    this.BookID = parseInt(this.activatedRoute.snapshot.paramMap.get('BookID'));
+    this.BookID = parseInt(this._activatedRoute.snapshot.paramMap.get('BookID'));
     this._bookService.getByIDBook(this.BookID).subscribe(data => {
-      this.model = data;
-      console.log(this.model);
+      this.modelBook = data;
+      console.log(this.modelBook);
 
     });
     console.log("ulooo", this.BookID);
@@ -57,7 +56,6 @@ export class BookAddComponent implements OnInit {
     });
   }
 
-
   onSave(bookForm: NgForm) {
     if (!bookForm.valid) {
       this._alertService.open(
@@ -72,6 +70,7 @@ export class BookAddComponent implements OnInit {
       Number.isNaN(this.BookID) ? this.onAddBook(bookForm) : this.onUpdateBook(bookForm);
     }
   }
+
   onAddBook(bookForm: NgForm) {
     this._bookService.bookAdd({
       BookName: bookForm.value.BookName,
@@ -98,6 +97,7 @@ export class BookAddComponent implements OnInit {
     );
     this._router.navigateByUrl('user/books');
   }
+
   onUpdateBook(bookForm: NgForm) {
     this._bookService.bookUpdate({
       BookName: bookForm.value.BookName,

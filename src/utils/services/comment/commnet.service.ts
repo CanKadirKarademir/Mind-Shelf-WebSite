@@ -1,27 +1,21 @@
 import { Comment } from '../../../app/models/comment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { ApiConfig } from '../ApiConfig';
-import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommnentService {
-
-  public apiconfig = new ApiConfig();
-
   constructor(
     private http: HttpClient,
-    private router: Router,
-    private authService: AuthService,
+    private _authService: AuthService,
   ) { }
 
-  token = this.authService.currentUserValue;
+  public apiconfig = new ApiConfig();
+  token = this._authService.currentUserValue;
 
   httpOptions = {
     headers: new HttpHeaders(
@@ -45,7 +39,6 @@ export class CommnentService {
     )
   }
 
-
   getUserAllComments(user_id) {
     return this.http.get<Comment[]>(
       this.apiconfig.path + '/api/admin/user/all-comments?user_id=' + user_id,
@@ -64,6 +57,7 @@ export class CommnentService {
         })
       );
   }
+
   commentUpdate(commentData, comment_id) {
     return this.http.post(
       this.apiconfig.path + '/api/admin/update-comment?comment_id=' + comment_id,
@@ -75,12 +69,14 @@ export class CommnentService {
         })
       );
   }
+
   getByIDComment(comment_id) {
     return this.http.get<any>(
       this.apiconfig.path + '/api/admin/comment/getbyid?comment_id=' + comment_id,
       this.httpOptions
     )
   }
+
   getCommentByUser(summary_id, user_id) {
     return this.http.get<Comment[]>(
       this.apiconfig.path + '/api/admin/getbyUser-summary?user_id=' + user_id + '&book_id=' + summary_id,

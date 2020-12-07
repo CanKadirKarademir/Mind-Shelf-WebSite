@@ -14,12 +14,11 @@ export class AuthorListComponent implements OnInit {
     private _authorService: AuthorService
   ) { }
 
+  author: Author[];
+
   ngOnInit(): void {
     this.getAuthor();
   }
-
-  author: Author[];
-  yazar: Author = new Author();
 
   onDeleteAuthor(author_id) {
     this._authorService.deleteAuthor(author_id).subscribe(data => {

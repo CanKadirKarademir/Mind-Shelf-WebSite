@@ -14,26 +14,24 @@ import { SummaryService } from 'src/utils/services/summary/summary.service';
   styleUrls: ['./summary-update.component.scss']
 })
 export class SummaryUpdateComponent implements OnInit {
-
-  book_id: number;
-  BookID: number;
-  SummaryID: number;
-  model: Summary = new Summary();
-  modelBook: Book = new Book();
   constructor(
     private _summaryService: SummaryService,
     private _alertService: MatSnackBar,
     private _router: Router,
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _bookService: BookService,
-
   ) { }
 
+  BookID: number;
+  SummaryID: number;
+  modelSummary: Summary = new Summary();
+  modelBook: Book = new Book();
+
   ngOnInit(): void {
-    this.SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
+    this.SummaryID = parseInt(this._activatedRoute.snapshot.paramMap.get('SummaryID'));
     this._summaryService.getSumamryByID(this.SummaryID).subscribe(data => {
-      this.model.SummaryID = data['summaryData'].SummaryID;
-      this.model.SummaryText = data['summaryData'].SummaryText;
+      this.modelSummary.SummaryID = data['summaryData'].SummaryID;
+      this.modelSummary.SummaryText = data['summaryData'].SummaryText;
       this.BookID = data['summaryData'].BookID;
       this._bookService.getByIDBook(this.BookID).subscribe(book => {
         this.modelBook = book;

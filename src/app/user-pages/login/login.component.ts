@@ -12,8 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  user: User;
-
   constructor(
     private _router: Router,
     private _authservice: AuthService,
@@ -24,9 +22,11 @@ export class LoginComponent implements OnInit {
       this._router.navigate(['user']);
     }
   }
-  model: User = new User();
-  ngOnInit() {
 
+  modelUser: User = new User();
+  user: User;
+
+  ngOnInit() {
   }
 
   onLogin(loginForm: NgForm) {
@@ -57,8 +57,8 @@ export class LoginComponent implements OnInit {
                 duration: 2000,
               }
             );
-            this.model.UserName = '';
-            this.model.UserPassword = '';
+            this.modelUser.UserName = '';
+            this.modelUser.UserPassword = '';
           });
     }
   }

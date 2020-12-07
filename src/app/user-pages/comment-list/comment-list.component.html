@@ -1,36 +1,35 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title comments__title">Kitap ve Özet Bilgisi:</h4>
-                    <h2><strong>Kitap İsmi: {{modelBook.BookName}} </strong></h2>
-                    <h2><strong>Kitap Özeti: </strong> </h2>
-                    <textarea rows="10" class="form-control form-control-lg comments__summary" disabled id="SummaryText"
-                        name="SummaryText">{{summary.SummaryText}} </textarea>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title comments__title">Kitap ve Özet Bilgisi:</h4>
+          <h2><strong>Kitap İsmi: {{modelBook.BookName}} </strong></h2>
+          <h2><strong>Kitap Özeti: </strong> </h2>
+          <textarea rows="10" class="form-control form-control-lg comments__summary" disabled id="SummaryText"
+            name="SummaryText">{{summary.SummaryText}} </textarea>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
 <div class="container-fluid comments__padding">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title comments__title">Yorum Listesi </h4>
-                    <div class="row">
-                        <div class="col-md-4 stretch-card grid-margin" *ngFor="let item of comment">
-                            <div class="card  card-img-holder text-white  ">
-                                <div class="card-body bg-dark comments__description ">
-                                    <h2 class="font-weight-normal mb-3">{{ item.CommentName }}</h2>
-                                    <h4 class="mb-5">{{ item.CommentText }}</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title comments__title">Yorum Listesi </h4>
+          <div class="row">
+            <div class="col-md-4 stretch-card grid-margin" *ngFor="let item of comment">
+              <div class="card  card-img-holder text-white  ">
+                <div class="card-body bg-dark comments__description ">
+                  <h2 class="font-weight-normal mb-3">{{ item.CommentName }}</h2>
+                  <h4 class="mb-5">{{ item.CommentText }}</h4>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>

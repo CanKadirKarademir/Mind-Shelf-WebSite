@@ -13,10 +13,10 @@ export class AuthorService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private _authService: AuthService
   ) { }
 
-  token = this.authService.currentUserValue;
+  token = this._authService.currentUserValue;
 
   httpOptions = {
     headers: new HttpHeaders(
@@ -49,7 +49,7 @@ export class AuthorService {
   }
 
   updateAuthor(authorData, author_id) {
-    //yazar güncelleme 
+    //yazar güncelleme
     return this.http.post(
       this.apiconfig.path + '/api/admin/update-author?author_id=' + author_id,
       authorData,

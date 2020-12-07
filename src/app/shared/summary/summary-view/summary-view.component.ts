@@ -15,10 +15,10 @@ export class SummaryViewComponent implements OnInit {
     private _bookService: BookService,
     private _summaryService: SummaryService
   ) { }
+
   book_id: number;
   book: Book[];
-  model: Summary=new Summary;
-  summaries: Summary[] ;
+  summaries: Summary[];
 
   ngOnInit(): void {
     this.getBook();

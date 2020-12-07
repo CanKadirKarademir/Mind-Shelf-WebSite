@@ -9,17 +9,15 @@ import { first } from 'rxjs/internal/operators/first';
   styleUrls: ['./library-list.component.scss']
 })
 export class LibraryListComponent implements OnInit {
-
   constructor(
     private _libraryService: LibraryService
   ) { }
 
+  library: Library[];
+
   ngOnInit(): void {
     this.getLibrary();
   }
-
-  library: Library[];
-  // kutuphane: Library = new Library();
 
   onDeleteLibrary(library_id) {
     this._libraryService.deleteLibrary(library_id).subscribe(data => {
@@ -46,9 +44,5 @@ export class LibraryListComponent implements OnInit {
         error => {
           console.log('error', error);
         });
-  }
-  
-  goLibrariesView(library_id) {
-    
   }
 }

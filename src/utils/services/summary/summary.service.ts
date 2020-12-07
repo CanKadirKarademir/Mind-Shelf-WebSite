@@ -11,12 +11,13 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SummaryService {
-  public apiconfig = new ApiConfig();
   constructor(
     private http: HttpClient,
     private router: Router,
     private authService: AuthService,
   ) { }
+
+  public apiconfig = new ApiConfig();
   token = this.authService.currentUserValue;
 
   httpOptions = {

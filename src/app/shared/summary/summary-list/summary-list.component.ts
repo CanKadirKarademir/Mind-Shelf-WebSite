@@ -13,16 +13,15 @@ import { Book } from 'src/app/models/book';
 
 
 export class SummaryListComponent implements OnInit {
+  constructor(
+    private _summaryService: SummaryService,
+    private _bookService: BookService,
+    public _dialog: MatDialog
+  ) { }
 
   summary: Summary[];
   book: Book[];
   book_id: number;
-
-  constructor(
-    private _summaryService: SummaryService,
-    private _bookService: BookService,
-    public dialog: MatDialog
-  ) { }
 
   ngOnInit(): void {
     this.getBook();
@@ -37,7 +36,6 @@ export class SummaryListComponent implements OnInit {
       window.location.reload();
     });
   }
-
 
   getSummary(book_id) {
     const user_id = JSON.parse(localStorage.getItem('currentUser')).id;
