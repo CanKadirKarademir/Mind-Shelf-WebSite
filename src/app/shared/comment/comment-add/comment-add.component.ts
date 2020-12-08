@@ -49,6 +49,7 @@ export class CommentAddComponent implements OnInit {
     }
   }
   onAddComment(commentFrom: NgForm) {
+    console.log("sadasd", commentFrom)
     this._commentService.commentAdd({
       CommentName: commentFrom.value.CommentName,
       CommentText: commentFrom.value.CommentText,
@@ -69,7 +70,7 @@ export class CommentAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.href = "/user/comment/view";
+    // window.location.href = "/user/comment/view";
   }
 
   getSummaryInformation(summary_id) {

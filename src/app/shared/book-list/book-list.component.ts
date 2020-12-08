@@ -73,6 +73,7 @@ export class BookListComponent implements OnInit {
   }
 
   addBookOnLibrary(book_id) {
+    console.log(book_id)
     this._bookService.addBookOnLibrary({
       LibraryID: this.library_id,
       BookID: book_id
@@ -91,6 +92,5 @@ export class BookListComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.reload();
   }
 }
