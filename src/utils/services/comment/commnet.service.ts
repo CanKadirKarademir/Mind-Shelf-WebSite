@@ -15,9 +15,9 @@ export class CommnentService {
   ) { }
 
   public apiconfig = new ApiConfig();
-  token = this._authService.currentUserValue;
+  private token = this._authService.currentUserValue;
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ export class CommnentService {
     )
   };
 
-  getCommnets() {
+  private getCommnets() {
     return this.http.get<Comment[]>(this.apiconfig.path + '/api/admin/all-comments', this.httpOptions)
   }
 
@@ -77,7 +77,7 @@ export class CommnentService {
     )
   }
 
-  getCommentByUser(summary_id, user_id) {
+  private getCommentByUser(summary_id, user_id) {
     return this.http.get<Comment[]>(
       this.apiconfig.path + '/api/admin/getbyUser-summary?user_id=' + user_id + '&book_id=' + summary_id,
       this.httpOptions

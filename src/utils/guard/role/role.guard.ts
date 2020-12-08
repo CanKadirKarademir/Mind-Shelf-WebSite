@@ -11,7 +11,7 @@ export class RoleGuard implements CanActivate {
     private router: Router,
     private authService: AuthService
   ) { }
-  currentUser = this.authService.currentUserValue;
+  private currentUser = this.authService.currentUserValue;
 
   canActivate(
     next: ActivatedRouteSnapshot,

@@ -16,9 +16,9 @@ export class UserService {
   ) { }
 
   public apiconfig = new ApiConfig();
-  token = this._authService.currentUserValue;
+  private token = this._authService.currentUserValue;
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',

@@ -18,9 +18,9 @@ export class SummaryService {
   ) { }
 
   public apiconfig = new ApiConfig();
-  token = this.authService.currentUserValue;
+  private token = this.authService.currentUserValue;
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export class SummaryService {
     );
   }
 
-  getSummaries() {
+  private getSummaries() {
     return this.http.get<Summary[]>(this.apiconfig.path + '/api/admin/all-summaryies', this.httpOptions)
   }
 }

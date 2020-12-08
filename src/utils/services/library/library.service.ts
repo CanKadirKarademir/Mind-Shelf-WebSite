@@ -14,10 +14,10 @@ export class LibraryService {
     private _authService: AuthService,
   ) { }
 
-  token = this._authService.currentUserValue;
+  private token = this._authService.currentUserValue;
   public apiconfig = new ApiConfig();
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
