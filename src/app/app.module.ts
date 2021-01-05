@@ -41,6 +41,8 @@ import { CommentViewComponent } from './shared/comment/comment-view/comment-view
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
 import { ForgotPasswordComponent } from './../app/user-pages/forgot-password/forgot-password.component';
+import {AvatarModule} from 'ngx-avatar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +91,7 @@ import { ForgotPasswordComponent } from './../app/user-pages/forgot-password/for
     MatMenuModule,
     MatSnackBarModule,
     MatDialogModule,
+    AvatarModule,
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]
