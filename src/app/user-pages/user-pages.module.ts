@@ -7,6 +7,7 @@ import { UserLibraryViewComponent } from './user-library-view/user-library-view.
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, UserLibraryViewComponent, CommentListComponent],
+  declarations: [LoginComponent, RegisterComponent, UserLibraryViewComponent, CommentListComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

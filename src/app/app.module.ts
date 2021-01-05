@@ -40,7 +40,7 @@ import { CommentAddComponent } from './shared/comment/comment-add/comment-add.co
 import { CommentViewComponent } from './shared/comment/comment-view/comment-view.component';
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
-
+import { ForgotPasswordComponent } from './../app/user-pages/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +71,8 @@ import { CommentListComponent } from './user-pages/comment-list/comment-list.com
     CommentAddComponent,
     CommentViewComponent,
     CommentUpdateComponent,
-    CommentListComponent
+    CommentListComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

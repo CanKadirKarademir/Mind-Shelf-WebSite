@@ -12,7 +12,8 @@
           <div class="form-group">
             <label for="UserName"><strong>Kullanıcı Adı</strong></label>
             <input type="email" class="form-control form-control-lg" id="UserName"
-              placeholder="Kullanıcı Adınızı Giriniz" name="UserName" #UserName="ngModel" [(ngModel)]="modelUser.UserName">
+              placeholder="Kullanıcı Adınızı Giriniz" name="UserName" #UserName="ngModel"
+              [(ngModel)]="modelUser.UserName">
           </div>
           <div class="form-group">
             <label for="UserPassword"><strong>Şifre</strong></label>
@@ -27,6 +28,11 @@
           <div class="text-center mt-4 font-weight-light">
             <h3>
               Henüz hesabınız yok mu ? Hemen <a routerLink="/register" class="text-primary login__cursor">Kayıt Olun</a>
+            </h3>
+          </div>
+          <div class="text-center mt-4 font-weight-light">
+            <h3>
+              <a routerLink="/forgot-password" class="text-primary login__cursor">Şifremi Unuttum</a>
             </h3>
           </div>
         </form>
