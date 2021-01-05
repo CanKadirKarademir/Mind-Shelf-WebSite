@@ -42,6 +42,7 @@ import { CommentAddComponent } from './shared/comment/comment-add/comment-add.co
 import { CommentViewComponent } from './shared/comment/comment-view/comment-view.component';
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
+import {AvatarModule} from 'ngx-avatar';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { CommentListComponent } from './user-pages/comment-list/comment-list.com
     MatMenuModule,
     MatSnackBarModule,
     MatDialogModule,
+    AvatarModule,
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent]
