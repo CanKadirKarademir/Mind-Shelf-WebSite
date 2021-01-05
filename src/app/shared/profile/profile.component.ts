@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
     private _alertService: MatSnackBar,
     private _router: Router
   ) { }
-  model: User = new User();
+
+  modelUser: User = new User();
 
   ngOnInit(): void {
     this.getUserInfo()
@@ -55,11 +56,11 @@ export class ProfileComponent implements OnInit {
     this._userService
       .userGetById(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
-        this.model.UserName = data['user_data'].UserName;
-        this.model.UserFirstName = data['user_data'].UserFirstName;
-        this.model.UserLastName = data['user_data'].UserLastName;
-        this.model.UserMail = data['user_data'].UserMail;
-        this.model.UserPassword = data['user_data'].UserPassword;
+        this.modelUser.UserName = data['user_data'].UserName;
+        this.modelUser.UserFirstName = data['user_data'].UserFirstName;
+        this.modelUser.UserLastName = data['user_data'].UserLastName;
+        this.modelUser.UserMail = data['user_data'].UserMail;
+        this.modelUser.UserPassword = data['user_data'].UserPassword;
       })
   }
 }

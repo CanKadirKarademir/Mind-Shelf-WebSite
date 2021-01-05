@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/utils/services/auth/auth.service';
 import { UserService } from '../../../utils/services/user/user.service';
 
 @Component({
@@ -8,6 +7,10 @@ import { UserService } from '../../../utils/services/user/user.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  constructor(
+    private _userService: UserService,
+  ) { }
+
   public userPagesCollapsed = false;
   public libraryPagesCollapsed = false;
   public bookPagesCollapsed = false;
@@ -16,11 +19,6 @@ export class SidebarComponent implements OnInit {
   public commentPagesCollapsed = false;
   public userName = '';
   public userType: number;
-
-  constructor(
-    private userService: UserService,
-    private authService: AuthService
-  ) { }
 
   ngOnInit() {
     const body = document.querySelector('body');
@@ -38,12 +36,11 @@ export class SidebarComponent implements OnInit {
         }
       });
     });
-
     this.getUserInfo();
-
   }
+
   getUserInfo() {
-    this.userService
+    this._userService
       .userGetById(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
         this.userName = data['user_data'].UserFirstName + ' ' + data['user_data'].UserLastName;

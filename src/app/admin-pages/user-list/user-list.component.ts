@@ -8,33 +8,31 @@ import { User } from '../../models/user';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  user: User[];
-
   constructor(
-    private userService: UserService,
+    private _userService: UserService,
   ) { }
+
+  user: User[];
 
   ngOnInit() {
     this.getAllUsers();
   }
 
   getAllUsers() {
-    this.userService.getUsers().subscribe(data => {
+    this._userService.getUsers().subscribe(data => {
       this.user = data;
     })
   }
 
   userStatusUpdate(id) {
-    this.userService.userStatusUpdate(id, 1).subscribe(data => {
+    this._userService.userStatusUpdate(id, 1).subscribe(data => {
       window.location.reload();
     })
   }
 
   userDelete(id) {
-    this.userService.userDelete(id).subscribe(data => {
+    this._userService.userDelete(id).subscribe(data => {
       window.location.reload();
     });
   }
-
-
 }

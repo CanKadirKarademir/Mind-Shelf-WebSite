@@ -12,26 +12,26 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./library-add.component.scss']
 })
 export class LibraryAddComponent implements OnInit {
-
   constructor(
-    private alertService: MatSnackBar,
-    private libraryService: LibraryService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private _alertService: MatSnackBar,
+    private _libraryService: LibraryService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router
   ) { }
-  model: Library = new Library;
+
+  modelLibrary: Library = new Library;
   LibraryId: number = null;
 
   ngOnInit(): void {
-    this.LibraryId = parseInt(this.activatedRoute.snapshot.paramMap.get('LibraryID'));
-    this.libraryService.getByIdLibrary(this.LibraryId).subscribe(data => {
-      this.model = data;
+    this.LibraryId = parseInt(this._activatedRoute.snapshot.paramMap.get('LibraryID'));
+    this._libraryService.getByIdLibrary(this.LibraryId).subscribe(data => {
+      this.modelLibrary = data;
     });
   }
 
   onSave(libraryForm: NgForm) {
     if (!libraryForm.valid) {
-      this.alertService.open(
+      this._alertService.open(
         'Lütfen Bilgilerin doğru olduğundan emin olun !',
         'HATA',
         {
@@ -44,8 +44,9 @@ export class LibraryAddComponent implements OnInit {
     }
 
   }
+
   onAddLibrary(lKibraryForm: NgForm) {
-    this.libraryService.addlibrary({
+    this._libraryService.addlibrary({
       LibraryName: lKibraryForm.value.LibraryName,
       LibraryIsDeleted: 0,
       UserID: JSON.parse(localStorage.getItem('currentUser')).id
@@ -58,17 +59,18 @@ export class LibraryAddComponent implements OnInit {
         error => {
           console.log('error', error);
         });
-    this.alertService.open(
+    this._alertService.open(
       'Kütüphane başarılı bir şekilde eklendi',
       'İŞLEM BAŞARILI',
       {
         duration: 2000,
       })
-    this.router.navigateByUrl('user');
+    this._router.navigateByUrl('user');
   }
+
   onUpdateLibrary(lKibraryForm: NgForm) {
     console.log(lKibraryForm.value)
-    this.libraryService.updateLibrary({
+    this._libraryService.updateLibrary({
       LibraryName: lKibraryForm.value.LibraryName,
       LibraryIsDeleted: 0,
     }, this.LibraryId)
@@ -80,13 +82,12 @@ export class LibraryAddComponent implements OnInit {
         error => {
           console.log('error', error);
         });
-    this.alertService.open(
+    this._alertService.open(
       'Kütüphane Güncellendi.',
       'İŞLEM BAŞARILI',
       {
         duration: 2000,
       })
-    this.router.navigateByUrl('user');
-    window.location.href = "/user/libraries";
+    this._router.navigateByUrl('user/libraries');
   }
 }

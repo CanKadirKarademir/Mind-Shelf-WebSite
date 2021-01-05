@@ -6,7 +6,6 @@ import { Book } from 'src/app/models/book';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from 'src/utils/services/book/book.service';
 import { CommnentService } from 'src/utils/services/comment/commnet.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-comment-list',
@@ -14,31 +13,32 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./comment-list.component.scss']
 })
 export class CommentListComponent implements OnInit {
-
-  summary: Summary = new Summary();
-  comment: Comment[];
-  modelBook: Book = new Book();
-
   constructor(
     private _summaryService: SummaryService,
     private _commentService: CommnentService,
     private _bookService: BookService,
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
   ) { }
 
+  modelSummary: Summary = new Summary();
+  modelBook: Book = new Book();
+  comment: Comment[];
+
   ngOnInit() {
-    const SummaryID = parseInt(this.activatedRoute.snapshot.paramMap.get('SummaryID'));
+    const SummaryID = parseInt(this._activatedRoute.snapshot.paramMap.get('SummaryID'));
     this.getSummaryInformation(SummaryID);
     this.getByIdSummary(SummaryID);
   }
+
   getSummaryInformation(summary_id) {
     this._summaryService.getSumamryByID(summary_id).subscribe(data => {
-      this.summary.SummaryID = data['summaryData'].SummaryID;
-      this.summary.SummaryText = data['summaryData'].SummaryText;
+      this.modelSummary.SummaryID = data['summaryData'].SummaryID;
+      this.modelSummary.SummaryText = data['summaryData'].SummaryText;
       const BookID = data['summaryData'].BookID;
       this.getBookInformation(BookID);
     });
   }
+
   getBookInformation(book_id) {
     this._bookService.getByIDBook(book_id).subscribe(book => {
       this.modelBook = book;

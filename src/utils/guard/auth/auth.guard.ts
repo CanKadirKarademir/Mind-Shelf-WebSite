@@ -7,7 +7,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     private authService: AuthService
   ) { }
 
-  currentUser = this.authService.currentUserValue;
+  private currentUser = this.authService.currentUserValue;
 
   canActivate(
     next: ActivatedRouteSnapshot,

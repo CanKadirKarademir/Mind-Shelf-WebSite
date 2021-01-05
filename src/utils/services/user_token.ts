@@ -1,6 +1,6 @@
 export class UserToken {
-  username: string;
-  email: string;
-  accessToken: string;
-  usertype: number;
+  private username: string;
+  private email: string;
+  private accessToken: string;
+  private usertype: number;
 }

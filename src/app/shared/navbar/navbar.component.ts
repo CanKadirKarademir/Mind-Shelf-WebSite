@@ -10,26 +10,23 @@ import { UserService } from '../../../utils/services/user/user.service';
   styleUrls: ['./navbar.component.scss'],
   providers: [NgbDropdownConfig]
 })
+
 export class NavbarComponent implements OnInit {
-  public iconOnlyToggled = false;
-  public sidebarToggled = false;
-
-  // tslint:disable-next-line:variable-name
-  public userName = '';
-
   constructor(
     config: NgbDropdownConfig,
     private _router: Router,
-    private authService: AuthService,
-    private userService: UserService,
-  ) {
-    config.placement = 'bottom-right';
-  }
+    private _authService: AuthService,
+    private _userService: UserService,
+  ) { config.placement = 'bottom-right'; }
+
+  public iconOnlyToggled = false;
+  public sidebarToggled = false;
+  // tslint:disable-next-line:variable-name
+  public userName = '';
 
   ngOnInit() {
     this.getUserInfo()
   }
-
 
   // toggle sidebar in small devices
   toggleOffcanvas() {
@@ -57,12 +54,12 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this._authService.logout();
     this._router.navigateByUrl('/home');
   }
 
   getUserInfo() {
-    this.userService
+    this._userService
       .userGetById(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
         // tslint:disable-next-line:no-string-literal

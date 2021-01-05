@@ -8,12 +8,11 @@ import { CommnentService } from 'src/utils/services/comment/commnet.service';
   styleUrls: ['./comment-view.component.scss']
 })
 export class CommentViewComponent implements OnInit {
-
-  commnet: Comment[];
-
   constructor(
     private _commnetService: CommnentService,
   ) { }
+
+  commnet: Comment[];
 
   ngOnInit(): void {
     this.getUserAllComments();
@@ -25,8 +24,8 @@ export class CommentViewComponent implements OnInit {
     })
   }
 
-  deleteComment(comment_id){
-    this._commnetService.commnetDelete(comment_id).subscribe(data=>{
+  deleteComment(comment_id) {
+    this._commnetService.commnetDelete(comment_id).subscribe(data => {
       window.location.reload();
     });
   }

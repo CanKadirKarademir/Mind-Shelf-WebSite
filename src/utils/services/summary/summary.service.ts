@@ -11,15 +11,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SummaryService {
-  public apiconfig = new ApiConfig();
   constructor(
     private http: HttpClient,
     private router: Router,
     private authService: AuthService,
   ) { }
-  token = this.authService.currentUserValue;
 
-  httpOptions = {
+  public apiconfig = new ApiConfig();
+  private token = this.authService.currentUserValue;
+
+  private httpOptions = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',
@@ -81,7 +82,7 @@ export class SummaryService {
     );
   }
 
-  getSummaries() {
+  private getSummaries() {
     return this.http.get<Summary[]>(this.apiconfig.path + '/api/admin/all-summaryies', this.httpOptions)
   }
 }

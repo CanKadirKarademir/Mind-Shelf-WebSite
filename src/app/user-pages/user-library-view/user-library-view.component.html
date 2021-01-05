@@ -1,61 +1,59 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Kayıtlı Kitap Listesi</h4>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="">
-                                <tr>
-                                    <th>Kitap ID</th>
-                                    <th>Kitap Adı</th>
-                                    <th>Sayfa Sayısı</th>
-                                    <th>Kitap Türü</th>
-                                    <th>Yayın Evi</th>
-                                    <th>Yayın Yılı</th>
-                                    <th>İşlemler</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let book of books">
-                                    <td> {{book.TblBook.BookID}} </td>
-                                    <td> {{book.TblBook.BookName}} </td>
-                                    <td> {{book.TblBook.BookPage}} </td>
-                                    <td> {{book.TblBook.BookType}} </td>
-                                    <td> {{book.TblBook.Publisher}} </td>
-                                    <td> {{book.TblBook.PublicationYear}} </td>
-                                    <td>
-                                        <span class="library-user__cursor" mat-icon-button [matMenuTriggerFor]="menu"
-                                            aria-label="Example icon-button with a menu">
-                                            <mat-icon>more_vert</mat-icon>
-                                        </span>
-                                        <mat-menu #menu="matMenu">
-                                            <a type="button" mat-menu-item class="library-user__decoration"
-                                                (click)="deleteBookOnLibrary(book.BookID)">
-                                                <mat-icon class="text-danger">delete_sweep</mat-icon>
-                                                <span>Kütüphanemden Çıkar</span>
-                                            </a>
-                                            <a type="button" mat-menu-item class="library-user__decoration"
-                                                [routerLink]="['/user/summary/add/',book.TblBook.BookID]">
-                                                <mat-icon class="text-success">description</mat-icon>
-                                                <span>Özet Ekle</span>
-                                            </a>
-                                            <a type="button" mat-menu-item class="library-user__decoration"
-                                                [routerLink]="['/user/comments/',book.TblBook.BookID]">
-                                                <mat-icon class="text-warning">library_books</mat-icon>
-                                                <span>Yorumları Görüntüle</span>
-                                            </a>
-                                        </mat-menu>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Kayıtlı Kitap Listesi</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="">
+                <tr>
+                  <th>Kitap ID</th>
+                  <th>Kitap Adı</th>
+                  <th>Sayfa Sayısı</th>
+                  <th>Kitap Türü</th>
+                  <th>Yayın Evi</th>
+                  <th>Yayın Yılı</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of books">
+                  <td> {{book.TblBook.BookID}} </td>
+                  <td> {{book.TblBook.BookName}} </td>
+                  <td> {{book.TblBook.BookPage}} </td>
+                  <td> {{book.TblBook.BookType}} </td>
+                  <td> {{book.TblBook.Publisher}} </td>
+                  <td> {{book.TblBook.PublicationYear}} </td>
+                  <td>
+                    <span class="library-user__cursor" mat-icon-button [matMenuTriggerFor]="menu"
+                      aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </span>
+                    <mat-menu #menu="matMenu">
+                      <a type="button" mat-menu-item class="library-user__decoration"
+                        (click)="deleteBookOnLibrary(book.BookID)">
+                        <mat-icon class="text-danger">delete_sweep</mat-icon>
+                        <span>Kütüphanemden Çıkar</span>
+                      </a>
+                      <a type="button" mat-menu-item class="library-user__decoration"
+                        [routerLink]="['/user/summary/add/',book.TblBook.BookID]">
+                        <mat-icon class="text-success">description</mat-icon>
+                        <span>Özet Ekle</span>
+                      </a>
+                      <a type="button" mat-menu-item class="library-user__decoration"
+                        [routerLink]="['/user/comments/',book.TblBook.BookID]">
+                        <mat-icon class="text-warning">library_books</mat-icon>
+                        <span>Yorumları Görüntüle</span>
+                      </a>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

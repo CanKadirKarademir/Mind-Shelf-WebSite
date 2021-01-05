@@ -14,19 +14,19 @@ import { User } from '../../models/user';
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private authService: AuthService,
-    private alertService: MatSnackBar,
+    private _router: Router,
+    private _authService: AuthService,
+    private _alertService: MatSnackBar,
   ) { }
 
-  model: User = new User();
+  modelUser: User = new User();
 
   ngOnInit() {
   }
 
   onSave(registerForm: NgForm) {
     if (!registerForm.valid) {
-      this.alertService.open(
+      this._alertService.open(
         'Lütfen Kullanıcı bilgilerini düzgün doldur!!!!',
         'HATA',
         {
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         }
       );
     } else {
-      this.authService.register({
+      this._authService.register({
         UserName: registerForm.value.UserName,
         UserMail: registerForm.value.UserMail,
         UserPassword: registerForm.value.UserPassword,
@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           data => {
             console.log('data', data);
-            this.router.navigate(['login']);
+            this._router.navigate(['login']);
           },
           error => {
             console.log('error', error);

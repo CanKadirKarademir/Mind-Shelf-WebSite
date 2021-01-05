@@ -1,6 +1,5 @@
 import { Author } from './../../models/author';
 import { AuthorService } from './../../../utils/services/author/author.service';
-import { MatMenuModule } from '@angular/material/menu';
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book';
 import { BookService } from '../../../utils/services/book/book.service';
@@ -14,7 +13,15 @@ import { Library } from './../../models/library';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
+
 export class BookListComponent implements OnInit {
+  constructor(
+    private _bookService: BookService,
+    private _authorService: AuthorService,
+    private _alertService: MatSnackBar,
+    private _libraryService: LibraryService,
+  ) { }
+
   book: Book[];
   author: Author[];
   selected = [];
@@ -22,18 +29,11 @@ export class BookListComponent implements OnInit {
   library_id: number;
   library: Library[];
 
-  constructor(
-    private bookService: BookService,
-    private _authorService: AuthorService,
-    private _alertService: MatSnackBar,
-    private ser: LibraryService,
-  ) { }
-
   ngOnInit(): void {
-
     this.getAuthor();
     this.getLibraries();
   }
+
   onAuthorSelected(val: any) {
     this.getAuthorAllBooks(val);
   }
@@ -45,7 +45,7 @@ export class BookListComponent implements OnInit {
   }
 
   getAuthorAllBooks(author_id) {
-    this.bookService.getAuthorAllBooks(author_id).subscribe(data => {
+    this._bookService.getAuthorAllBooks(author_id).subscribe(data => {
       this.book = data;
     });
   }
@@ -55,28 +55,26 @@ export class BookListComponent implements OnInit {
   }
 
   getAllLibraries(library_id) {
-    this.ser.getByIdLibrary(library_id).subscribe(data => {
+    this._libraryService.getByIdLibrary(library_id).subscribe(data => {
 
     });
   }
 
   getLibraries() {
-    this.ser.listLibrary(JSON.parse(localStorage.getItem('currentUser')).id).subscribe(data => {
+    this._libraryService.listLibrary(JSON.parse(localStorage.getItem('currentUser')).id).subscribe(data => {
       this.library = data;
     })
   }
 
-
-
-
- bookDelete(id) {
-    this.bookService.bookDelete(id).subscribe(data => {
+  bookDelete(id) {
+    this._bookService.bookDelete(id).subscribe(data => {
       window.location.reload();
     });
   }
 
   addBookOnLibrary(book_id) {
-    this.bookService.addBookOnLibrary({
+    console.log(book_id)
+    this._bookService.addBookOnLibrary({
       LibraryID: this.library_id,
       BookID: book_id
     }).pipe(first())
@@ -94,6 +92,5 @@ export class BookListComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.reload();
   }
 }

@@ -1,11 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { ApiConfig } from '../ApiConfig';
 import { Observable } from 'rxjs';
-
 import { User } from '../../../app/models/user';
 import { map } from 'rxjs/operators';
 
@@ -13,18 +10,15 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  public apiconfig = new ApiConfig();
-
   constructor(
     private http: HttpClient,
-    private alertService: MatSnackBar,
-    private router: Router,
-    private authService: AuthService,
+    private _authService: AuthService,
   ) { }
 
-  token = this.authService.currentUserValue;
+  public apiconfig = new ApiConfig();
+  private token = this._authService.currentUserValue;
 
-  httpOptions = {
+  private httpOptions = {
     headers: new HttpHeaders(
       {
         'Content-Type': 'application/json',

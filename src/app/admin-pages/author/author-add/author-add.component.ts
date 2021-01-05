@@ -13,28 +13,27 @@ import { AuthorService } from 'src/utils/services/author/author.service';
   styleUrls: ['./author-add.component.scss']
 })
 export class AuthorAddComponent implements OnInit {
-
   constructor(
-    private router: Router,
-    private authorService: AuthorService,
-    private alertService: MatSnackBar,
-    private activatedRoute: ActivatedRoute
+    private _router: Router,
+    private _authorService: AuthorService,
+    private _alertService: MatSnackBar,
+    private _activatedRoute: ActivatedRoute
   ) { }
-  model: Author = new Author();
 
+  modelAuthor: Author = new Author();
   AuthorID: number;
 
   ngOnInit(): void {
-    this.AuthorID = parseInt(this.activatedRoute.snapshot.paramMap.get('AuthorID'));
-    this.authorService.getByIdAuthor(this.AuthorID).subscribe(data => {
-      this.model = data;
+    this.AuthorID = parseInt(this._activatedRoute.snapshot.paramMap.get('AuthorID'));
+    this._authorService.getByIdAuthor(this.AuthorID).subscribe(data => {
+      this.modelAuthor = data;
     })
 
   }
 
   onSave(authorForm: NgForm) {
     if (!authorForm.valid) {
-      this.alertService.open(
+      this._alertService.open(
         'Lütfen yazar bilgilerini kontrolediniz',
         'HATA',
         {
@@ -46,12 +45,11 @@ export class AuthorAddComponent implements OnInit {
     }
   }
   onAddAuthor(authorForm: NgForm) {
-    this.authorService.addAuthor({
+    this._authorService.addAuthor({
       AuthorFirstName: authorForm.value.AuthorFirstName,
       AuthorLastName: authorForm.value.AuthorLastName,
       AuthorIsDeleted: 0
-    })
-      .pipe(first())
+    }).pipe(first())
       .subscribe(
         data => {
           console.log('data', data);
@@ -59,16 +57,17 @@ export class AuthorAddComponent implements OnInit {
         error => {
           console.log('error', error);
         });
-    this.alertService.open(
+    this._alertService.open(
       'Yazar başarılı bir şekilde eklenmiştir.',
       'İŞLEM BAŞARILI',
       {
         duration: 2000,
       })
-    window.location.href = "/user/authors";
+    this._router.navigateByUrl('user/authors');
   }
+
   onUpdateAuthor(authorForm: NgForm) {
-    this.authorService.updateAuthor({
+    this._authorService.updateAuthor({
       AuthorFirstName: authorForm.value.AuthorFirstName,
       AuthorLastName: authorForm.value.AuthorLastName,
       AuthorIsDeleted: 0
@@ -81,13 +80,12 @@ export class AuthorAddComponent implements OnInit {
         error => {
           console.log('error', error);
         });
-    this.alertService.open(
+    this._alertService.open(
       'Yazar başarılı bir güncellenmiştir.',
       'İŞLEM BAŞARILI',
       {
         duration: 2000,
       })
-    this.router.navigateByUrl('user');
-    window.location.href = "/user/authors";
+    this._router.navigateByUrl('user/authors');
   }
 }

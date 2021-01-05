@@ -1,49 +1,48 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Yazar Listesi</h4>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="">
-                                <tr>
-                                    <th>Yazar ID</th>
-                                    <th>Yazar Adı</th>
-                                    <th>Yazar Soyadı</th>
-                                    <th>Silinme Durumu</th>
-                                    <th>İşlemler</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of author">
-                                    <td>{{ item.AuthorID }}</td>
-                                    <td>{{ item.AuthorFirstName }}</td>
-                                    <td>{{ item.AuthorLastName }}</td>
-                                    <td>{{ item.AuthorIsDeleted }}</td>
-                                    <td>
-                                        <span class="authors__cursor" mat-icon-button [matMenuTriggerFor]="menu"
-                                            aria-label="Example icon-button with a menu">
-                                            <mat-icon>more_vert</mat-icon>
-                                        </span>
-                                        <mat-menu #menu="matMenu">
-                                            <a type="button"  mat-menu-item class="authors__decoration"
-                                                (click)="onDeleteAuthor(item.AuthorID)">
-                                                <mat-icon class="text-danger">delete_sweep</mat-icon>
-                                                <span>Sil</span>
-                                            </a>
-                                            <a class="authors__decoration" mat-menu-item [routerLink]="['/user/author/update/',item.AuthorID]">
-                                                <mat-icon class="text-info">update</mat-icon>
-                                                <span>Yazarı Güncelle</span>
-                                            </a>
-                                        </mat-menu>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Yazar Listesi</h4>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="">
+                <tr>
+                  <th>Yazar ID</th>
+                  <th>Yazar Adı</th>
+                  <th>Yazar Soyadı</th>
+                  <th>İşlemler</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of author">
+                  <td>{{ item.AuthorID }}</td>
+                  <td>{{ item.AuthorFirstName }}</td>
+                  <td>{{ item.AuthorLastName }}</td>
+                  <td>
+                    <span class="authors__cursor" mat-icon-button [matMenuTriggerFor]="menu"
+                      aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </span>
+                    <mat-menu #menu="matMenu">
+                      <a type="button" mat-menu-item class="authors__decoration"
+                        (click)="onDeleteAuthor(item.AuthorID)">
+                        <mat-icon class="text-danger">delete_sweep</mat-icon>
+                        <span>Sil</span>
+                      </a>
+                      <a class="authors__decoration" mat-menu-item
+                        [routerLink]="['/user/author/update/',item.AuthorID]">
+                        <mat-icon class="text-info">update</mat-icon>
+                        <span>Yazarı Güncelle</span>
+                      </a>
+                    </mat-menu>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

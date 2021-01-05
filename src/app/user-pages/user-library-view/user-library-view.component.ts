@@ -9,7 +9,6 @@ import { LibraryService } from '../../../utils/services/library/library.service'
   styleUrls: ['./user-library-view.component.scss']
 })
 export class UserLibraryViewComponent implements OnInit {
-
   constructor(
     private _libraryService: LibraryService,
     private _bookService: BookService,
@@ -24,8 +23,8 @@ export class UserLibraryViewComponent implements OnInit {
     this.LibraryID = parseInt(this._activatedRoute.snapshot.paramMap.get('LibraryID'));
     Number.isNaN(this.LibraryID) ? this._router.navigateByUrl('user') : this.getLibrariesBooks(this.LibraryID);
   }
-  books: any[];
 
+  books: any[];
 
   getLibrariesBooks(library_id) {
     this._libraryService.getLibrariesBooks(library_id).subscribe(data => {

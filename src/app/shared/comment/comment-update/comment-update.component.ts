@@ -8,28 +8,26 @@ import { SummaryService } from 'src/utils/services/summary/summary.service';
 import { Comment } from '../../../models/comment';
 import { Summary } from '../../../models/summary';
 
-
 @Component({
   selector: 'app-comment-update',
   templateUrl: './comment-update.component.html',
   styleUrls: ['./comment-update.component.scss']
 })
 export class CommentUpdateComponent implements OnInit {
-
-  CommentID: number;
-  modelComment: Comment = new Comment();
-  modelSummary: Summary = new Summary();
-
   constructor(
     private _commentService: CommnentService,
     private _summaryService: SummaryService,
     private _alertService: MatSnackBar,
     private _router: Router,
-    private activatedRoute: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
   ) { }
 
+  CommentID: number;
+  modelComment: Comment = new Comment();
+  modelSummary: Summary = new Summary();
+
   ngOnInit(): void {
-    this.CommentID = parseInt(this.activatedRoute.snapshot.paramMap.get('CommentID'));
+    this.CommentID = parseInt(this._activatedRoute.snapshot.paramMap.get('CommentID'));
     this._commentService.getByIDComment(this.CommentID).subscribe(data => {
       this.modelComment = data;
       console.log(data);
@@ -40,7 +38,6 @@ export class CommentUpdateComponent implements OnInit {
       })
     })
   }
-
 
   onCommentUpdate(summaryForm: NgForm) {
     if (!summaryForm.valid) {
