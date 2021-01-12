@@ -89,7 +89,6 @@ import {AvatarModule} from 'ngx-avatar';
     MatSnackBarModule,
     MatIconModule,
     MatMenuModule,
-    MatSnackBarModule,
     MatDialogModule,
     AvatarModule,
   ],
