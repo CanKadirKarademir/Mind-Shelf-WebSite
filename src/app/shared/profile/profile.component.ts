@@ -36,9 +36,6 @@ export class ProfileComponent implements OnInit {
       );
     } else {
       this._userService.userProfileUpdate({
-        UserName: profileForm.value.UserName,
-        UserMail: profileForm.value.UserMail,
-        UserPassword: profileForm.value.UserPassword,
         UserFirstName: profileForm.value.UserFirstName,
         UserLastName: profileForm.value.UserLastName,
       }, JSON.parse(localStorage.getItem('currentUser')).id)
@@ -49,6 +46,13 @@ export class ProfileComponent implements OnInit {
           },
           error => {
           });
+      this._alertService.open(
+        'Bilgileriniz başarılı bir şekilde güncellenmiştir.',
+        'BAŞARILI',
+        {
+          duration: 2000,
+        }
+      );
     }
   }
 
@@ -56,11 +60,8 @@ export class ProfileComponent implements OnInit {
     this._userService
       .userGetById(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
-        this.modelUser.UserName = data['user_data'].UserName;
         this.modelUser.UserFirstName = data['user_data'].UserFirstName;
         this.modelUser.UserLastName = data['user_data'].UserLastName;
-        this.modelUser.UserMail = data['user_data'].UserMail;
-        this.modelUser.UserPassword = data['user_data'].UserPassword;
       })
   }
 }

@@ -5,12 +5,7 @@
         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
           <h1>Profil Bilgileri</h1>
           <form class="pt-3" #profileForm='ngForm' (ngSubmit)="onProfileUpdated(profileForm)">
-            <div class="form-group">
-              <label for="UserName"><strong>Kullanıcı Adı</strong></label>
-              <input type="text" class="form-control form-control-lg" disabled id="UserName"
-                placeholder="İsminizi Giriniz" name="UserName" #UserName="ngModel" [(ngModel)]="modelUser.UserName"
-                required>
-            </div>
+            
             <div class="form-group">
               <label for="UserFirstName"><strong>İsim</strong></label>
               <input type="text" class="form-control form-control-lg" id="UserFirstName" placeholder="İsminizi Giriniz"
@@ -22,18 +17,7 @@
                 placeholder="Soyisminizi Giriniz" name="UserLastName" #UserLastName="ngModel"
                 [(ngModel)]="modelUser.UserLastName" required>
             </div>
-            <div class="form-group">
-              <label for="UserMail"><strong>E-Mail</strong></label>
-              <input type="email" class="form-control form-control-lg" id="UserMail"
-                placeholder="E-Mail Adresinizi Giriniz" name="UserMail" #UserMail="ngModel" [(ngModel)]="modelUser.UserMail"
-                required>
-            </div>
-            <div class="form-group">
-              <label for="UserPassword"><strong>Şifre</strong></label>
-              <input type="password" class="form-control form-control-lg" id="UserPassword" minlength="6" maxlenght="10"
-                placeholder="Şifrenizi Giriniz" name="UserPassword" #UserPassword="ngModel"
-                [(ngModel)]="modelUser.UserPassword" required>
-            </div>
+           
             <div class="row d-flex justify-content-end">
               <div class="mt-3">
                 <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
