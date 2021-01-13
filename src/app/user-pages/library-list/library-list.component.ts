@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Library } from '../../models/library';
 import { LibraryService } from '../../../utils/services/library/library.service';
 import { first } from 'rxjs/internal/operators/first';
+import { DeleteWindowComponent } from '../../delete-window/delete-window.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-library-list',
@@ -10,7 +13,9 @@ import { first } from 'rxjs/internal/operators/first';
 })
 export class LibraryListComponent implements OnInit {
   constructor(
-    private _libraryService: LibraryService
+    private _libraryService: LibraryService,
+    private _dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   library: Library[];
@@ -20,9 +25,37 @@ export class LibraryListComponent implements OnInit {
   }
 
   onDeleteLibrary(library_id) {
-    this._libraryService.deleteLibrary(library_id).subscribe(data => {
-      window.location.reload();
+    const diologResult = this._dialog.open(DeleteWindowComponent, {
+      data: {
+        message: 'Are you sure you want to delete the acticity?',
+        icon: 'fa fa-exclamation',
+      },
     });
+    diologResult.afterClosed().subscribe(async (result: boolean) => {
+      if (result) {
+        try {
+          this._libraryService.deleteLibrary(library_id).subscribe(data => {
+            window.location.reload();
+          });
+          this._snackBar.open('İşlem başarı ile gerçekleşti', 'X', {
+            duration: 3000,
+            panelClass: 'notification__success',
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+          });
+        }
+        catch (error) {
+          this._snackBar.open('HATA', 'X', {
+            duration: 3000,
+            panelClass: 'notification__warrning',
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+          });
+        }
+      }
+    });
+
+
   }
 
   getLibrary() {
