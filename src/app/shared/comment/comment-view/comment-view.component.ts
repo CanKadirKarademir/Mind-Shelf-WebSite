@@ -17,7 +17,7 @@ export class CommentViewComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) { }
 
-  commnet: Comment;
+  commnet: Comment[];
 
   ngOnInit(): void {
     this.getUserAllComments();
@@ -26,7 +26,6 @@ export class CommentViewComponent implements OnInit {
   getUserAllComments() {
     this._commnetService.getUserAllComments(JSON.parse(localStorage.getItem('currentUser')).id).subscribe(data => {
       this.commnet = data;
-      console.log(this.commnet);
     })
   }
 

@@ -16,8 +16,7 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container *ngFor="let item of commnet">
-                  <tr *ngIf="item.CommentStatue== 1">
+                  <tr *ngFor="let item of commnet">
                     <td>{{ item.CommentID }}</td>
                     <td>{{ item.CommentName }}</td>
                     <td>{{ item.CommentText }}</td>
@@ -43,9 +42,6 @@
                     <td>
                     </td>
                   </tr>
-                </ng-container>
-
-
               </tbody>
             </table>
           </div>

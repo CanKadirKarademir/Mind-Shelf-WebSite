@@ -40,7 +40,7 @@ export class CommnentService {
   }
 
   getUserAllComments(user_id) {
-    return this.http.get<Comment>(
+    return this.http.get<Comment[]>(
       this.apiconfig.path + '/api/admin/user/all-comments?user_id=' + user_id,
       this.httpOptions
     )
