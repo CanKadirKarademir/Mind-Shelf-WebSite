@@ -1,3 +1,14 @@
+<div class="row">
+  <div class="col-md-3 col-sm-12 ml-auto ">
+    <mat-form-field class="w-100">
+      <mat-label>Arama</mat-label>
+      <input matInput type="text" [(ngModel)]="searchText" placeholder="Aranacak kelimeyi giriniz" name="SearchText">
+      <a type="button" matSuffix [attr.aria-label]="'Search'">
+        <mat-icon>search</mat-icon>
+      </a>
+    </mat-form-field>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
@@ -19,7 +30,7 @@
           <select [(ngModel)]="library_id" (ngModelChange)='onLibrarySelected($event)'
             class="browser-default custom-select btnChange mb-2">
             <option value="aTumu" data-t-v="_tumu">Kütüphaneler</option>
-            <option *ngFor="let item of library" [value]="item.LibraryID">
+            <option *ngFor="let item of library " [value]="item.LibraryID">
               <td>{{ item.LibraryName }}</td>
             </option>
           </select>

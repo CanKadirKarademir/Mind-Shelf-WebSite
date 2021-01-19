@@ -1,3 +1,14 @@
+<div class="row">
+  <div class="col-md-3 col-sm-12 ml-auto ">
+    <mat-form-field class="w-100">
+      <mat-label>Arama</mat-label>
+      <input matInput type="text" [(ngModel)]="searchText" placeholder="Aranacak kelimeyi giriniz" name="SearchText">
+      <a type="button" matSuffix [attr.aria-label]="'Search'">
+        <mat-icon>search</mat-icon>
+      </a>
+    </mat-form-field>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -7,7 +18,7 @@
           <div class="table-responsive">
             <table class="table table-hover">
               <thead class="">
-                <tr>
+                <tr >
                   <th>Kullanıcı ID</th>
                   <th>Kullanıcı Adı</th>
                   <th>Kullanıcı Soyadı</th>
@@ -18,7 +29,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of user">
+                <tr *ngFor="let item of user | filter: searchText">
                   <td>{{ item.UserID }}</td>
                   <td>{{ item.UserFirstName }}</td>
                   <td>{{ item.UserLastName }}</td>

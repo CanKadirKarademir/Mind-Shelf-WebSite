@@ -1,3 +1,14 @@
+<div class="row">
+  <div class="col-md-3 col-sm-12 ml-auto ">
+    <mat-form-field class="w-100">
+      <mat-label>Arama</mat-label>
+      <input matInput type="text" [(ngModel)]="searchText" placeholder="Aranacak kelimeyi giriniz" name="SearchText">
+      <a type="button" matSuffix [attr.aria-label]="'Search'">
+        <mat-icon>search</mat-icon>
+      </a>
+    </mat-form-field>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -16,32 +27,32 @@
                 </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let item of commnet">
-                    <td>{{ item.CommentID }}</td>
-                    <td>{{ item.CommentName }}</td>
-                    <td>{{ item.CommentText }}</td>
-                    <td>{{ item.CommentStatue }}</td>
-                    <td>
-                      <span class="comments__cursor" mat-icon-button [matMenuTriggerFor]="menu"
-                        aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                      </span>
-                      <mat-menu #menu="matMenu">
-                        <a type="button" class="comments__decoration" mat-menu-item
-                          (click)="deleteComment(item.CommentID)">
-                          <mat-icon class="text-danger">delete_sweep</mat-icon>
-                          <span>Yorumu Sil</span>
-                        </a>
-                        <a class="comments__decoration" mat-menu-item
-                          [routerLink]="['/user/comment/update/',item.CommentID]">
-                          <mat-icon class="text-info">update</mat-icon>
-                          <span>Yorumu Güncelle</span>
-                        </a>
-                      </mat-menu>
-                    </td>
-                    <td>
-                    </td>
-                  </tr>
+                <tr *ngFor="let item of commnet | filter: searchText">
+                  <td>{{ item.CommentID }}</td>
+                  <td>{{ item.CommentName }}</td>
+                  <td>{{ item.CommentText }}</td>
+                  <td>{{ item.CommentStatue }}</td>
+                  <td>
+                    <span class="comments__cursor" mat-icon-button [matMenuTriggerFor]="menu"
+                      aria-label="Example icon-button with a menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </span>
+                    <mat-menu #menu="matMenu">
+                      <a type="button" class="comments__decoration" mat-menu-item
+                        (click)="deleteComment(item.CommentID)">
+                        <mat-icon class="text-danger">delete_sweep</mat-icon>
+                        <span>Yorumu Sil</span>
+                      </a>
+                      <a class="comments__decoration" mat-menu-item
+                        [routerLink]="['/user/comment/update/',item.CommentID]">
+                        <mat-icon class="text-info">update</mat-icon>
+                        <span>Yorumu Güncelle</span>
+                      </a>
+                    </mat-menu>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
