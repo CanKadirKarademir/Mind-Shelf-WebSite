@@ -47,8 +47,8 @@
             </span>
           </div>
           <div class="form-group">
-            <select name="SecurityQuestionID" (ngModelChange)='onSQSelected($event)'
-              class="browser-default custom-select btnChange mb-2">
+            <select name="SecurityQuestionID" #SecurityQuestionID="ngModel" [(ngModel)]="mSQID"
+              (ngModelChange)='onSQSelected($event)' class="browser-default custom-select btnChange mb-2">
               <option *ngFor="let item of modelSecurityQuestion" [value]="item.SecurityQuestionID">
                 <td>{{ item.SecurityQuestionText }}</td>
               </option>

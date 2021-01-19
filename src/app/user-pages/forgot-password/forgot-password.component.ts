@@ -68,7 +68,7 @@ export class ForgotPasswordComponent implements OnInit {
               duration: 2000,
             }
           );
-          //this._router.navigate(['reset-password/', this.user_id]);
+          this._router.navigate(['reset-password']);
         } else {
           this._alertService.open(
             'Yanliş Bilgeleri Girdiniz Yöneticiniz İle iletişime geçiniz!',

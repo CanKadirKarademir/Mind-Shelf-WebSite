@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
   modelUser: User = new User();
   modelSecurityQuestion: SequrityQuestion[];
+  mSQID: number;
 
   ngOnInit() {
     this._securityQuestionService.listSequrityQuestion().subscribe(data => {
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
   onSave(registerForm: NgForm) {
     if (!registerForm.valid) {
       this._alertService.open(
-        'Lütfen Kullanıcı bilgilerini düzgün doldur!!!!',
+        'Lütfen Kullanıcı bilgilerini düzgün doldurun!',
         'HATA',
         {
           duration: 2000,
@@ -57,10 +58,24 @@ export class RegisterComponent implements OnInit {
         .subscribe(
           data => {
             console.log('data', data);
+            this._alertService.open(
+              'Kayıt işlemi başarı ıle gerçekleşti!',
+              'ONAY',
+              {
+                duration: 2000,
+              }
+            );
             this._router.navigate(['login']);
           },
           error => {
             console.log('error', error);
+            this._alertService.open(
+              'İşlem gerçekleştirilemedi!',
+              'HATA',
+              {
+                duration: 2000,
+              }
+            );
           });
     }
   }
