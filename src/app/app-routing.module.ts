@@ -24,6 +24,8 @@ import { CommentAddComponent } from './shared/comment/comment-add/comment-add.co
 import { CommentViewComponent } from './shared/comment/comment-view/comment-view.component';
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
+import{ CommentListViewComponent} from './admin-pages/comment-list-view/comment-list-view.component';
+
 import {
   ForgotPasswordComponent
 } from './../app/user-pages/forgot-password/forgot-password.component';
@@ -132,6 +134,11 @@ const routes: Routes = [
       {
         path: 'comments/:SummaryID',
         component: CommentListComponent,
+      },
+      {
+        path: 'comment/check',
+        component: CommentListViewComponent,
+        canActivate: [RoleGuard]
       }
     ]
   },

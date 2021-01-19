@@ -43,6 +43,7 @@ import { CommentListComponent } from './user-pages/comment-list/comment-list.com
 import { ForgotPasswordComponent } from './../app/user-pages/forgot-password/forgot-password.component';
 import { AvatarModule } from 'ngx-avatar';
 import { DeleteWindowComponent } from './delete-window/delete-window.component';
+import { CommentListViewComponent } from './admin-pages/comment-list-view/comment-list-view.component';
 import { ResetPasswordComponent } from '../app/user-pages/reset-password/reset-password.component';
 
 @NgModule({
@@ -78,6 +79,7 @@ import { ResetPasswordComponent } from '../app/user-pages/reset-password/reset-p
     CommentListComponent,
     ForgotPasswordComponent,
     DeleteWindowComponent,
+    CommentListViewComponent,
     ResetPasswordComponent
   ],
   imports: [
