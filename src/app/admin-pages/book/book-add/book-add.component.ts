@@ -26,7 +26,7 @@ export class BookAddComponent implements OnInit {
   modelBook: Book = new Book();
   book: Book[];
   author: Author[];
-  author_id: number;
+  author_id: number = 0;
   BookID: number;
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class BookAddComponent implements OnInit {
   }
 
   onSave(bookForm: NgForm) {
-    if (!bookForm.valid) {
+    if (!bookForm.valid || !this.author_id) {
       this._alertService.open(
         'Lütfen Bilgilerin doğru olduğundan emin olun !',
         'HATA',

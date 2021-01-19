@@ -29,8 +29,8 @@ export class BookListComponent implements OnInit {
   book: Book[];
   author: Author[];
   selected = [];
-  author_id: number;
-  library_id: number;
+  author_id: number = 0;
+  library_id: number = 0;
   library: Library[];
 
   ngOnInit(): void {
@@ -103,31 +103,40 @@ export class BookListComponent implements OnInit {
   }
 
   addBookOnLibrary(book_id) {
-    console.log(book_id)
-    this._bookService.addBookOnLibrary({
-      LibraryID: this.library_id,
-      BookID: book_id
-    }).pipe(first())
-      .subscribe(
-        data => {
-          console.log('data', data);
-        },
-        error => {
-          console.log('error', error);
-          this._alertService.open(
-            'Kitap kütüphanenize eklenemedi!',
-            'HATA',
-            {
-              duration: 2000,
-            }
-          );
-        });
-    this._alertService.open(
-      'Kitap kütüphanenize eklenmiştir.',
-      'İŞLEM BAŞARILI',
-      {
-        duration: 2000,
-      }
-    );
+    if (!this.library_id) {
+      this._alertService.open(
+        'Lütfen kütüphane seçiniz!',
+        'HATA',
+        {
+          duration: 2000,
+        }
+      );
+    } else {
+      this._bookService.addBookOnLibrary({
+        LibraryID: this.library_id,
+        BookID: book_id
+      }).pipe(first())
+        .subscribe(
+          data => {
+            console.log('data', data);
+          },
+          error => {
+            console.log('error', error);
+            this._alertService.open(
+              'Kitap kütüphanenize eklenemedi!',
+              'HATA',
+              {
+                duration: 2000,
+              }
+            );
+          });
+      this._alertService.open(
+        'Kitap kütüphanenize eklenmiştir.',
+        'İŞLEM BAŞARILI',
+        {
+          duration: 2000,
+        }
+      );
+    }
   }
 }
