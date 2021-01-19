@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { ApiConfig } from '../ApiConfig';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +27,10 @@ export class CommnentService {
     )
   };
 
-  private getCommnets() {
-    return this.http.get<Comment[]>(this.apiconfig.path + '/api/admin/all-comments', this.httpOptions)
-  }
 
+  getCommnets(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.apiconfig.path + '/api/admin/allcomments', this.httpOptions)
+  }
   // tslint:disable-next-line:variable-name
   commnetDelete(comment_id) {
     return this.http.post(
@@ -89,5 +90,17 @@ export class CommnentService {
       this.apiconfig.path + '/api/admin/getBySummary-comments?summary_id=' + summary_id,
       this.httpOptions
     );
+  }
+
+  commentStatusUpdate(comment_id, comment_statues) {
+    return this.http.post(this.apiconfig.path +
+      '/api/admin/update-commentstatus?comment_statues=' + comment_statues + '&comment_id=' + comment_id,
+      '',
+      this.httpOptions
+    )
+      .pipe(map((response) => {
+        console.log('update status res', response)
+      })
+      )
   }
 }

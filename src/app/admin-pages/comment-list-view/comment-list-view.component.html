@@ -17,25 +17,26 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                <tr *ngFor="let item of comment">
+                  <td>{{item.CommentID}}</td>
+                  <td>{{item.CommentName}}</td>
+                  <td>{{item.CommentText}}</td>
                   <td>
-                    <span>
+                    <span *ngIf="item.CommentStatue == 1">
                       Aktif
                     </span>
-                    <span>
+                    <span *ngIf="item.CommentStatue == 0">
                       Pasif
                     </span>
                   </td>
                   <td class="d-flex justify-content-center">
-                    <a type="button" class="comment__cursor" >
+                    <a type="button" class="comment__cursor" (click)="commentDelete(item.CommentID)">
                       <mat-icon class="text-danger">delete_sweep</mat-icon>
                     </a>
                   </td>
                   <td>
-                    <a type="button" class="comment__cursor">
+                    <a type="button" class="comment__cursor"
+                    (click)="commentStatusUpdate(item.CommentID)">
                       <mat-icon class="text-success">add</mat-icon>
                     </a>
                   </td>
