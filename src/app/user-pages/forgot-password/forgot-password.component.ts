@@ -8,8 +8,8 @@ import {
 import {
   User
 } from './../../models/user';
-import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/utils/services/auth/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -21,11 +21,14 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private _securityQuestionService: SecurityQuestionsService,
     private _alertService: MatSnackBar,
-    private _router: Router
+    private _router: Router,
+    private _authService: AuthService,
   ) { }
 
   modelUser: User = new User();
   modelSecurityQuestion: SequrityQuestion[];
+  mSQ_id: number;
+  user_id: Number;
 
   modelCompareUser: User = new User();
   ngOnInit(): void {
@@ -37,31 +40,36 @@ export class ForgotPasswordComponent implements OnInit {
   onSave(forgotPassword: NgForm) {
     if (!forgotPassword.valid) {
       this._alertService.open(
-        'Kullancı adı veya şifre boş bırakılamaz!',
+        'Lütfen bilgilerinizin doğruluğundan emin olun!',
         'HATA',
         {
           duration: 2000,
         }
       );
     } else {
-     // this.modelCompareUser = this._securityQuestionService.getUserInfo({ UserName: forgotPassword.value.UserName });
-
+      this._authService.sQUserDefine({
+        UserName: forgotPassword.value.UserName,
+        SecurityQuestionID: forgotPassword.value.SecurityQuestionID,
+        SQAnswersText: forgotPassword.value.SQAnswersText
+      }).subscribe((user: any) => {
+        console.log('user', user)
+        if (user['Status']) {
+          this.user_id = <Number>user.UserID;
+          this._router.navigate(['reset-password/', this.user_id]);
+        } else {
+          this._alertService.open(
+            'Yanliş Bilgeleri Girdiniz Yöneticiniz İle iletişime geçiniz!',
+            'HATA',
+            {
+              duration: 2000,
+            }
+          );
+          return false;
+        }
+      });
     }
-    this._securityQuestionService.securtyUpdatePass({
-      UserName: forgotPassword.value.UserName,
-      UserPassword: "123456"
-    });
-    this._alertService.open(
-      'Şifreniz 123456 olarak oluşturuldu Şifrenizi güncelleyiniz!',
-      'HATA',
-      {
-        duration: 2000,
-      }
-    );
-    this._router.navigate(['/login']);
   }
   onSQSelected(val: any) {
-
   }
 
 }

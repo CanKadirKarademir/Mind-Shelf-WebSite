@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserToken } from '../user_token';
+import { User } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +50,26 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
+
+  sQUserDefine(sqData) {
+    return this.http.post(
+      this.apiconfig.path + '/api/auth/sqUser-define', sqData
+    ).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
+
+  changePassword(data, user_id) {
+    return this.http.post(
+      this.apiconfig.path + '/api/auth/change-password?user_id=' + user_id,
+      data
+    ).pipe(
+      map((response: Response) => {
+        return response;
+      })
+    );
+  }
+
 }

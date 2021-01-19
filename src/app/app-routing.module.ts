@@ -27,6 +27,7 @@ import { CommentListComponent } from './user-pages/comment-list/comment-list.com
 import {
   ForgotPasswordComponent
 } from './../app/user-pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './user-pages/reset-password/reset-password.component';
 const routes: Routes = [
   {
     path: 'user',
@@ -152,6 +153,11 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+    canActivate: [NonAuthGuard]
+  },
+  {
+    path: 'reset-password/:UserID',
+    component: ResetPasswordComponent,
     canActivate: [NonAuthGuard]
   },
   {

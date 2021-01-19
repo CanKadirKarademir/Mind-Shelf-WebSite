@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
+import { SequrityQuestion } from 'src/app/models/sequrityQuestion';
+import { SecurityQuestionsService } from 'src/utils/services/security-questions/security-questions.service';
 import { AuthService } from '../../../utils/services/auth/auth.service';
 import { User } from '../../models/user';
 
@@ -17,11 +19,17 @@ export class RegisterComponent implements OnInit {
     private _router: Router,
     private _authService: AuthService,
     private _alertService: MatSnackBar,
+    private _securityQuestionService: SecurityQuestionsService,
   ) { }
 
   modelUser: User = new User();
+  modelSecurityQuestion: SequrityQuestion[];
 
   ngOnInit() {
+    this._securityQuestionService.listSequrityQuestion().subscribe(data => {
+      this.modelSecurityQuestion = data;
+      console.log("dasdas", data);
+    });
   }
 
   onSave(registerForm: NgForm) {
@@ -41,7 +49,9 @@ export class RegisterComponent implements OnInit {
         UserFirstName: registerForm.value.UserFirstName,
         UserLastName: registerForm.value.UserLastName,
         UserType: 0,
-        UserStatus: 0
+        UserStatus: 0,
+        SecurityQuestionID: registerForm.value.SecurityQuestionID,
+        SQAnswersText: registerForm.value.SQAnswersText
       })
         .pipe(first())
         .subscribe(
@@ -53,5 +63,7 @@ export class RegisterComponent implements OnInit {
             console.log('error', error);
           });
     }
+  }
+  onSQSelected(val: any) {
   }
 }
