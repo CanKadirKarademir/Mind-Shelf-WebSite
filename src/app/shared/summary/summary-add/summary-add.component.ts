@@ -60,6 +60,13 @@ export class SummaryAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Özet bilgileri kayıt edilemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            }
+          );
         });
     this._alertService.open(
       'Özet başarılı bir şekilde kayıt edilmiştir :)',

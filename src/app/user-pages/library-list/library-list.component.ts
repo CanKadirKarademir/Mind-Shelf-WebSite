@@ -15,7 +15,8 @@ export class LibraryListComponent implements OnInit {
   constructor(
     private _libraryService: LibraryService,
     private _dialog: MatDialog,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _alertService: MatSnackBar,
   ) { }
 
   library: Library[];
@@ -76,6 +77,18 @@ export class LibraryListComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Kütüphane eklenemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            })
         });
+    this._alertService.open(
+      'Kütüphane başarılı bir şekilde eklendi',
+      'İŞLEM BAŞARILI',
+      {
+        duration: 2000,
+      });
   }
 }

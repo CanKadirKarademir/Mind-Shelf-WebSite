@@ -58,6 +58,13 @@ export class LibraryAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Kütüphane bilgileri eklenemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            })
+          this._router.navigateByUrl('user');
         });
     this._alertService.open(
       'Kütüphane başarılı bir şekilde eklendi',
@@ -81,6 +88,13 @@ export class LibraryAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Kütüphane Güncellenemedi!.',
+            'HATA',
+            {
+              duration: 2000,
+            })
+          this._router.navigateByUrl('user/libraries');
         });
     this._alertService.open(
       'Kütüphane Güncellendi.',

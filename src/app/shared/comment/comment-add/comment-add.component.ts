@@ -62,6 +62,13 @@ export class CommentAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Yorum eklenemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            }
+          );
         });
     this._alertService.open(
       'Yorum başarılı bir şekilde kayıt edilmiştir :)',

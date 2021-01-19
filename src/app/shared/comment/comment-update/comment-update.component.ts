@@ -63,9 +63,16 @@ export class CommentUpdateComponent implements OnInit {
           },
           error => {
             console.log('error', error);
+            this._alertService.open(
+              'Yorum güncellemesi başarısız! :)',
+              'HATA',
+              {
+                duration: 2000,
+              }
+            );
           });
       this._alertService.open(
-        'Yorum başarılı bir şekilde kayıt edilmiştir :)',
+        'Yorum başarılı bir şekilde güncellenmiştir :)',
         'İŞLEM BAŞARILI',
         {
           duration: 2000,

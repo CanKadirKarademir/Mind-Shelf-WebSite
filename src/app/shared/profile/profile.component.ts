@@ -45,6 +45,13 @@ export class ProfileComponent implements OnInit {
             this._router.navigate(['user']);
           },
           error => {
+            this._alertService.open(
+              'Bilgiler güncellenemedi!',
+              'HATA',
+              {
+                duration: 2000,
+              }
+            );
           });
       this._alertService.open(
         'Bilgileriniz başarılı bir şekilde güncellenmiştir.',
