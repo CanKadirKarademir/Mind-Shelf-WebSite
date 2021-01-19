@@ -20,6 +20,7 @@ export class AuthorListComponent implements OnInit {
   ) { }
 
   author: Author[];
+  searchText="";
 
   ngOnInit(): void {
     this.getAuthor();

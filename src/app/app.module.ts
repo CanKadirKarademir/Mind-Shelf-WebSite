@@ -45,6 +45,7 @@ import { AvatarModule } from 'ngx-avatar';
 import { DeleteWindowComponent } from './delete-window/delete-window.component';
 import { CommentListViewComponent } from './admin-pages/comment-list-view/comment-list-view.component';
 import { ResetPasswordComponent } from '../app/user-pages/reset-password/reset-password.component';
+import { NgSearchFilterModule } from 'ng-search-filter';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { ResetPasswordComponent } from '../app/user-pages/reset-password/reset-p
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
+    NgSearchFilterModule,
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
