@@ -16,7 +16,6 @@ export class UserListComponent implements OnInit {
     private _dialog: MatDialog,
     private _snackBar: MatSnackBar
 
-
   ) { }
 
   user: User[];
