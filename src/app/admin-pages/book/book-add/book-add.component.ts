@@ -87,6 +87,13 @@ export class BookAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Kitap ekleme işlemi gerçekleştirilemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            }
+          );
         });
     this._alertService.open(
       'Kitap başarılı bir şekilde kayıt edilmiştir :)',
@@ -115,6 +122,13 @@ export class BookAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Kitap güncelleme işlemi gerçekleştirilemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            }
+          );
         });
     this._alertService.open(
       'Kitap başarılı bir şekilde güncellenmiştir.',

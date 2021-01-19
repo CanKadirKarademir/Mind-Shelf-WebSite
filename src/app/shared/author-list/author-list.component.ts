@@ -35,9 +35,9 @@ export class AuthorListComponent implements OnInit {
     diologResult.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
         try {
-    this._authorService.deleteAuthor(author_id).subscribe(data => {
-      window.location.reload();
-    });
+          this._authorService.deleteAuthor(author_id).subscribe(data => {
+            window.location.reload();
+          });
           this._snackBar.open('İşlem başarı ile gerçekleşti', 'X', {
             duration: 3000,
             panelClass: 'notification__success',
@@ -53,7 +53,7 @@ export class AuthorListComponent implements OnInit {
             horizontalPosition: 'right',
           });
         }
-      } 
+      }
     });
   }
 
@@ -61,19 +61,5 @@ export class AuthorListComponent implements OnInit {
     this._authorService.listAuthor().subscribe(data => {
       this.author = data;
     })
-  }
-  saveAuthor() {
-    this._authorService.addAuthor({
-      AuthorFirstName: "Kadir Can",
-      AuthorIsDeleted: 0,
-      AuthorLastName: "KARADEMİR"
-    }).pipe(first())
-      .subscribe(
-        data => {
-          console.log('data', data);
-        },
-        error => {
-          console.log('error', error);
-        });
   }
 }

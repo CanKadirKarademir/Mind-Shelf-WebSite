@@ -114,6 +114,13 @@ export class BookListComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Kitap kütüphanenize eklenemedi!',
+            'HATA',
+            {
+              duration: 2000,
+            }
+          );
         });
     this._alertService.open(
       'Kitap kütüphanenize eklenmiştir.',

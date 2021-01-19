@@ -24,10 +24,9 @@ export class ResetPasswordComponent implements OnInit {
     this.currentUserSubject = new BehaviorSubject<UserToken>(JSON.parse(localStorage.getItem('currentUser')));
   }
   modelUser: User = new User();
-  UserID: number;
 
   ngOnInit(): void {
-    this.UserID = parseInt(this._activatedRoute.snapshot.paramMap.get('UserID'));
+
   }
   onSave(resetPasswordForm: NgForm) {
     if (!resetPasswordForm.valid) {

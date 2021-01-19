@@ -56,13 +56,19 @@ export class AuthorAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Yazar Ekleme İşlemi gerçekleştirilemedi.',
+            'HATA',
+            {
+              duration: 2000,
+            });
         });
     this._alertService.open(
       'Yazar başarılı bir şekilde eklenmiştir.',
       'İŞLEM BAŞARILI',
       {
         duration: 2000,
-      })
+      });
     this._router.navigateByUrl('user/authors');
   }
 
@@ -79,6 +85,12 @@ export class AuthorAddComponent implements OnInit {
         },
         error => {
           console.log('error', error);
+          this._alertService.open(
+            'Yazar Güncelleme İşlemi gerçekleştirilemedi.',
+            'HATA',
+            {
+              duration: 2000,
+            });
         });
     this._alertService.open(
       'Yazar başarılı bir güncellenmiştir.',
