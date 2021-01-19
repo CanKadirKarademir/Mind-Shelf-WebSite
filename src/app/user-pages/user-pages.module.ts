@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -23,7 +24,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, UserLibraryViewComponent, CommentListComponent, ForgotPasswordComponent],
+  declarations: [LoginComponent, RegisterComponent, UserLibraryViewComponent, CommentListComponent, ForgotPasswordComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

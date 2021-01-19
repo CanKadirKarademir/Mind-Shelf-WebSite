@@ -41,9 +41,10 @@ import { CommentViewComponent } from './shared/comment/comment-view/comment-view
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
 import { ForgotPasswordComponent } from './../app/user-pages/forgot-password/forgot-password.component';
-import {AvatarModule} from 'ngx-avatar';
+import { AvatarModule } from 'ngx-avatar';
 import { DeleteWindowComponent } from './delete-window/delete-window.component';
 import { CommentListViewComponent } from './admin-pages/comment-list-view/comment-list-view.component';
+import { ResetPasswordComponent } from '../app/user-pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { CommentListViewComponent } from './admin-pages/comment-list-view/commen
     CommentListComponent,
     ForgotPasswordComponent,
     DeleteWindowComponent,
-    CommentListViewComponent
+    CommentListViewComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
