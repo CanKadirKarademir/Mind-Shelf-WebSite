@@ -24,7 +24,7 @@ import { CommentAddComponent } from './shared/comment/comment-add/comment-add.co
 import { CommentViewComponent } from './shared/comment/comment-view/comment-view.component';
 import { CommentUpdateComponent } from './shared/comment/comment-update/comment-update.component';
 import { CommentListComponent } from './user-pages/comment-list/comment-list.component';
-import{ CommentListViewComponent} from './admin-pages/comment-list-view/comment-list-view.component';
+import { CommentListViewComponent } from './admin-pages/comment-list-view/comment-list-view.component';
 
 import {
   ForgotPasswordComponent
@@ -163,7 +163,7 @@ const routes: Routes = [
     canActivate: [NonAuthGuard]
   },
   {
-    path: 'reset-password/:UserID',
+    path: 'reset-password',
     component: ResetPasswordComponent,
     canActivate: [NonAuthGuard]
   },
