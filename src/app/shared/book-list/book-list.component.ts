@@ -7,6 +7,8 @@ import { first } from 'rxjs/internal/operators/first';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LibraryService } from '../../../utils/services/library/library.service';
 import { Library } from './../../models/library';
+import { DeleteWindowComponent } from '../../delete-window/delete-window.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-book-list',
@@ -20,6 +22,8 @@ export class BookListComponent implements OnInit {
     private _authorService: AuthorService,
     private _alertService: MatSnackBar,
     private _libraryService: LibraryService,
+    private _dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   book: Book[];
@@ -67,8 +71,34 @@ export class BookListComponent implements OnInit {
   }
 
   bookDelete(id) {
-    this._bookService.bookDelete(id).subscribe(data => {
-      window.location.reload();
+    const diologResult = this._dialog.open(DeleteWindowComponent, {
+      data: {
+        message: 'Kitabı silmek istediğinizden emin misiniz?',
+        icon: 'fa fa-exclamation',
+      },
+    });
+    diologResult.afterClosed().subscribe(async (result: boolean) => {
+      if (result) {
+        try {
+          this._bookService.bookDelete(id).subscribe(data => {
+            window.location.reload();
+          });
+          this._snackBar.open('İşlem başarı ile gerçekleşti', 'X', {
+            duration: 3000,
+            panelClass: 'notification__success',
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+          });
+        }
+        catch (error) {
+          this._snackBar.open('HATA', 'X', {
+            duration: 3000,
+            panelClass: 'notification__warrning',
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+          });
+        }
+      }
     });
   }
 

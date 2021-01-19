@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/utils/services/book/book.service';
 import { LibraryService } from '../../../utils/services/library/library.service';
+import { DeleteWindowComponent } from '../../delete-window/delete-window.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-library-view',
@@ -13,7 +16,9 @@ export class UserLibraryViewComponent implements OnInit {
     private _libraryService: LibraryService,
     private _bookService: BookService,
     private _activatedRoute: ActivatedRoute,
-    private _router: Router
+    private _router: Router,
+    private _dialog: MatDialog,
+    private _snackBar: MatSnackBar
   ) { }
 
   LibraryID: number;
@@ -33,8 +38,34 @@ export class UserLibraryViewComponent implements OnInit {
   }
 
   deleteBookOnLibrary(book_id) {
-    this._bookService.deleteBookOnLibrary(book_id).subscribe(data => {
-      window.location.reload();
+    const diologResult = this._dialog.open(DeleteWindowComponent, {
+      data: {
+        message: 'Kütüphanenizden kitabı çıkarmak ister misiniz?',
+        icon: 'fa fa-exclamation',
+      },
+    });
+    diologResult.afterClosed().subscribe(async (result: boolean) => {
+      if (result) {
+        try {
+          this._bookService.deleteBookOnLibrary(book_id).subscribe(data => {
+            window.location.reload();
+          });
+          this._snackBar.open('İşlem başarı ile gerçekleşti', 'X', {
+            duration: 3000,
+            panelClass: 'notification__success',
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+          });
+        }
+        catch (error) {
+          this._snackBar.open('HATA', 'X', {
+            duration: 3000,
+            panelClass: 'notification__warrning',
+            verticalPosition: 'bottom',
+            horizontalPosition: 'right',
+          });
+        }
+      }
     })
   }
 }
