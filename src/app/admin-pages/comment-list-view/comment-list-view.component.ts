@@ -20,6 +20,8 @@ export class CommentListViewComponent implements OnInit {
   ) { }
 
   comment: Comment[];
+  searchText = "";
+
   ngOnInit(): void {
     this.getAllCommnets();
   }

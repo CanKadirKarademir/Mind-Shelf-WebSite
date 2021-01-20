@@ -1,3 +1,15 @@
+<div class="row">
+  <div class="col-md-3 col-sm-12 ml-auto ">
+    <mat-form-field class="w-100">
+      <mat-label>Arama</mat-label>
+      <input matInput type="text" [(ngModel)]="searchText" placeholder="Aranacak kelimeyi giriniz" name="SearchText">
+      <a type="button" matSuffix [attr.aria-label]="'Search'">
+        <mat-icon>search</mat-icon>
+      </a>
+    </mat-form-field>
+  </div>
+</div>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -18,7 +30,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let book of books">
+                <tr *ngFor="let book of books | filter: searchText">
                   <td> {{book.TblBook.BookID}} </td>
                   <td> {{book.TblBook.BookName}} </td>
                   <td> {{book.TblBook.BookPage}} </td>

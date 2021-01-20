@@ -55,7 +55,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let item of book">
+                <tr *ngFor="let item of book | filter: searchText">
                   <td>{{ item.BookID }}</td>
                   <td>{{ item.BookName }}</td>
                   <td>{{ item.BookType }}</td>

@@ -20,6 +20,7 @@ export class LibraryListComponent implements OnInit {
   ) { }
 
   library: Library[];
+  searchText = "";
 
   ngOnInit(): void {
     this.getLibrary();

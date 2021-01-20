@@ -22,6 +22,7 @@ export class UserLibraryViewComponent implements OnInit {
   ) { }
 
   LibraryID: number;
+  searchText = "";
 
   ngOnInit(): void {
     this.getLibrariesBooks(this.LibraryID);

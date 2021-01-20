@@ -19,6 +19,7 @@ export class UserListComponent implements OnInit {
   ) { }
 
   user: User[];
+  searchText = "";
 
   ngOnInit() {
     this.getAllUsers();
@@ -40,9 +41,9 @@ export class UserListComponent implements OnInit {
     diologResult.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
         try {
-    this._userService.userStatusUpdate(id, 1).subscribe(data => {
-      window.location.reload();
-    });
+          this._userService.userStatusUpdate(id, 1).subscribe(data => {
+            window.location.reload();
+          });
           this._snackBar.open('İşlem başarı ile gerçekleşti', 'X', {
             duration: 3000,
             panelClass: 'notification__success',
@@ -60,7 +61,7 @@ export class UserListComponent implements OnInit {
         }
       }
     });
-    
+
   }
 
   userDelete(id) {

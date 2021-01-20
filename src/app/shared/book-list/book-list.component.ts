@@ -32,6 +32,7 @@ export class BookListComponent implements OnInit {
   author_id: number = 0;
   library_id: number = 0;
   library: Library[];
+  searchText = "";
 
   ngOnInit(): void {
     this.getAuthor();

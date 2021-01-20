@@ -18,6 +18,7 @@ export class CommentViewComponent implements OnInit {
   ) { }
 
   commnet: Comment[];
+  searchText = "";
 
   ngOnInit(): void {
     this.getUserAllComments();
@@ -39,9 +40,9 @@ export class CommentViewComponent implements OnInit {
     diologResult.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
         try {
-    this._commnetService.commnetDelete(comment_id).subscribe(data => {
-      window.location.reload();
-    });
+          this._commnetService.commnetDelete(comment_id).subscribe(data => {
+            window.location.reload();
+          });
           this._snackBar.open('İşlem başarı ile gerçekleşti', 'X', {
             duration: 3000,
             panelClass: 'notification__success',
