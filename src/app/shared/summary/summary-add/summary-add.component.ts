@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Summary } from 'src/app/models/summary';
 import { Book } from 'src/app/models/book';
@@ -19,6 +19,7 @@ export class SummaryAddComponent implements OnInit {
     private _bookService: BookService,
     private _alertService: MatSnackBar,
     private _activatedRoute: ActivatedRoute,
+    private _router:Router
   ) { }
 
   modelSummary: Summary = new Summary();
@@ -75,7 +76,7 @@ export class SummaryAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    window.location.href = "/user/summaries";
+    this._router.navigate(['user/summaries']);
   }
 
   getBook() {

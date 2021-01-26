@@ -29,7 +29,7 @@ export class LibraryListComponent implements OnInit {
   onDeleteLibrary(library_id) {
     const diologResult = this._dialog.open(DeleteWindowComponent, {
       data: {
-        message: 'Are you sure you want to delete the acticity?',
+        message: 'Kütüphaneyi silme işlemini onaylıyor musunuz?',
         icon: 'fa fa-exclamation',
       },
     });

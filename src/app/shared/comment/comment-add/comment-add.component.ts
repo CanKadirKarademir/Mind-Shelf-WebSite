@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Summary } from 'src/app/models/summary';
 import { CommnentService } from 'src/utils/services/comment/commnet.service';
@@ -19,6 +19,7 @@ export class CommentAddComponent implements OnInit {
     private _commentService: CommnentService,
     private _activatedRoute: ActivatedRoute,
     private _summaryService: SummaryService,
+    private _router:Router
   ) { }
 
   user_id: number;
@@ -34,8 +35,8 @@ export class CommentAddComponent implements OnInit {
     this.getByIdSummary(this.SummaryID);
   }
 
-  onSave(commentFrom: NgForm) {
-    if (!commentFrom.valid) {
+  onSave(commentForm: NgForm) {
+    if (!commentForm.valid) {
       this._alertService.open(
         'Lütfen Boş Yerleri Doldurunuz !',
         'HATA',
@@ -43,16 +44,19 @@ export class CommentAddComponent implements OnInit {
           duration: 2000,
         }
       );
+      console.log("if:", commentForm.value);
     }
     else {
-      this.onAddComment(commentFrom);
+      this.onAddComment(commentForm);
+      console.log("else:", commentForm.value);
+      
     }
   }
-  onAddComment(commentFrom: NgForm) {
-    console.log("sadasd", commentFrom)
+  onAddComment(commentForm: NgForm) {
+    console.log("sadasd", commentForm.value)
     this._commentService.commentAdd({
-      CommentName: commentFrom.value.CommentName,
-      CommentText: commentFrom.value.CommentText,
+      CommentName: commentForm.value.CommentName,
+      CommentText: commentForm.value.CommentText,
       SummaryID: this.SummaryID,
       UserID: JSON.parse(localStorage.getItem('currentUser')).id
     }).pipe(first())
@@ -77,7 +81,8 @@ export class CommentAddComponent implements OnInit {
         duration: 2000,
       }
     );
-    // window.location.href = "/user/comment/view";
+    this._router.navigate(['/user/comment/view']);
+
   }
 
   getSummaryInformation(summary_id) {
